@@ -1,0 +1,22 @@
+/syncthing
+/stdiscosrv
+*.tar.gz
+*.zip
+*.asc
+*.deb
+*.exe
+# Release installers are kept in the repository for distribution.
+!dist/LinkBox0-Setup-*.exe
+.jshintrc
+coverage.out
+files/pidx
+bin
+perfstats*.csv
+coverage.xml
+syncthing.sig
+RELEASE
+deb
+*.bz2
+/repos
+/proto/scripts/protoc-gen-gosyncthing
+/compat.json

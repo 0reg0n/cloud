@@ -1,0 +1,101 @@
+name: Android APK
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'android/**'
+      - '.github/workflows/android-apk.yml'
+
+jobs:
+  apk:
+    name: Build LinkBox0 APK
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Read Go version
+        run: |
+          set -eu
+          GO_VERSION=$(grep -m1 '^go_version =' android/gradle/libs.versions.toml | sed -E 's/.*"([0-9]+\.[0-9]+\.[0-9]+)".*/\1/')
+          echo "GO_VERSION=${GO_VERSION}" >> "$GITHUB_ENV"
+          echo "Using Go ${GO_VERSION}"
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: ${{ env.GO_VERSION }}
+          cache: false
+
+      - name: Install Android SDK
+        run: |
+          set -eu
+          echo "ANDROID_HOME=$HOME/android-sdk" >> "$GITHUB_ENV"
+          echo "ANDROID_SDK_ROOT=$HOME/android-sdk" >> "$GITHUB_ENV"
+          echo "$HOME/android-sdk/cmdline-tools/latest/bin" >> "$GITHUB_PATH"
+          SDK_TOOLS_VERSION=$(grep 'android-cmdline-tools = ' android/gradle/libs.versions.toml | cut -d '"' -f 2)
+          mkdir -p "$HOME/android-sdk/cmdline-tools"
+          cd "$HOME/android-sdk/cmdline-tools"
+          wget -q "https://dl.google.com/android/repository/commandlinetools-linux-${SDK_TOOLS_VERSION}_latest.zip"
+          unzip -q "commandlinetools-linux-${SDK_TOOLS_VERSION}_latest.zip"
+          mv cmdline-tools latest
+          yes | latest/bin/sdkmanager --licenses
+
+      - name: Set Gradle and Android user homes
+        run: |
+          set -eu
+          echo "GRADLE_USER_HOME=${{ runner.temp }}/.gradle" >> "$GITHUB_ENV"
+          echo "ANDROID_USER_HOME=${{ runner.temp }}/.android" >> "$GITHUB_ENV"
+          mkdir -p "${{ runner.temp }}/.gradle" "${{ runner.temp }}/.android"
+
+      - name: Build debug APK
+        working-directory: android
+        run: |
+          set -eu
+          unset ANDROID_NDK_HOME || true
+          git config --global --add safe.directory '*'
+          chmod +x gradlew
+          ./gradlew --no-daemon assembleDebug
+
+      - name: Sign debug APK
+        working-directory: android
+        run: |
+          set -eu
+          sudo apt-get update
+          sudo apt-get install -y apksigner
+          KEYSTORE="${{ runner.temp }}/.android/debug.keystore"
+          mkdir -p "${{ runner.temp }}/.android"
+          keytool -genkeypair -v -keystore "$KEYSTORE" -storepass android -keypass android \
+            -alias androiddebugkey -keyalg RSA -keysize 2048 -validity 10000 \
+            -dname "CN=Android Debug,O=Android,C=US"
+          cd app/build/outputs/apk/debug
+          APK=$(ls | grep -E '\.apk$' | head -n1)
+          echo "Signing ${APK}"
+          apksigner sign --ks "$KEYSTORE" --ks-pass pass:android --key-pass pass:android \
+            --ks-key-alias androiddebugkey --out "${{ github.workspace }}/LinkBox0-debug.apk" "${APK}"
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: LinkBox0-debug-apk
+          path: LinkBox0-debug.apk
+          if-no-files-found: error

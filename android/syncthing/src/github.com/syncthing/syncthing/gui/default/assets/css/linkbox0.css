@@ -1,0 +1,819 @@
+/*
+// Copyright (C) 2025 The Syncthing Authors.
+//
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this file,
+// You can obtain one at https://mozilla.org/MPL/2.0/.
+
+// linkbox0 UI design system. Loaded after the Bootstrap theme so it can
+// override component defaults and provide the dashboard shell.
+*/
+
+:root {
+    --linkbox0-bg: #f4f6f9;
+    --linkbox0-surface: #ffffff;
+    --linkbox0-border: #e9edf3;
+    --linkbox0-border-strong: #dfe5ee;
+    --linkbox0-text: #1f2733;
+    --linkbox0-muted: #8b95a7;
+    --linkbox0-accent: #2f6bff;
+    --linkbox0-accent-dark: #2358d8;
+    --linkbox0-accent-soft: #eaf1ff;
+    --linkbox0-green: #22c55e;
+    --linkbox0-green-bg: #e7f7ee;
+    --linkbox0-green-text: #1f9d55;
+    --linkbox0-gray-bg: #eef1f5;
+    --linkbox0-gray-text: #64748b;
+    --linkbox0-radius: 16px;
+    --linkbox0-radius-sm: 10px;
+    --linkbox0-shadow: 0 1px 2px rgba(16, 24, 40, .04), 0 8px 24px rgba(16, 24, 40, .04);
+    --linkbox0-sidebar-width: 264px;
+}
+
+/* ---------- Page ---------- */
+
+body {
+    background: var(--linkbox0-bg);
+    color: var(--linkbox0-text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, .linkbox0-topbar-title {
+    font-family: inherit;
+    font-weight: 700;
+    color: var(--linkbox0-text);
+}
+
+/* ---------- Shell ---------- */
+
+.linkbox0-app {
+    display: flex;
+    min-height: 100vh;
+    align-items: stretch;
+}
+
+.linkbox0-sidebar {
+    width: var(--linkbox0-sidebar-width);
+    flex: 0 0 var(--linkbox0-sidebar-width);
+    background: var(--linkbox0-surface);
+    border-right: 1px solid var(--linkbox0-border);
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.linkbox0-main {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.linkbox0-content {
+    padding: 4px 28px 48px;
+}
+
+/* ---------- Sidebar: brand ---------- */
+
+.linkbox0-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 22px 20px 18px;
+}
+
+.linkbox0-brand-logo {
+    width: 44px;
+    height: 44px;
+    padding: 5px;
+    border-radius: 12px;
+    background: var(--linkbox0-surface);
+    border: 1px solid var(--linkbox0-border);
+    object-fit: contain;
+    flex: 0 0 auto;
+}
+
+.linkbox0-brand-name {
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: .2px;
+}
+
+.linkbox0-brand-sub {
+    font-size: 12px;
+    color: var(--linkbox0-muted);
+}
+
+/* ---------- Sidebar: nav ---------- */
+
+.linkbox0-nav {
+    padding: 4px 12px 16px;
+    flex: 1 1 auto;
+}
+
+.linkbox0-nav-section {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--linkbox0-muted);
+    padding: 16px 10px 8px;
+}
+
+.linkbox0-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: var(--linkbox0-radius-sm);
+    color: var(--linkbox0-text);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    margin: 2px 0;
+    transition: background .12s ease, color .12s ease;
+}
+
+.linkbox0-nav-item:hover {
+    background: #f1f4f9;
+    text-decoration: none;
+    color: var(--linkbox0-text);
+}
+
+.linkbox0-nav-item i {
+    width: 18px;
+    text-align: center;
+    color: var(--linkbox0-muted);
+}
+
+.linkbox0-nav-item.linkbox0-nav-active,
+.linkbox0-nav-item.linkbox0-nav-active:hover {
+    background: var(--linkbox0-accent);
+    color: #fff;
+}
+
+.linkbox0-nav-item.linkbox0-nav-active i {
+    color: #fff;
+}
+
+.linkbox0-nav-count {
+    margin-left: auto;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--linkbox0-muted);
+    background: var(--linkbox0-gray-bg);
+    border-radius: 999px;
+    padding: 1px 8px;
+}
+
+.linkbox0-nav-item.linkbox0-nav-active .linkbox0-nav-count {
+    background: rgba(255, 255, 255, .25);
+    color: #fff;
+}
+
+/* ---------- Sidebar: footer ---------- */
+
+.linkbox0-sidebar-footer {
+    border-top: 1px solid var(--linkbox0-border);
+    padding: 16px 20px 20px;
+}
+
+.linkbox0-device-name {
+    font-weight: 700;
+    font-size: 14px;
+    word-break: break-word;
+}
+
+.linkbox0-device-meta {
+    font-size: 12px;
+    color: var(--linkbox0-muted);
+    margin-bottom: 10px;
+}
+
+.linkbox0-device-status {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--linkbox0-muted);
+}
+
+.linkbox0-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #cbd5e1;
+    display: inline-block;
+    margin-left: 8px;
+}
+
+.linkbox0-dot:first-child {
+    margin-left: 0;
+}
+
+.linkbox0-dot.linkbox0-dot-on {
+    background: var(--linkbox0-green);
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, .15);
+}
+
+/* ---------- Topbar ---------- */
+
+.linkbox0-topbar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 26px 28px 18px;
+    flex-wrap: wrap;
+}
+
+.linkbox0-topbar-title {
+    font-size: 26px;
+    margin: 0;
+    line-height: 1.15;
+}
+
+.linkbox0-topbar-subtitle {
+    margin: 4px 0 0;
+    color: var(--linkbox0-muted);
+    font-size: 13px;
+}
+
+.linkbox0-topbar-actions {
+    float: none;
+    padding-right: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.linkbox0-topbar-actions > li {
+    float: none;
+    list-style: none;
+}
+
+/* ---------- Buttons ---------- */
+
+.linkbox0-btn,
+.linkbox0-btn:visited {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.linkbox0-btn-primary,
+.linkbox0-btn-primary:visited {
+    background: linear-gradient(135deg, var(--linkbox0-accent), #6d8bff);
+    color: #fff;
+    box-shadow: 0 8px 18px rgba(47, 107, 255, .25);
+}
+
+.linkbox0-btn-primary:hover {
+    color: #fff;
+    filter: brightness(1.05);
+    text-decoration: none;
+}
+
+.linkbox0-btn-ghost,
+.linkbox0-btn-ghost:visited {
+    background: var(--linkbox0-surface);
+    border-color: var(--linkbox0-border-strong);
+    color: var(--linkbox0-accent);
+}
+
+.linkbox0-btn-ghost:hover {
+    color: var(--linkbox0-accent-dark);
+    background: var(--linkbox0-accent-soft);
+    text-decoration: none;
+}
+
+/* Bootstrap button restyle */
+
+.btn {
+    border-radius: 10px;
+    font-weight: 600;
+    border-color: var(--linkbox0-border-strong);
+}
+
+.btn-default {
+    background: var(--linkbox0-surface);
+    color: var(--linkbox0-text);
+}
+
+.btn-default:hover,
+.btn-default:focus {
+    background: #f1f4f9;
+    color: var(--linkbox0-text);
+}
+
+.btn-primary {
+    background: var(--linkbox0-accent);
+    border-color: var(--linkbox0-accent);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background: var(--linkbox0-accent-dark);
+    border-color: var(--linkbox0-accent-dark);
+}
+
+/* ---------- Cards (Bootstrap panels) ---------- */
+
+.panel {
+    background: var(--linkbox0-surface);
+    border: 1px solid var(--linkbox0-border);
+    border-radius: var(--linkbox0-radius);
+    box-shadow: var(--linkbox0-shadow);
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.panel-default,
+.panel-success,
+.panel-warning,
+.panel-danger {
+    border-color: var(--linkbox0-border);
+}
+
+.panel-heading,
+button.panel-heading {
+    background: transparent;
+    border-radius: var(--linkbox0-radius) var(--linkbox0-radius) 0 0 !important;
+    border-bottom: 1px solid var(--linkbox0-border);
+    padding: 16px 20px;
+}
+
+.panel-heading .panel-title,
+.panel-title {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.panel-body {
+    padding: 18px 20px;
+}
+
+.panel-footer {
+    background: #fafbfd;
+    border-top: 1px solid var(--linkbox0-border);
+    padding: 14px 20px;
+}
+
+/* Section headings get the blue accent bar from the design. */
+
+.panel-group > h3,
+h3[id="folder_list"],
+.linkbox0-content > .row > div > h3 {
+    position: relative;
+    padding-left: 14px;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 8px;
+    margin-bottom: 14px;
+}
+
+.panel-group > h3::before,
+h3[id="folder_list"]::before,
+.linkbox0-content > .row > div > h3::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    bottom: 2px;
+    width: 4px;
+    border-radius: 3px;
+    background: var(--linkbox0-accent);
+}
+
+.linkbox0-content h4 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--linkbox0-muted);
+    font-weight: 700;
+}
+
+/* ---------- Key/value rows ---------- */
+
+.panel-body table th {
+    font-weight: 500;
+    color: var(--linkbox0-muted);
+}
+
+.panel-body table td {
+    font-weight: 600;
+    color: var(--linkbox0-text);
+}
+
+.panel-body table.table-condensed tr > th,
+.panel-body table.table-condensed tr > td {
+    border-top: 1px dashed var(--linkbox0-border-strong);
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+
+.panel-body table.table-condensed tr:first-child > th,
+.panel-body table.table-condensed tr:first-child > td {
+    border-top: none;
+}
+
+/* ---------- Status pills ---------- */
+
+.label {
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--linkbox0-gray-text);
+    background: var(--linkbox0-gray-bg);
+    display: inline-flex;
+    align-items: center;
+}
+
+.label-success,
+.label-primary {
+    background: var(--linkbox0-green-bg);
+    color: var(--linkbox0-green-text);
+}
+
+.label-success::before,
+.label-primary::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--linkbox0-green);
+    margin-right: 7px;
+}
+
+.label-default::before,
+.label-danger::before,
+.label-warning::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #94a3b8;
+    margin-right: 7px;
+}
+
+.label-danger {
+    background: #fdeaea;
+    color: #d64545;
+}
+
+.label-danger::before {
+    background: #e05252;
+}
+
+.label-warning {
+    background: #fff5e6;
+    color: #b7791f;
+}
+
+.label-warning::before {
+    background: #f0a020;
+}
+
+/* ---------- Progress bars ---------- */
+
+.progress {
+    height: 8px;
+    border-radius: 999px;
+    background-color: var(--linkbox0-gray-bg);
+    box-shadow: none;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.progress-bar {
+    background-color: var(--linkbox0-accent);
+    box-shadow: none;
+}
+
+.progress-bar-success {
+    background-color: var(--linkbox0-green);
+}
+
+/* ---------- Forms ---------- */
+
+.form-control {
+    border-radius: 10px;
+    border-color: var(--linkbox0-border-strong);
+    box-shadow: none;
+    height: auto;
+    padding: 9px 12px;
+}
+
+.form-control:focus {
+    border-color: var(--linkbox0-accent);
+    box-shadow: 0 0 0 3px var(--linkbox0-accent-soft);
+}
+
+/* ---------- Alerts ---------- */
+
+.alert {
+    border-radius: var(--linkbox0-radius-sm);
+    border: 1px solid var(--linkbox0-border);
+}
+
+/* ---------- Modals ---------- */
+
+.modal-content {
+    border-radius: var(--linkbox0-radius);
+    border: none;
+    box-shadow: 0 24px 60px rgba(16, 24, 40, .18);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--linkbox0-border);
+}
+
+.modal-footer {
+    border-top: 1px solid var(--linkbox0-border);
+}
+
+/* ---------- Misc ---------- */
+
+.navbar {
+    display: none;
+}
+
+.navbar-top {
+    display: none;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 991px) {
+    .linkbox0-app {
+        flex-direction: column;
+    }
+
+    .linkbox0-sidebar {
+        position: static;
+        width: 100%;
+        flex-basis: auto;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--linkbox0-border);
+    }
+
+    .linkbox0-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+
+    .linkbox0-nav-section {
+        width: 100%;
+        padding-top: 8px;
+    }
+
+    .linkbox0-nav-item {
+        margin: 0;
+    }
+
+    .linkbox0-content,
+    .linkbox0-topbar {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+/* ---------- Light design enforcement ----------
+   Pin the light palette so the design looks the same regardless of the
+   operating system colour scheme (the dark/black themes remain available
+   for explicit selection in the settings). */
+
+body {
+    background-color: var(--linkbox0-bg);
+    color: var(--linkbox0-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--linkbox0-text);
+}
+
+a {
+    color: var(--linkbox0-accent);
+}
+
+.panel,
+.panel-default,
+.panel-success,
+.panel-warning,
+.panel-danger,
+.panel-info {
+    background-color: var(--linkbox0-surface);
+    border-color: var(--linkbox0-border);
+    color: var(--linkbox0-text);
+}
+
+.panel-default > .panel-heading,
+.panel-success > .panel-heading,
+.panel-warning > .panel-heading,
+.panel-danger > .panel-heading,
+.panel-info > .panel-heading,
+.panel-heading {
+    background-color: var(--linkbox0-surface);
+    color: var(--linkbox0-text);
+    border-color: var(--linkbox0-border);
+}
+
+.panel-body {
+    background-color: var(--linkbox0-surface);
+    color: var(--linkbox0-text);
+}
+
+.panel-footer {
+    background-color: #fafbfd;
+    border-color: var(--linkbox0-border);
+    color: var(--linkbox0-muted);
+}
+
+.panel-title,
+.panel-heading .panel-title {
+    color: var(--linkbox0-text);
+}
+
+.panel-warning > .panel-heading .panel-title,
+.panel-danger > .panel-heading .panel-title {
+    color: var(--linkbox0-text);
+}
+
+.well {
+    background-color: var(--linkbox0-gray-bg);
+    border-color: var(--linkbox0-border);
+    color: var(--linkbox0-text);
+}
+
+.dropdown-menu {
+    background-color: var(--linkbox0-surface);
+    border-color: var(--linkbox0-border);
+    box-shadow: var(--linkbox0-shadow);
+}
+
+.dropdown-menu > li > a {
+    color: var(--linkbox0-text);
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+    background-color: #f1f4f9;
+    color: var(--linkbox0-text);
+}
+
+.dropdown-menu > .active > a {
+    background-color: var(--linkbox0-accent);
+    color: #fff;
+}
+
+.form-control {
+    background-color: var(--linkbox0-surface);
+    color: var(--linkbox0-text);
+}
+
+.form-control[readonly="readonly"],
+.form-control[disabled] {
+    background-color: var(--linkbox0-gray-bg);
+}
+
+.modal-content {
+    background-color: var(--linkbox0-surface);
+    color: var(--linkbox0-text);
+}
+
+.modal-header,
+.modal-footer {
+    border-color: var(--linkbox0-border);
+}
+
+.table {
+    color: var(--linkbox0-text);
+}
+
+.text-muted,
+.help-block {
+    color: var(--linkbox0-muted);
+}
+
+/* Semantic alerts become soft pastel cards instead of solid bars. */
+
+.alert-success {
+    background-color: var(--linkbox0-green-bg);
+    border-color: #cdeedd;
+    color: var(--linkbox0-green-text);
+}
+
+.alert-warning {
+    background-color: #fff5e6;
+    border-color: #ffe2b8;
+    color: #b7791f;
+}
+
+.alert-danger {
+    background-color: #fdeaea;
+    border-color: #f6cccc;
+    color: #d64545;
+}
+
+.alert-info {
+    background-color: var(--linkbox0-accent-soft);
+    border-color: #cfe0ff;
+    color: var(--linkbox0-accent-dark);
+}
+
+/* Card title with an icon reads like the design mockup. */
+
+.panel-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.panel-heading .panel-icon {
+    float: none;
+    margin: 0;
+    color: var(--linkbox0-muted);
+}
+
+.panel-heading .panel-title {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.panel-heading .panel-status,
+.panel-heading > .pull-right {
+    margin-left: auto;
+}
+
+/* ---------- Alignment ---------- */
+
+/* Column titles (This Device / Remote Devices) share a header row so the
+   panels below start at the same vertical position. */
+.linkbox0-col-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    min-height: 48px;
+    margin: 6px 0 14px;
+}
+
+.linkbox0-col-header > h3 {
+    margin: 0;
+}
+
+.linkbox0-col-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.linkbox0-col-actions .btn {
+    margin: 0;
+}
+
+/* The two device windows align at the top and stretch to equal height. */
+#linkbox0-devices > .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+#linkbox0-devices > .row > [class*="col-"] {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Consistent vertical rhythm for the panels inside the device windows. */
+#linkbox0-devices .panel-group,
+#linkbox0-devices .panel {
+    margin-bottom: 16px;
+}
+
+#linkbox0-devices .panel:last-child {
+    margin-bottom: 0;
+}
+
+

@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<!--
+// Copyright (C) 2014 The Syncthing Authors.
+//
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this file,
+// You can obtain one at https://mozilla.org/MPL/2.0/.
+
+-->
+<html lang="en" ng-app="linkbox0" ng-controller="LinkBox0Controller">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="shortcut icon" href="assets/img/linkbox0-logo.svg" type="image/svg+xml"/>
+  <link rel="mask-icon" href="assets/img/safari-pinned-tab.svg" color="#0882c8"/>
+
+  <title ng-bind="thisDeviceName() + ' | LinkBox0'"></title>
+  <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+  <link href="vendor/daterangepicker/daterangepicker.css" rel="stylesheet"/>
+  <link href="assets/font/raleway.css" rel="stylesheet"/>
+  <link href="vendor/fork-awesome/css/fork-awesome.css" rel="stylesheet"/>
+  <link href="vendor/fork-awesome/css/v5-compat.css" rel="stylesheet"/>
+  <link href="assets/css/tree.css" rel="stylesheet"/>
+  <link href="assets/css/overrides.css" rel="stylesheet"/>
+  <link href="assets/css/theme.css" rel="stylesheet"/>
+  <link href="assets/css/inter.css" rel="stylesheet"/>
+  <link href="assets/css/linkbox0.css" rel="stylesheet"/>
+</head>
+
+<body>
+  <noscript>
+    <nav class="navbar navbar-top navbar-default" role="navigation">
+      <div class="container">
+        <span class="navbar-brand" aria-hidden="true">
+          <img class="logo hidden-xs" src="assets/img/linkbox0-logo.svg" height="32" width="117" alt=""/>
+          <img class="logo hidden visible-xs" src="assets/img/linkbox0-logo.svg" height="32" alt=""/>
+        </span>
+      </div>
+    </nav>
+
+    <div class="container content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-danger">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                <div class="panel-icon">
+                  <span class="fas fa-exclamation-circle"></span>
+                </div>
+                Warning!
+              </h3>
+            </div>
+            <div class="panel-body">
+              <p>
+              The LinkBox0 admin interface requires JavaScript. Please enable JavaScript in your web browser and try again.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </noscript>
+
+  <div class="ng-cloak">
+    <div class="linkbox0-app" id="linkbox0-top">
+      <aside class="linkbox0-sidebar">
+        <div class="linkbox0-brand">
+          <img class="linkbox0-brand-logo" src="assets/img/linkbox0-logo.svg" alt="LinkBox0"/>
+          <div class="linkbox0-brand-text">
+            <div class="linkbox0-brand-name">LinkBox0</div>
+          </div>
+        </div>
+        <nav class="linkbox0-nav">
+          <div class="linkbox0-nav-section"><span translate>Overview</span></div>
+          <a class="linkbox0-nav-item linkbox0-nav-active" href="#linkbox0-top"><i class="fa fa-fw fa-th-large"></i><span translate>Dashboard</span></a>
+          <a class="linkbox0-nav-item" href="" data-toggle="modal" data-target="#foldersModal"><i class="fa fa-fw fa-folder"></i><span translate>Folders</span><span class="linkbox0-nav-count" ng-if="folderList().length > 0">{{folderList().length}}</span></a>
+          <a class="linkbox0-nav-item" href="#linkbox0-devices"><i class="fa fa-fw fa-sitemap"></i><span translate>Devices</span><span class="linkbox0-nav-count" ng-if="otherDevices().length > 0">{{otherDevices().length}}</span></a>
+
+          <div class="linkbox0-nav-section"><span translate>System</span></div>
+          <a class="linkbox0-nav-item" href="" ng-click="showSettings()"><i class="fa fa-fw fa-cog"></i><span translate>Settings</span></a>
+          <a class="linkbox0-nav-item" href="" ng-click="advanced()"><i class="fa fa-fw fa-cogs"></i><span translate>Advanced</span></a>
+          <a class="linkbox0-nav-item" href="" ng-click="logging.show()"><i class="fa fa-fw fa-wrench"></i><span translate>Logs</span></a>
+          <a class="linkbox0-nav-item" href="/rest/debug/support" target="_blank"><i class="fa fa-fw fa-user-md"></i><span translate>Support Bundle</span></a>
+          <a class="linkbox0-nav-item" href="" ng-click="about.show()"><i class="fa fa-fw fa-heart"></i><span translate>About</span></a>
+          <a class="linkbox0-nav-item" ng-if="isAuthEnabled()" href="" ng-click="logout()"><i class="far fa-fw fa-sign-out"></i><span translate>Log Out</span></a>
+        </nav>
+        <div class="linkbox0-sidebar-footer">
+          <div class="linkbox0-device-name">{{thisDeviceName()}}</div>
+          <div class="linkbox0-device-meta">LinkBox0</div>
+          <div class="linkbox0-device-status">
+            <span class="linkbox0-dot linkbox0-dot-on"></span><span translate>Running</span>
+            <span class="linkbox0-dot" ng-class="{'linkbox0-dot-on': linkbox0ConnectedCount() > 0}"></span><span translate>Connected</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="linkbox0-main">
+        <header class="linkbox0-topbar">
+          <div class="linkbox0-topbar-titles">
+            <h1 class="linkbox0-topbar-title" translate>Dashboard</h1>
+            <p class="linkbox0-topbar-subtitle" translate>Status of all components</p>
+          </div>
+          <ul class="nav linkbox0-topbar-actions">
+            <li class="dropdown" language-select></li>
+            <li class="dropdown" ng-if="authenticated">
+              <a href="#" class="linkbox0-btn linkbox0-btn-ghost dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <span class="fa fa-question-circle"></span>
+                <span class="hidden-xs" translate>Help</span>
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li><a class="navbar-link" href="{{docsURL('intro/gui')}}" target="_blank"><span class="fa fa-fw fa-info-circle"></span>&nbsp;<span translate>Introduction</span></a></li>
+                <li><a class="navbar-link" href="{{docsURL()}}" target="_blank"><span class="fa fa-fw fa-book"></span>&nbsp;<span translate>Documentation</span></a></li>
+                <li class="divider" aria-hidden="true"></li>
+                <li><a href="" ng-click="about.show()"><span class="fa fa-fw fa-heart"></span>&nbsp;<span translate>About</span></a></li>
+              </ul>
+            </li>
+            <li ng-if="authenticated" class="dropdown">
+              <a href="#" class="linkbox0-btn linkbox0-btn-ghost dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <span class="fa fa-cog"></span>
+                <span class="hidden-xs" translate>Actions</span>
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li><a href="" ng-click="showSettings()"><span class="fa fa-fw fa-cog"></span>&nbsp;<span translate>Settings</span></a></li>
+                <li><a href="" ng-click="advanced()"><span class="fa fa-fw fa-cogs"></span>&nbsp;<span translate>Advanced</span></a></li>
+                <li class="divider" aria-hidden="true"></li>
+                <li><a href="" ng-click="showDeviceIdentification(thisDevice())"><span class="fa fa-fw fa-qrcode"></span>&nbsp;<span translate>Show ID</span></a></li>
+                <li><a href="" ng-click="logging.show()"><span class="fa fa-fw fa-wrench"></span>&nbsp;<span translate>Logs</span></a></li>
+                <li ng-if="isAuthEnabled()"><a href="" ng-click="logout()"><span class="far fa-fw fa-sign-out"></span>&nbsp;<span translate>Log Out</span></a></li>
+                <li><a href="" ng-click="restart()"><span class="fa fa-fw fa-refresh"></span>&nbsp;<span translate>Restart</span></a></li>
+                <li><a href="" ng-click="shutdown()"><span class="fa fa-fw fa-power-off"></span>&nbsp;<span translate>Shut Down</span></a></li>
+              </ul>
+            </li>
+          </ul>
+        </header>
+
+    <script type="text/javascript" src="linkbox0/development/logbar.js"></script>
+    <div ng-if="version.isBeta" ng-include="'linkbox0/development/logbar.html'"></div>
+    <!-- Top bar -->
+
+    <nav class="navbar navbar-top navbar-default" role="navigation">
+      <div class="container">
+        <span class="navbar-brand" aria-hidden="true">
+          <img class="logo hidden-xs" src="assets/img/linkbox0-logo.svg" height="32" width="117" alt=""/>
+          <img class="logo hidden visible-xs" src="assets/img/linkbox0-logo.svg" height="32" alt=""/>
+        </span>
+        <p ng-if="authenticated" class="navbar-text hidden-xs">{{thisDeviceName()}}</p>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown" language-select></li>
+          <li class="dropdown action-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <span class="fa fa-question-circle"></span>
+              <span class="hidden-xs" translate>Help</span>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="navbar-link" href="{{docsURL('intro/gui')}}" target="_blank"><span class="fa fa-fw fa-info-circle"></span>&nbsp;<span translate>Introduction</span></a></li>
+              <li class="divider" aria-hidden="true"></li>
+              <li><a class="navbar-link" href="{{docsURL()}}" target="_blank"><span class="fa fa-fw fa-home"></span>&nbsp;<span translate>Home page</span></a></li>
+              <li><a class="navbar-link" href="{{docsURL()}}" target="_blank"><span class="fa fa-fw fa-book"></span>&nbsp;<span translate>Documentation</span></a></li>
+              <li class="divider" aria-hidden="true"></li>
+              <li><a class="navbar-link" href="https://github.com/0reg0n/cloud/releases" target="_blank"><span class="fa fa-fw fa-file-text"></span>&nbsp;<span translate>Changelog</span></a></li>
+              <li class="divider" aria-hidden="true"></li>
+              <li><a class="navbar-link" href="https://github.com/0reg0n/cloud/issues" target="_blank"><span class="fa fa-fw fa-bug"></span>&nbsp;<span translate>Bugs</span></a></li>
+              <li><a class="navbar-link" href="https://github.com/0reg0n/cloud" target="_blank"><span class="fa fa-fw fa-file-code-o"></span>&nbsp;<span translate>Source Code</span></a></li>
+              <li class="divider" aria-hidden="true"></li>
+              <li><a href="" ng-click="about.show()"><span class="fa fa-fw fa-heart"></span>&nbsp;<span translate>About</span></a></li>
+            </ul>
+          </li>
+          <li ng-if="authenticated" class="dropdown action-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <span class="fa fa-cog"></span>
+              <span class="hidden-xs" translate>Actions</span>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="" ng-click="showSettings()"><span class="fa fa-fw fa-cog"></span>&nbsp;<span translate>Settings</span></a></li>
+              <li><a href="" ng-click="advanced()"><span class="fa fa-fw fa-cogs"></span>&nbsp;<span translate>Advanced</span></a></li>
+              <li class="divider" aria-hidden="true"></li>
+              <li><a href="" ng-click="showDeviceIdentification(thisDevice())"><span class="fa fa-fw fa-qrcode"></span>&nbsp;<span translate>Show ID</span></a></li>
+              <li><a href="" ng-click="logging.show()"><span class="fa fa-fw fa-wrench"></span>&nbsp;<span translate>Logs</span></a></li>
+              <li><a href="/rest/debug/support" target="_blank"><span class="fa fa-fw fa-user-md"></span>&nbsp;<span translate>Support Bundle</span></a></li>
+              <li class="divider" aria-hidden="true"></li>
+              <li ng-if="isAuthEnabled()"><a href="" ng-click="logout()"><span class="far fa-fw fa-sign-out"></span>&nbsp;<span translate>Log Out</span></a></li>
+              <li><a href="" ng-click="restart()"><span class="fa fa-fw fa-refresh"></span>&nbsp;<span translate>Restart</span></a></li>
+              <li><a href="" ng-click="shutdown()"><span class="fa fa-fw fa-power-off"></span>&nbsp;<span translate>Shut Down</span></a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="linkbox0-content">
+
+      <!-- Panel: Open, no auth -->
+
+      <div ng-if="openNoAuth" class="row">
+        <div class="col-md-12">
+          <div class="panel panel-danger">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                <div class="panel-icon">
+                  <span class="fas fa-exclamation-circle"></span>
+                </div>
+                <span translate>Danger!</span>
+              </h3>
+            </div>
+            <div class="panel-body">
+              <p>
+              <span translate>The LinkBox0 admin interface is configured to allow remote access without a password.</span>
+              <b><span translate>This can easily give hackers access to read and change any files on your computer.</span></b>
+              <span translate>Please set a GUI Authentication User and Password in the Settings dialog.</span>
+              </p>
+            </div>
+            <div class="panel-footer">
+              <button type="button" class="btn btn-sm btn-default pull-right" ng-click="showSettings()">
+                <span class="fas fa-cog"></span>&nbsp;<span translate>Settings</span>
+              </button>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel: Restart Needed -->
+
+      <div ng-if="!configInSync" class="row">
+        <div class="col-md-12">
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                <div class="panel-icon">
+                  <span class="fas fa-exclamation-circle"></span>
+                </div>
+                <span translate>Restart Needed</span>
+              </h3>
+            </div>
+            <div class="panel-body">
+              <p translate>The configuration has been saved but not activated. LinkBox0 must restart to activate the new configuration.</p>
+            </div>
+            <div class="panel-footer">
+              <button type="button" class="btn btn-sm btn-default pull-right" ng-click="restart()">
+                <span class="fas fa-refresh"></span>&nbsp;<span translate>Restart</span>
+              </button>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div ng-if="config">
+
+        <!-- Panel: Notifications -->
+
+        <div ng-if="config.options && config.options.unackedNotificationIDs" ng-include="'linkbox0/core/notifications.html'"></div>
+
+        <!-- Panel: New Device -->
+
+        <div ng-repeat="(deviceID, pendingDevice) in pendingDevices" class="row">
+          <div class="col-md-12">
+            <div class="panel panel-warning">
+              <div class="panel-heading">
+                <h3 class="panel-title">
+                  <identicon class="panel-icon" data-value="device"></identicon>
+                  <span translate>New Device</span>
+                  <span class="pull-right">{{ pendingDevice.time | date:"yyyy-MM-dd HH:mm:ss" }}</span>
+                </h3>
+              </div>
+              <div class="panel-body">
+                <p>
+                  <span translate translate-value-device="{{ deviceID }}" translate-value-address="{{ pendingDevice.address }}" translate-value-name="{{ pendingDevice.name }}">
+                    Device "{%name%}" ({%device%} at {%address%}) wants to connect. Add new device?
+                  </span>
+                </p>
+              </div>
+              <div class="panel-footer clearfix">
+                <div class="pull-right">
+                  <button type="button" class="btn btn-sm btn-success" ng-click="addDevice(deviceID, pendingDevice.name)">
+                    <span class="fas fa-plus"></span>&nbsp;<span translate>Add Device</span>
+                  </button>
+                  <button type="button" class="btn btn-sm btn-danger" ng-click="ignoreDevice(deviceID, pendingDevice)" tooltip data-original-title="{{'Permanently add it to the ignore list, suppressing further notifications.' | translate}}">
+                    <span class="fas fa-times"></span>&nbsp;<span translate>Ignore</span>
+                  </button>
+                  <button type="button" class="btn btn-sm btn-default" ng-click="dismissPendingDevice(deviceID)" tooltip data-original-title="{{'Do not add it to the ignore list, so this notification will reappear if the device connects again.' | translate}}">
+                    <span class="far fa-clock"></span>&nbsp;<span translate>Dismiss</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel: New Folder -->
+        <div ng-repeat="(folderID, pendingFolder) in pendingFolders">
+          <div ng-repeat="(deviceID, offeringDevice) in pendingFolder.offeredBy" class="row reject">
+            <div class="col-md-12">
+              <div class="panel panel-warning">
+                <div class="panel-heading">
+                  <h3 class="panel-title">
+                    <div class="panel-icon">
+                      <span class="fas fa-folder"></span>
+                    </div>
+                    <span translate ng-if="!folders[folderID]">New Folder</span>
+                    <span translate ng-if="folders[folderID]">Share Folder</span>
+                    <span class="pull-right">{{ offeringDevice.time | date:"yyyy-MM-dd HH:mm:ss" }}</span>
+                  </h3>
+                </div>
+                <div class="panel-body">
+                  <p>
+                    <span ng-if="offeringDevice.label.length == 0" translate translate-value-device="{{ deviceName(devices[deviceID]) }}" translate-value-folder="{{ folderID }}">
+                      {%device%} wants to share folder "{%folder%}".
+                    </span>
+                    <span ng-if="offeringDevice.label.length != 0" translate translate-value-device="{{ deviceName(devices[deviceID]) }}" translate-value-folder="{{ folderID }}" translate-value-folderlabel="{{ offeringDevice.label }}">
+                      {%device%} wants to share folder "{%folderlabel%}" ({%folder%}).
+                    </span>
+                    <span translate ng-if="folders[folderID]">Share this folder?</span>
+                    <span translate ng-if="!folders[folderID]">Add new folder?</span>
+                  </p>
+                </div>
+                <div class="panel-footer clearfix">
+                  <div class="pull-right">
+                    <button type="button" class="btn btn-sm btn-success" ng-click="addFolderAndShare(folderID, pendingFolder, deviceID)" ng-if="!folders[folderID]">
+                      <span class="fas fa-check"></span>&nbsp;<span translate>Add</span>
+                    </button>
+                    <button type="button" class="btn btn-sm btn-success" ng-click="shareFolderWithDevice(folderID, deviceID)" ng-if="folders[folderID]">
+                      <span class="fas fa-check"></span>&nbsp;<span translate>Share</span>
+                    </button>
+                    <button type="button" class="btn btn-sm btn-danger" ng-click="ignoreFolder(deviceID, folderID, offeringDevice)" tooltip data-original-title="{{'Permanently add it to the ignore list, suppressing further notifications.' | translate}}">
+                      <span class="fas fa-times"></span>&nbsp;<span translate>Ignore</span>
+                    </button>
+                    <button type="button" class="btn btn-sm btn-default" ng-click="dismissPendingFolder(folderID, deviceID)" tooltip data-original-title="{{'Do not add it to the ignore list, so this notification will reappear if the device offering this folder connects again.' | translate}}">
+                      <span class="far fa-clock"></span>&nbsp;<span translate>Dismiss</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Panel: Notice -->
+
+      <div ng-if="errorList().length > 0" class="row">
+        <div class="col-md-12">
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                <div class="panel-icon">
+                  <span class="fas fa-exclamation-circle"></span>
+                </div>
+                <span translate>Notice</span>
+              </h3>
+            </div>
+            <div class="panel-body">
+              <p ng-repeat="err in errorList()">
+                <small>{{err.when | date:"yyyy-MM-dd HH:mm:ss"}}:</small>
+                <span ng-bind="friendlyDevices(err.message)"></span>
+              </p>
+            </div>
+            <div class="panel-footer">
+              <button type="button" class="btn btn-sm btn-default pull-right" ng-click="clearErrors()">
+                <span class="fas fa-check"></span>&nbsp;<span translate>OK</span>
+              </button>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel: FS watcher errors -->
+
+      <div ng-if="sizeOf(fsWatcherErrorMap()) > 0" class="row">
+        <div class="col-md-12">
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                <div class="panel-icon">
+                  <span class="fas fa-exclamation-circle"></span>
+                </div>
+                <span translate>Filesystem Watcher Errors</span>
+              </h3>
+            </div>
+            <div class="panel-body">
+              <p>
+                <span translate>For the following folders an error occurred while starting to watch for changes. It will be retried every minute, so the errors might go away soon. If they persist, try to fix the underlying issue and ask for help if you can't.</span>&emsp;<a href="{{docsURL()}}" target="_blank"><span class="fas fa-question-circle"></span>&nbsp;<span translate>Support</span></a>
+              </p>
+              <table>
+                <tr ng-repeat="(id, err) in fsWatcherErrorMap()">
+                  <td>{{folderLabel(id)}}: </td><td>{{err}}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Login form -->
+      <div ng-if="!authenticated" class="center-block">
+        <h3 translate>Authentication Required</h3>
+
+        <form ng-submit="authenticatePassword()">
+          <div class="form-group">
+            <label for="user" translate>User</label>
+            <input id="user" class="form-control" type="text" name="user" ng-model="login.username" autofocus required autocomplete="username" />
+          </div>
+
+          <div class="form-group">
+            <label for="password" translate>Password</label>
+            <input id="password" class="form-control" type="password" name="password" ng-model="login.password" ng-trim="false" autocomplete="current-password" />
+          </div>
+
+          <div class="form-group">
+            <label>
+              <input type="checkbox" id="stayLoggedIn" name="stayLoggedIn" ng-model="login.stayLoggedIn" >&nbsp;<span translate>Stay logged in</span>
+            </label>
+          </div>
+
+          <div class="row">
+            <div class="col-md-9 login-form-messages">
+              <p ng-if="login.errors.badLogin" class="text-danger" translate>
+                Incorrect user name or password.
+              </p>
+              <p ng-if="login.errors.failed" class="text-danger" translate>
+                Login failed, see LinkBox0 logs for details.
+              </p>
+            </div>
+            <div class="col-md-3 text-right">
+              <button type="submit" id="submit" class="btn btn-default" ng-disabled="login.inProgress" translate>Log In</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- First regular row -->
+      <div ng-if="authenticated" class="row">
+
+        <!-- Device list -->
+
+        <!-- This device -->
+
+        <div class="col-md-12" id="linkbox0-devices" aria-label="{{'Devices' | translate}}" role="region">
+          <div class="row">
+          <div class="col-md-6" id="linkbox0-thisdevice">
+          <div class="linkbox0-col-header">
+            <h3 translate>This Device</h3>
+          </div>
+          <div class="panel panel-default" ng-repeat="deviceCfg in [thisDevice()]">
+            <button class="btn panel-heading" data-toggle="collapse" data-target="#device-this" aria-expanded="true">
+              <h4 class="panel-title">
+                <identicon class="panel-icon" data-value="deviceCfg.deviceID"></identicon>
+                <div class="panel-title-text">{{deviceName(deviceCfg)}}</div>
+              </h4>
+            </button>
+            <div id="device-this" class="panel-collapse collapse in" lazy-collapse>
+              <div class="panel-body less-padding" ng-if="lazyReady">
+                <table class="table table-condensed table-striped table-auto">
+                  <tbody>
+                    <tr>
+                      <th><span class="fas fa-fw fa-cloud-download-alt"></span>&nbsp;<span translate>Download Rate</span></th>
+                      <td class="text-right">
+                        <a href="#" class="toggler" ng-click="toggleUnits()">
+                          <span ng-if="!metricRates">{{connectionsTotal.inbps | binary}}B/s</span>
+                          <span ng-if="metricRates">{{connectionsTotal.inbps*8 | metric}}bps</span>
+                          ({{connectionsTotal.inBytesTotal | binary}}B)
+                          <small ng-if="config.options.maxRecvKbps > 0"><br/>
+                            <i class="text-muted"><span translate>Limit</span>:
+                              <span ng-if="!metricRates">{{config.options.maxRecvKbps*1024 | binary}}B/s</span>
+                              <span ng-if="metricRates">{{config.options.maxRecvKbps*1024*8 | metric}}bps</span>
+                              <span ng-if="config.options.limitBandwidthInLan">
+                                (<span translate>Applied to LAN</span>)
+                              </span>
+                            </i>
+                          </small>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th><span class="fas fa-fw fa-cloud-upload-alt"></span>&nbsp;<span translate>Upload Rate</span></th>
+                      <td class="text-right">
+                        <a href="#" class="toggler" ng-click="toggleUnits()">
+                          <span ng-if="!metricRates">{{connectionsTotal.outbps | binary}}B/s</span>
+                          <span ng-if="metricRates">{{connectionsTotal.outbps*8 | metric}}bps</span>
+                          ({{connectionsTotal.outBytesTotal | binary}}B)
+                          <small ng-if="config.options.maxSendKbps > 0"><br/>
+                            <i class="text-muted"><span translate>Limit</span>:
+                              <span ng-if="!metricRates">{{config.options.maxSendKbps*1024 | binary}}B/s</span>
+                              <span ng-if="metricRates">{{config.options.maxSendKbps*1024*8 | metric}}bps</span>
+                              <span ng-if="config.options.limitBandwidthInLan">
+                                (<span translate>Applied to LAN</span>)
+                              </span>
+                            </i>
+                          </small>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th><span class="fas fa-fw fa-home"></span>&nbsp;<span translate>Local State (Total)</span></th>
+                      <td class="text-right">
+                          <span tooltip data-original-title="{{localStateTotal.files | alwaysNumber | localeNumber}} {{'files' | translate}}, {{ localStateTotal.directories | alwaysNumber | localeNumber}} {{'directories' | translate}}, ~{{ localStateTotal.bytes | binary}}B">
+                            <span class="far fa-copy"></span>&nbsp;{{localStateTotal.files | alwaysNumber | localeNumber}}&ensp;
+                            <span class="far fa-folder"></span>&nbsp;{{localStateTotal.directories| alwaysNumber | localeNumber}}&ensp;
+                            <span class="far fa-hdd"></span>&nbsp;~{{localStateTotal.bytes | binary}}B
+                          </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th><span class="fas fa-fw fa-sitemap"></span>&nbsp;<span translate>Listeners</span></th>
+                      <td class="text-right">
+                        <span class="data" tooltip data-original-title="{{'Show detailed listener status' | translate}}.">
+                          <a href="" ng-class="{'text-success': listenersTotal > 0 && listenersFailed.length == 0, 'text-danger': listenersTotal > 0 && listenersFailed.length == listenersTotal}" ng-click="showListenerStatus()">
+                            {{listenersTotal-listenersFailed.length}}/{{listenersTotal}}
+                          </a>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr ng-if="system.discoveryEnabled">
+                      <th><span class="fas fa-fw fa-map-signs"></span>&nbsp;<span translate>Discovery</span></th>
+                      <td class="text-right">
+                        <span class="data" tooltip data-original-title="{{'Show detailed discovery status' | translate}}.">
+                          <a href="" ng-class="{'text-success': discoveryFailed.length == 0, 'text-danger': discoveryFailed.length == discoveryTotal}" ng-click="showDiscoveryStatus()">
+                            {{discoveryTotal-discoveryFailed.length}}/{{discoveryTotal}}
+                          </a>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th><span class="far fa-fw fa-clock"></span>&nbsp;<span translate>Uptime</span></th>
+                      <td class="text-right">{{system.uptime | duration:"m"}}</td>
+                    </tr>
+                    <tr>
+                      <th><span class="fas fa-fw fa-qrcode"></span>&nbsp;<span translate>Identification</span></th>
+                      <td class="text-right">
+                        <span tooltip data-original-title="{{'Click to see full identification string and QR code.' | translate}}">
+                          <a href="" ng-click="showDeviceIdentification(thisDevice())">{{deviceShortID(deviceCfg.deviceID)}}</a>
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th><span class="fas fa-fw fa-tag"></span>&nbsp;<span translate>Version</span></th>
+                      <td class="text-right no-overflow-ellipse">{{versionString()}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          </div>
+          <!-- Remote devices -->
+          <div class="col-md-6" id="linkbox0-remotedevices">
+          <div class="linkbox0-col-header">
+            <h3><span translate>Remote Devices</span> <span ng-if="otherDevices().length > 1"> ({{otherDevices().length}})</span></h3>
+            <div class="linkbox0-col-actions">
+              <button type="button" class="btn btn-sm btn-default" ng-click="setAllDevicesPause(true)" ng-if="isAtleastOneDevicePausedStateSetTo(false)">
+                <span class="fas fa-pause"></span>&nbsp;<span translate>Pause All</span>
+              </button>
+              <button type="button" class="btn btn-sm btn-default" ng-click="setAllDevicesPause(false)" ng-if="isAtleastOneDevicePausedStateSetTo(true)">
+                <span class="fas fa-play"></span>&nbsp;<span translate>Resume All</span>
+              </button>
+              <button type="button" class="btn btn-sm btn-default" ng-click="globalChanges()">
+                <span class="fas fa-fw fa-info-circle"></span>&nbsp;<span translate>Recent Changes</span>
+              </button>
+              <button type="button" class="btn btn-sm btn-default" ng-click="addDevice()">
+                <span class="fas fa-plus"></span>&nbsp;<span translate>Add Remote Device</span>
+              </button>
+            </div>
+          </div>
+          <div class="panel panel-default" ng-if="otherDevices().length == 0">
+            <div class="panel-body text-muted"><span class="fa fa-fw fa-plug"></span>&nbsp;<span translate>No remote devices configured</span></div>
+          </div>
+          <div ng-repeat="(deviceGroupName, groupedDevices) in devicesGrouped">
+            <h4>{{ deviceGroupName }}
+              <span ng-if="groupedDevices.length > 1 && deviceGroupName.length > 0"> ({{groupedDevices.length}})</span>
+            </h4>
+            <div class="panel-group" id="devices-{{ $index }}">
+                <div class="panel panel-default" ng-repeat="deviceCfg in groupedDevices">
+                  <button class="btn panel-heading" data-toggle="collapse" data-parent="#devices-{{ $parent.$index }}" data-target="#device-{{$parent.$index}}-{{$index}}" aria-expanded="true">
+                    <div class="panel-progress" ng-show="deviceStatus(deviceCfg) == 'syncing'" ng-attr-style="width: {{completion[deviceCfg.deviceID]._total | percent}}"></div>
+                    <h4 class="panel-title">
+                      <identicon class="panel-icon" data-value="deviceCfg.deviceID"></identicon>
+                      <div class="panel-status pull-right text-{{deviceClass(deviceCfg)}}" ng-switch="deviceStatus(deviceCfg)">
+                        <span class="hidden-xs">{{deviceStatusText(deviceCfg)}}</span>
+                        <span ng-switch-when="syncing">({{completion[deviceCfg.deviceID]._total | percent}}, {{completion[deviceCfg.deviceID]._needBytes | binary}}B)</span>
+                        <span class="inline-icon">
+                          <span class="visible-xs fa fa-fw {{deviceStatusIcon(deviceCfg)}}" aria-label="{{deviceStatusText(deviceCfg)}}"></span>
+                        </span>
+                        <span class="inline-icon">
+                          <span ng-class="rdConnTypeIcon(rdConnType(deviceCfg.deviceID))" class="reception reception-theme"></span>
+                        </span>
+                      </div>
+                      <div class="panel-title-text">{{deviceName(deviceCfg)}}</div>
+                    </h4>
+                  </button>
+                  <div id="device-{{$parent.$index}}-{{$index}}" class="panel-collapse collapse in" lazy-collapse>
+                    <div class="panel-body less-padding" ng-if="lazyReady && !connections[deviceCfg.deviceID].connected">
+                      <span class="text-muted"><span class="fa fa-fw fa-plug"></span>&nbsp;<span translate>Waiting for connection…</span></span>
+                    </div>
+                    <div class="panel-body less-padding" ng-if="lazyReady && connections[deviceCfg.deviceID].connected">
+                      <table class="table table-condensed table-striped table-auto">
+                        <tbody>
+                          <tr class="visible-xs">
+                            <th><span class="fa fa-fw {{deviceStatusIcon(deviceCfg)}}"></span>&nbsp;<span translate>Device Status</span></th>
+                            <td class="text-right">{{deviceStatusText(deviceCfg)}}</td>
+                          </tr>
+                          <tr ng-if="!connections[deviceCfg.deviceID].connected">
+                            <th><span class="fas fa-fw fa-eye"></span>&nbsp;<span translate>Last seen</span></th>
+                            <td class="text-right">
+                              <div ng-if="!deviceStats[deviceCfg.deviceID].lastSeenDays" translate>
+                                Never
+                              </div>
+                              <div ng-if="deviceStats[deviceCfg.deviceID].lastSeenDays">
+                                <div>
+                                  {{deviceStats[deviceCfg.deviceID].lastSeen | date:"yyyy-MM-dd HH:mm:ss"}}
+                                </div>
+                                <div ng-if="deviceStats[deviceCfg.deviceID].lastSeenDays >= 7">
+                                  <i ng-if="deviceStats[deviceCfg.deviceID].lastSeenDays < 30" translate>More than a week ago</i>
+                                  <i class="text-warning" ng-if="deviceStats[deviceCfg.deviceID].lastSeenDays >= 30 && deviceStats[deviceCfg.deviceID].lastSeenDays < 365" translate>More than a month ago</i>
+                                  <i class="text-danger" ng-if="deviceStats[deviceCfg.deviceID].lastSeenDays >= 365" translate>More than a year ago</i>
+                                </div>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr ng-if="!connections[deviceCfg.deviceID].connected && deviceFolders(deviceCfg).length > 0">
+                            <th><span class="fas fa-fw fa-cloud"></span>&nbsp;<span translate>Sync Status</span></th>
+                            <td translate ng-if="completion[deviceCfg.deviceID]._total == 100" class="text-right">Up to Date</td>
+                            <td ng-if="completion[deviceCfg.deviceID]._total < 100" class="text-right">
+                                <span class="hidden-xs" translate>Out of Sync</span> ({{completion[deviceCfg.deviceID]._total | percent}})
+                            </td>
+                          </tr>
+                          <tr ng-if="connections[deviceCfg.deviceID].connected">
+                            <th><span class="fas fa-fw fa-cloud-download-alt"></span>&nbsp;<span translate>Download Rate</span></th>
+                            <td class="text-right">
+                              <a href="#" class="toggler" ng-click="toggleUnits()">
+                                <span ng-if="!metricRates">{{connections[deviceCfg.deviceID].inbps | binary}}B/s</span>
+                                <span ng-if="metricRates">{{connections[deviceCfg.deviceID].inbps*8 | metric}}bps</span>
+                                ({{connections[deviceCfg.deviceID].inBytesTotal | binary}}B)
+                                <small ng-if="deviceCfg.maxRecvKbps > 0"><br/>
+                                  <i class="text-muted"><span translate>Limit</span>:
+                                    <span ng-if="!metricRates">{{deviceCfg.maxRecvKbps*1024 | binary}}B/s</span>
+                                    <span ng-if="metricRates">{{deviceCfg.maxRecvKbps*1024*8 | metric}}bps</span>
+                                  </i>
+                                </small>
+                              </a>
+                            </td>
+                          </tr>
+                          <tr ng-if="connections[deviceCfg.deviceID].connected">
+                            <th><span class="fas fa-fw fa-cloud-upload-alt"></span>&nbsp;<span translate>Upload Rate</span></th>
+                            <td class="text-right">
+                              <a href="#" class="toggler" ng-click="toggleUnits()">
+                                <span ng-if="!metricRates">{{connections[deviceCfg.deviceID].outbps | binary}}B/s</span>
+                                <span ng-if="metricRates">{{connections[deviceCfg.deviceID].outbps*8 | metric}}bps</span>
+                                ({{connections[deviceCfg.deviceID].outBytesTotal | binary}}B)
+                                <small ng-if="deviceCfg.maxSendKbps > 0"><br/>
+                                  <i class="text-muted"><span translate>Limit</span>:
+                                    <span ng-if="!metricRates">{{deviceCfg.maxSendKbps*1024 | binary}}B/s</span>
+                                    <span ng-if="metricRates">{{deviceCfg.maxSendKbps*1024*8 | metric}}bps</span>
+                                  </i>
+                                </small>
+                              </a>
+                            </td>
+                          </tr>
+                          <tr ng-if="completion[deviceCfg.deviceID]._needItems">
+                            <th><span class="fas fa-fw fa-exchange-alt"></span>&nbsp;<span translate>Out of Sync Items</span></th>
+                            <td class="text-right">
+                              <a href="" ng-click="showRemoteNeed(deviceCfg)">{{completion[deviceCfg.deviceID]._needItems | alwaysNumber | localeNumber}} <span translate>items</span>, ~{{completion[deviceCfg.deviceID]._needBytes | binary}}B</a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th><span class="fas fa-fw fa-link"></span>&nbsp;<span translate>Address</span></th>
+                            <td ng-if="connections[deviceCfg.deviceID].connected" class="text-right">
+                              <span tooltip data-original-title="{{ connections[deviceCfg.deviceID].type.indexOf('Relay') > -1 ? '' : connections[deviceCfg.deviceID].type }} {{ connections[deviceCfg.deviceID].crypto }}">
+                                {{deviceAddr(deviceCfg)}}
+                              </span>
+                            </td>
+                            <td ng-if="!connections[deviceCfg.deviceID].connected" class="text-right">
+                              <span ng-repeat="addr in deviceCfg.addresses">
+                                <span tooltip data-original-title="{{'Configured' | translate}}">{{addr}}</span><br>
+                                <small ng-if="system.lastDialStatus[addr].error && !deviceCfg.paused" tooltip data-original-title="{{system.lastDialStatus[addr].error}}" class="text-danger">{{abbreviatedError(addr)}}<br></small>
+                              </span>
+                              <span ng-repeat="addr in discoveryCache[deviceCfg.deviceID].addresses">
+                                <span tooltip data-original-title="{{'Discovered' | translate}}">{{addr}}</span><br>
+                                <small ng-if="system.lastDialStatus[addr].error && !deviceCfg.paused" tooltip data-original-title="{{system.lastDialStatus[addr].error}}" class="text-danger">{{abbreviatedError(addr)}}<br></small>
+                              </span>
+                            </td>
+                          </tr>
+                          <tr ng-if="connections[deviceCfg.deviceID].connected">
+                            <th><span class="reception reception-4 reception-theme"></span>&nbsp;<span translate>Connection Type</span></th>
+                            <td class="text-right">
+                              <span tooltip data-original-title="{{rdConnDetails(rdConnType(deviceCfg.deviceID))}}">
+                                {{rdConnTypeString(rdConnType(deviceCfg.deviceID))}}
+                              </span>
+                            </td>
+                          </tr>
+                          <tr ng-if="connections[deviceCfg.deviceID].connected">
+                            <th><span class="fas fa-fw fa-random"></span>&nbsp;<span translate>Number of Connections</span></th>
+                            <td class="text-right">
+                              <span ng-if="connections[deviceCfg.deviceID].secondary.length">1 + {{connections[deviceCfg.deviceID].secondary.length | alwaysNumber}}</span>
+                              <span ng-if="!connections[deviceCfg.deviceID].secondary.length">1</span>
+                            </td>
+                          </tr>
+                          <tr ng-if="deviceCfg.allowedNetworks.length > 0">
+                            <th><span class="fas fa-fw fa-filter"></span>&nbsp;<span translate>Allowed Networks</span></th>
+                            <td class="text-right">
+                              <span>{{deviceCfg.allowedNetworks.join(", ")}}</span>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th><span class="fas fa-fw fa-compress"></span>&nbsp;<span translate>Compression</span></th>
+                            <td class="text-right">
+                              <span ng-if="deviceCfg.compression == 'always'" translate>All Data</span>
+                              <span ng-if="deviceCfg.compression == 'metadata'" translate>Metadata Only</span>
+                              <span ng-if="deviceCfg.compression == 'never'" translate>Off</span>
+                            </td>
+                          </tr>
+                          <tr ng-if="deviceCfg.introducer">
+                            <th><span class="far fa-fw fa-thumbs-up"></span>&nbsp;<span translate>Introducer</span></th>
+                            <td translate class="text-right">Yes</td>
+                          </tr>
+                          <tr ng-if="deviceCfg.introducedBy">
+                            <th><span class="far fa-fw fa-handshake-o"></span>&nbsp;<span translate>Introduced By</span></th>
+                            <td class="text-right">{{ deviceName(devices[deviceCfg.introducedBy]) || deviceShortID(deviceCfg.introducedBy) }}</td>
+                          </tr>
+                          <tr ng-if="deviceCfg.autoAcceptFolders">
+                            <th><span class="fa fa-fw fa-level-down"></span>&nbsp;<span translate>Auto Accept</span></th>
+                            <td translate class="text-right">Yes</td>
+                          </tr>
+                          <tr>
+                            <th><span class="fas fa-fw fa-qrcode"></span>&nbsp;<span translate>Identification</span></th>
+                            <td class="text-right">
+                              <span tooltip data-original-title="{{'Click to see full identification string and QR code.' | translate}}">
+                                <a href="" ng-click="showDeviceIdentification(deviceCfg)">{{deviceShortID(deviceCfg.deviceID)}}</a>
+                              </span>
+                            </td>
+                          </tr>
+                          <tr ng-if="deviceCfg.untrusted">
+                            <th><span class="fa fa-fw fa-user-secret"></span>&nbsp;<span translate>Untrusted</span></th>
+                            <td translate class="text-right">Yes</td>
+                          </tr>
+                          <tr ng-if="connections[deviceCfg.deviceID].clientVersion">
+                            <th><span class="fas fa-fw fa-tag"></span>&nbsp;<span translate>Version</span></th>
+                            <td class="text-right">{{connections[deviceCfg.deviceID].clientVersion}}</td>
+                          </tr>
+                          <tr ng-if="deviceFolders(deviceCfg).length > 0">
+                            <th><span class="fas fa-fw fa-folder"></span>&nbsp;<span translate>Folders</span></th>
+                            <td class="text-right no-overflow-ellipse overflow-break-word">
+                              <span ng-repeat="folderID in deviceFolders(deviceCfg)">
+                                <span ng-if="folderIsSharedEncrypted(folderID, deviceCfg.deviceID)" class="text-nowrap">
+                                  <span class="fa fa-lock"></span>&nbsp;<!-- Avoid stray space...
+                            --></span><!-- Avoid stray space...
+                            --><span ng-switch="completion[deviceCfg.deviceID][folderID].remoteState"><!-- Avoid stray space...
+                              --><span ng-switch-when="notSharing" data-original-title="{{'The remote device has not accepted sharing this folder.' | translate}}" tooltip>{{folderLabel(folderID)}}<sup>1</sup></span><!-- Avoid stray space...
+                              --><span ng-switch-when="paused" data-original-title="{{'The remote device has paused this folder.' | translate}}" tooltip>{{folderLabel(folderID)}}<sup>2</sup></span><!-- Avoid stray space...
+                              --><span ng-switch-default>{{folderLabel(folderID)}}</span><!-- Avoid stray space...
+                              --><span ng-if="!$last">,</span>
+                                </span>
+                              </span>
+                            </td>
+                          </tr>
+                          <tr ng-if="deviceCfg.remoteGUIPort > 0">
+                            <th><span class="fas fa-fw fa-desktop"></span>&nbsp;<span translate>Remote GUI</span></th>
+                            <td class="text-right" ng-attr-title="Port {{deviceCfg.remoteGUIPort}}">
+                              <!-- Apply RFC6874 encoding for IPv6 link-local zone identifier -->
+                              <a ng-if="hasRemoteGUIAddress(deviceCfg)" href="{{remoteGUIAddress(deviceCfg).replace('%', '%25')}}">{{remoteGUIAddress(deviceCfg)}}</a>
+                              <span translate ng-if="!hasRemoteGUIAddress(deviceCfg)">Unknown</span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="panel-footer">
+                      <span class="pull-right">
+                        <button ng-if="!deviceCfg.paused" type="button" class="btn btn-sm btn-default" ng-click="setDevicePause(deviceCfg.deviceID, true)">
+                          <span class="fas fa-pause"></span>&nbsp;<span translate>Pause</span>
+                        </button>
+                        <button ng-if="deviceCfg.paused" type="button" class="btn btn-sm btn-default" ng-click="setDevicePause(deviceCfg.deviceID, false)">
+                          <span class="fas fa-play"></span>&nbsp;<span translate>Resume</span>
+                        </button>
+                        <button type="button" class="btn btn-sm btn-default" ng-click="editDeviceExisting(deviceCfg)">
+                          <span class="fas fa-pencil-alt"></span>&nbsp;<span translate>Edit</span>
+                        </button>
+                      </span>
+                      <div class="clearfix"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div> <!-- /row -->
+
+    </div> <!-- /linkbox0-content -->
+      </main>
+    </div> <!-- /linkbox0-app -->
+  </div> <!-- /ng-cloak -->
+
+  <ng-include src="'linkbox0/core/networkErrorDialogView.html'"></ng-include>
+  <ng-include src="'linkbox0/core/httpErrorDialogView.html'"></ng-include>
+  <ng-include src="'linkbox0/core/restartingDialogView.html'"></ng-include>
+  <ng-include src="'linkbox0/core/upgradingDialogView.html'"></ng-include>
+  <ng-include src="'linkbox0/core/shutdownDialogView.html'"></ng-include>
+  <ng-include src="'linkbox0/core/savingChangesDialogView.html'"></ng-include>
+  <ng-include src="'linkbox0/device/idqrModalView.html'"></ng-include>
+  <ng-include src="'linkbox0/device/editDeviceModalView.html'"></ng-include>
+  <ng-include src="'linkbox0/device/globalChangesModalView.html'"></ng-include>
+  <ng-include src="'linkbox0/folder/editFolderModalView.html'"></ng-include>
+  <ng-include src="'linkbox0/folder/restoreVersionsModalView.html'"></ng-include>
+  <ng-include src="'linkbox0/folder/restoreVersionsConfirmation.html'"></ng-include>
+  <ng-include src="'linkbox0/settings/settingsModalView.html'"></ng-include>
+  <ng-include src="'linkbox0/settings/advancedSettingsModalView.html'"></ng-include>
+  <ng-include src="'linkbox0/settings/discardChangesConfirmation.html'"></ng-include>
+  <ng-include src="'linkbox0/transfer/neededFilesModalView.html'"></ng-include>
+  <ng-include src="'linkbox0/transfer/failedFilesModalView.html'"></ng-include>
+  <ng-include src="'linkbox0/transfer/remoteNeededFilesModalView.html'"></ng-include>
+  <ng-include src="'linkbox0/transfer/localChangedFilesModalView.html'"></ng-include>
+  <ng-include src="'linkbox0/core/aboutModalView.html'"></ng-include>
+  <ng-include src="'linkbox0/core/connectivityStatusModalView.html'"></ng-include>
+  <ng-include src="'linkbox0/folder/foldersModalView.html'"></ng-include>
+  <ng-include src="'linkbox0/folder/removeFolderDialogView.html'"></ng-include>
+  <ng-include src="'linkbox0/folder/revertOverrideView.html'"></ng-include>
+  <ng-include src="'linkbox0/device/removeDeviceDialogView.html'"></ng-include>
+  <ng-include src="'linkbox0/core/logViewerModalView.html'"></ng-include>
+  <ng-include src="'linkbox0/device/shareDeviceIdDialogView.html'"></ng-include>
+
+  <!-- vendor scripts -->
+  <script type="text/javascript" src="vendor/jquery/jquery-3.7.1.js"></script>
+  <script type="text/javascript" src="vendor/angular/angular.js"></script>
+  <script type="text/javascript" src="vendor/angular/angular-sanitize.js"></script>
+  <script type="text/javascript" src="vendor/angular/angular-translate.js"></script>
+  <script type="text/javascript" src="vendor/angular/angular-translate-loader-static-files.js"></script>
+  <script type="text/javascript" src="vendor/angular/angular-dirPagination.js"></script>
+  <script type="text/javascript" src="vendor/moment/moment.js"></script>
+  <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.js"></script>
+  <script type="text/javascript" src="vendor/daterangepicker/daterangepicker.js"></script>
+  <script type="text/javascript" src="vendor/fancytree/jquery.fancytree-all-deps.js"></script>
+  <script type="text/javascript" src="vendor/HumanizeDuration.js/humanize-duration.js"></script>
+  <!-- / vendor scripts -->
+
+  <!-- gui application code -->
+  <script type="text/javascript" src="linkbox0/core/module.js"></script>
+  <script type="text/javascript" src="linkbox0/core/alwaysNumberFilter.js"></script>
+  <script type="text/javascript" src="linkbox0/core/basenameFilter.js"></script>
+  <script type="text/javascript" src="linkbox0/core/binaryFilter.js"></script>
+  <script type="text/javascript" src="linkbox0/core/localeNumberFilter.js"></script>
+  <script type="text/javascript" src="linkbox0/core/percentFilter.js"></script>
+  <script type="text/javascript" src="linkbox0/core/durationFilter.js"></script>
+  <script type="text/javascript" src="linkbox0/core/eventService.js"></script>
+  <script type="text/javascript" src="linkbox0/core/identiconDirective.js"></script>
+  <script type="text/javascript" src="linkbox0/core/languageSelectDirective.js"></script>
+  <script type="text/javascript" src="linkbox0/core/localeService.js"></script>
+  <script type="text/javascript" src="linkbox0/core/modalDirective.js"></script>
+  <script type="text/javascript" src="linkbox0/core/metricFilter.js"></script>
+  <script type="text/javascript" src="linkbox0/core/notificationDirective.js"></script>
+  <script type="text/javascript" src="linkbox0/core/pathIsSubDirDirective.js"></script>
+  <script type="text/javascript" src="linkbox0/core/popoverDirective.js"></script>
+  <script type="text/javascript" src="linkbox0/core/linkbox0Controller.js"></script>
+  <script type="text/javascript" src="linkbox0/core/tooltipDirective.js"></script>
+  <script type="text/javascript" src="linkbox0/core/lazyCollapseDirective.js"></script>
+  <script type="text/javascript" src="linkbox0/core/uncamelFilter.js"></script>
+  <script type="text/javascript" src="linkbox0/core/uniqueFolderDirective.js"></script>
+  <script type="text/javascript" src="linkbox0/core/validDeviceidDirective.js"></script>
+  <script type="text/javascript" src="assets/lang/valid-langs.js"></script>
+  <script type="text/javascript" src="assets/lang/prettyprint.js"></script>
+  <script type="text/javascript" src="meta.js"></script>
+  <script type="text/javascript" src="linkbox0/app.js"></script>
+  <!-- / gui application code -->
+
+</body>
+</html>

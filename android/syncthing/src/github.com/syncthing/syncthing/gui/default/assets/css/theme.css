@@ -1,0 +1,15 @@
+/*
+// Copyright (C) 2016 The Syncthing Authors.
+//
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this file,
+// You can obtain one at https://mozilla.org/MPL/2.0/.
+
+*/
+
+/*
+ * The LinkBox0 design (see linkbox0.css) is a light design. Use the light theme
+ * as the default regardless of the operating system colour scheme. Other
+ * themes can still be selected explicitly in the settings.
+ */
+@import "../../theme-assets/light/assets/css/theme.css" screen;

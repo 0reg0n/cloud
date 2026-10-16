@@ -63,7 +63,7 @@ const (
 	extraUsage = `
 Logging always happens to the command line (stdout) and optionally to the
 file at the path specified by --log-file=path. In addition to an path, the special
-values "default" and "-" may be used. The former logs to DATADIR/syncthing.log
+values "default" and "-" may be used. The former logs to DATADIR/linkbox0.log
 (see --data), which is the default on Windows, and the latter only to stdout,
 no file, which is the default anywhere else.
 
@@ -71,7 +71,7 @@ no file, which is the default anywhere else.
 Development Settings
 --------------------
 
-The following environment variables modify Syncthing's behavior in ways that
+The following environment variables modify LinkBox0's behavior in ways that
 are mostly useful for developers. Use with care. See also the --debug-* options
 above.
 
@@ -82,7 +82,7 @@ above.
 
  STVERSIONEXTRA    Add extra information to the version string in logs and the
                    version line in the GUI. Can be set to the name of a wrapper
-                   or tool controlling syncthing to communicate this to the end
+                   or tool controlling linkbox0 to communicate this to the end
                    user.
 
  GOMAXPROCS        Set the maximum number of CPU cores to use. Defaults to all
@@ -114,7 +114,7 @@ var (
 )
 
 // The entrypoint struct is the main entry point for the command line parser. The
-// commands and options here are top level commands to syncthing.
+// commands and options here are top level commands to linkbox0.
 // Cli is just a placeholder for the help text (see main).
 type CLI struct {
 	// The directory options are defined at top level and available for all
@@ -147,7 +147,7 @@ func (c *CLI) AfterApply() error {
 	return setConfigDataLocationsFromFlags(c.HomeDir, c.ConfDir, c.DataDir)
 }
 
-// serveCmd are the options for the `syncthing serve` command.
+// serveCmd are the options for the `linkbox0 serve` command.
 type serveCmd struct {
 	buildSpecificOptions
 
@@ -245,14 +245,14 @@ func helpHandler(options kong.HelpOptions, ctx *kong.Context) error {
 		return err
 	}
 	if ctx.Command() == "serve" {
-		// Help was requested for `syncthing serve`, so we add our extra
+		// Help was requested for `linkbox0 serve`, so we add our extra
 		// usage info afte the normal options output.
 		fmt.Printf(extraUsage, logPackages())
 	}
 	return nil
 }
 
-// serveCmd.Run() is the entrypoint for `syncthing serve`
+// serveCmd.Run() is the entrypoint for `linkbox0 serve`
 func (c *serveCmd) Run() error {
 	if c.GUIAddress != "" {
 		// The config picks this up from the environment.
@@ -918,7 +918,7 @@ func (u upgradeCmd) Run() error {
 			// can do a direct upgrade
 			err = upgrade.To(release)
 		default:
-			// We didn't get the lock, because Syncthing was running, so
+			// We didn't get the lock, because LinkBox0 was running, so
 			// upgrade via REST.
 			err = upgradeViaRest()
 		}

@@ -15,7 +15,7 @@
   <link rel="shortcut icon" href="assets/img/favicon-default.png" ng-href="assets/img/favicon-{{syncthingStatus()}}.png" type="image/x-icon"/>
   <link rel="mask-icon" href="assets/img/safari-pinned-tab.svg" color="#0882c8"/>
 
-  <title ng-bind="thisDeviceName() + ' | Syncthing'"></title>
+  <title ng-bind="thisDeviceName() + ' | cloud'"></title>
   <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet"/>
   <link href="vendor/daterangepicker/daterangepicker.css" rel="stylesheet"/>
   <link href="assets/font/raleway.css" rel="stylesheet"/>
@@ -51,7 +51,7 @@
             </div>
             <div class="panel-body">
               <p>
-              The Syncthing admin interface requires JavaScript. Please enable JavaScript in your web browser and try again.
+              The cloud admin interface requires JavaScript. Please enable JavaScript in your web browser and try again.
               </p>
             </div>
           </div>
@@ -148,7 +148,7 @@
             </div>
             <div class="panel-body">
               <p>
-              <span translate>The Syncthing admin interface is configured to allow remote access without a password.</span>
+              <span translate>The cloud admin interface is configured to allow remote access without a password.</span>
               <b><span translate>This can easily give hackers access to read and change any files on your computer.</span></b>
               <span translate>Please set a GUI Authentication User and Password in the Settings dialog.</span>
               </p>
@@ -177,7 +177,7 @@
               </h3>
             </div>
             <div class="panel-body">
-              <p translate>The configuration has been saved but not activated. Syncthing must restart to activate the new configuration.</p>
+              <p translate>The configuration has been saved but not activated. cloud must restart to activate the new configuration.</p>
             </div>
             <div class="panel-footer">
               <button type="button" class="btn btn-sm btn-default pull-right" ng-click="restart()">
@@ -364,7 +364,7 @@
                 Incorrect user name or password.
               </p>
               <p ng-if="login.errors.failed" class="text-danger" translate>
-                Login failed, see Syncthing logs for details.
+                Login failed, see cloud logs for details.
               </p>
             </div>
             <div class="col-md-3 text-right">

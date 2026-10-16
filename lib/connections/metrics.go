@@ -12,7 +12,7 @@ import (
 )
 
 var metricDeviceActiveConnections = promauto.NewGaugeVec(prometheus.GaugeOpts{
-	Namespace: "syncthing",
+	Namespace: "cloud",
 	Subsystem: "connections",
 	Name:      "active",
 	Help:      "Number of currently active connections, per device. If value is 0, the device is disconnected.",

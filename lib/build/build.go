@@ -22,11 +22,15 @@ import (
 )
 
 var buildInfo = promauto.NewGaugeVec(prometheus.GaugeOpts{
-	Namespace: "syncthing",
+	Namespace: "cloud",
 	Subsystem: "build",
 	Name:      "info",
 	Help:      "A metric with a constant '1' value labeled by version information from when the binary was built.",
 }, []string{"program", "version", "codename", "goversion", "builduser", "builddate", "tags"})
+
+// ProgramName is the canonical name of the program, used in version
+// strings, user agents and metrics.
+const ProgramName = "cloud"
 
 const Codename = "Hafnium Hornet"
 
@@ -99,7 +103,7 @@ func setBuildData() {
 
 	stamp, _ := strconv.Atoi(Stamp)
 	Date = time.Unix(int64(stamp), 0)
-	LongVersion = LongVersionFor("syncthing")
+	LongVersion = LongVersionFor(ProgramName)
 }
 
 // LongVersionFor returns the long version string for the given program name.
@@ -128,7 +132,7 @@ func LongVersionFor(program string) string {
 }
 
 func UserAgent() string {
-	return fmt.Sprintf(`Syncthing/%s (%s %s-%s)`, strings.TrimPrefix(Version, "v"), runtime.Version(), runtime.GOOS, runtime.GOARCH)
+	return fmt.Sprintf(`Cloud/%s (%s %s-%s)`, strings.TrimPrefix(Version, "v"), runtime.Version(), runtime.GOOS, runtime.GOARCH)
 }
 
 func TagsList() []string {
@@ -179,5 +183,5 @@ func filterString(s, allowedChars string) string {
 
 func AddTag(tag string) {
 	extraTags = append(extraTags, tag)
-	LongVersion = LongVersionFor("syncthing")
+	LongVersion = LongVersionFor(ProgramName)
 }

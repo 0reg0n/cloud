@@ -90,8 +90,8 @@ func (c *serveCmd) monitorMain() {
 	args := os.Args
 	binary, err := getBinary(args[0])
 	if err != nil {
-		slog.Error("Failed to start the main Syncthing process", slogutil.Error(err))
-		panic("Error starting the main Syncthing process")
+		slog.Error("Failed to start the main cloud process", slogutil.Error(err))
+		panic("Error starting the main cloud process")
 	}
 	var restarts [restartCounts]time.Time
 
@@ -127,11 +127,11 @@ func (c *serveCmd) monitorMain() {
 			panic(err)
 		}
 
-		slog.Debug("Starting syncthing")
+		slog.Debug("Starting cloud")
 		err = cmd.Start()
 		if err != nil {
-			slog.Error("Failed to start the main Syncthing process", slogutil.Error(err))
-			panic("Error starting the main Syncthing process")
+			slog.Error("Failed to start the main cloud process", slogutil.Error(err))
+			panic("Error starting the main cloud process")
 		}
 
 		stdoutMut.Lock()
@@ -198,7 +198,7 @@ func (c *serveCmd) monitorMain() {
 			os.Exit(svcutil.ExitError.AsInt())
 		}
 
-		slog.Info("Syncthing exited", slogutil.Error(err))
+		slog.Info("cloud exited", slogutil.Error(err))
 		time.Sleep(restartPause)
 
 		if first {

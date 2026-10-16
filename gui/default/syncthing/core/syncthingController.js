@@ -2200,6 +2200,16 @@ angular.module('syncthing.core')
             }
         };
 
+        $scope.cloudConnectedCount = function () {
+            var count = 0;
+            angular.forEach($scope.connections, function (conn) {
+                if (conn && conn.connected) {
+                    count++;
+                }
+            });
+            return count;
+        };
+
         $scope.otherDevices = function (devices) {
             if (devices === undefined) {
                 devices = $scope.deviceList();

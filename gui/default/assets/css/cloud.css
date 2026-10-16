@@ -1,0 +1,599 @@
+/*
+// Copyright (C) 2025 The Syncthing Authors.
+//
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this file,
+// You can obtain one at https://mozilla.org/MPL/2.0/.
+
+// cloud UI design system. Loaded after the Bootstrap theme so it can
+// override component defaults and provide the dashboard shell.
+*/
+
+:root {
+    --cloud-bg: #f4f6f9;
+    --cloud-surface: #ffffff;
+    --cloud-border: #e9edf3;
+    --cloud-border-strong: #dfe5ee;
+    --cloud-text: #1f2733;
+    --cloud-muted: #8b95a7;
+    --cloud-accent: #2f6bff;
+    --cloud-accent-dark: #2358d8;
+    --cloud-accent-soft: #eaf1ff;
+    --cloud-green: #22c55e;
+    --cloud-green-bg: #e7f7ee;
+    --cloud-green-text: #1f9d55;
+    --cloud-gray-bg: #eef1f5;
+    --cloud-gray-text: #64748b;
+    --cloud-radius: 16px;
+    --cloud-radius-sm: 10px;
+    --cloud-shadow: 0 1px 2px rgba(16, 24, 40, .04), 0 8px 24px rgba(16, 24, 40, .04);
+    --cloud-sidebar-width: 264px;
+}
+
+/* ---------- Page ---------- */
+
+body {
+    background: var(--cloud-bg);
+    color: var(--cloud-text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+h1, h2, h3, h4, h5, .cloud-topbar-title {
+    font-family: inherit;
+    font-weight: 700;
+    color: var(--cloud-text);
+}
+
+/* ---------- Shell ---------- */
+
+.cloud-app {
+    display: flex;
+    min-height: 100vh;
+    align-items: stretch;
+}
+
+.cloud-sidebar {
+    width: var(--cloud-sidebar-width);
+    flex: 0 0 var(--cloud-sidebar-width);
+    background: var(--cloud-surface);
+    border-right: 1px solid var(--cloud-border);
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.cloud-main {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.cloud-content {
+    padding: 4px 28px 48px;
+}
+
+/* ---------- Sidebar: brand ---------- */
+
+.cloud-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 22px 20px 18px;
+}
+
+.cloud-brand-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--cloud-accent), #6d8bff);
+    color: #fff;
+    font-weight: 800;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+}
+
+.cloud-brand-name {
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: .2px;
+}
+
+.cloud-brand-sub {
+    font-size: 12px;
+    color: var(--cloud-muted);
+}
+
+/* ---------- Sidebar: nav ---------- */
+
+.cloud-nav {
+    padding: 4px 12px 16px;
+    flex: 1 1 auto;
+}
+
+.cloud-nav-section {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--cloud-muted);
+    padding: 16px 10px 8px;
+}
+
+.cloud-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: var(--cloud-radius-sm);
+    color: var(--cloud-text);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    margin: 2px 0;
+    transition: background .12s ease, color .12s ease;
+}
+
+.cloud-nav-item:hover {
+    background: #f1f4f9;
+    text-decoration: none;
+    color: var(--cloud-text);
+}
+
+.cloud-nav-item i {
+    width: 18px;
+    text-align: center;
+    color: var(--cloud-muted);
+}
+
+.cloud-nav-item.cloud-nav-active,
+.cloud-nav-item.cloud-nav-active:hover {
+    background: var(--cloud-accent);
+    color: #fff;
+}
+
+.cloud-nav-item.cloud-nav-active i {
+    color: #fff;
+}
+
+.cloud-nav-count {
+    margin-left: auto;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--cloud-muted);
+    background: var(--cloud-gray-bg);
+    border-radius: 999px;
+    padding: 1px 8px;
+}
+
+.cloud-nav-item.cloud-nav-active .cloud-nav-count {
+    background: rgba(255, 255, 255, .25);
+    color: #fff;
+}
+
+/* ---------- Sidebar: footer ---------- */
+
+.cloud-sidebar-footer {
+    border-top: 1px solid var(--cloud-border);
+    padding: 16px 20px 20px;
+}
+
+.cloud-device-name {
+    font-weight: 700;
+    font-size: 14px;
+    word-break: break-word;
+}
+
+.cloud-device-meta {
+    font-size: 12px;
+    color: var(--cloud-muted);
+    margin-bottom: 10px;
+}
+
+.cloud-device-status {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--cloud-muted);
+}
+
+.cloud-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #cbd5e1;
+    display: inline-block;
+    margin-left: 8px;
+}
+
+.cloud-dot:first-child {
+    margin-left: 0;
+}
+
+.cloud-dot.cloud-dot-on {
+    background: var(--cloud-green);
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, .15);
+}
+
+/* ---------- Topbar ---------- */
+
+.cloud-topbar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 26px 28px 18px;
+    flex-wrap: wrap;
+}
+
+.cloud-topbar-title {
+    font-size: 26px;
+    margin: 0;
+    line-height: 1.15;
+}
+
+.cloud-topbar-subtitle {
+    margin: 4px 0 0;
+    color: var(--cloud-muted);
+    font-size: 13px;
+}
+
+.cloud-topbar-actions {
+    float: none;
+    padding-right: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cloud-topbar-actions > li {
+    float: none;
+    list-style: none;
+}
+
+/* ---------- Buttons ---------- */
+
+.cloud-btn,
+.cloud-btn:visited {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.cloud-btn-primary,
+.cloud-btn-primary:visited {
+    background: linear-gradient(135deg, var(--cloud-accent), #6d8bff);
+    color: #fff;
+    box-shadow: 0 8px 18px rgba(47, 107, 255, .25);
+}
+
+.cloud-btn-primary:hover {
+    color: #fff;
+    filter: brightness(1.05);
+    text-decoration: none;
+}
+
+.cloud-btn-ghost,
+.cloud-btn-ghost:visited {
+    background: var(--cloud-surface);
+    border-color: var(--cloud-border-strong);
+    color: var(--cloud-accent);
+}
+
+.cloud-btn-ghost:hover {
+    color: var(--cloud-accent-dark);
+    background: var(--cloud-accent-soft);
+    text-decoration: none;
+}
+
+/* Bootstrap button restyle */
+
+.btn {
+    border-radius: 10px;
+    font-weight: 600;
+    border-color: var(--cloud-border-strong);
+}
+
+.btn-default {
+    background: var(--cloud-surface);
+    color: var(--cloud-text);
+}
+
+.btn-default:hover,
+.btn-default:focus {
+    background: #f1f4f9;
+    color: var(--cloud-text);
+}
+
+.btn-primary {
+    background: var(--cloud-accent);
+    border-color: var(--cloud-accent);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background: var(--cloud-accent-dark);
+    border-color: var(--cloud-accent-dark);
+}
+
+/* ---------- Cards (Bootstrap panels) ---------- */
+
+.panel {
+    background: var(--cloud-surface);
+    border: 1px solid var(--cloud-border);
+    border-radius: var(--cloud-radius);
+    box-shadow: var(--cloud-shadow);
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.panel-default,
+.panel-success,
+.panel-warning,
+.panel-danger {
+    border-color: var(--cloud-border);
+}
+
+.panel-heading,
+button.panel-heading {
+    background: transparent;
+    border-radius: var(--cloud-radius) var(--cloud-radius) 0 0 !important;
+    border-bottom: 1px solid var(--cloud-border);
+    padding: 16px 20px;
+}
+
+.panel-heading .panel-title,
+.panel-title {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.panel-body {
+    padding: 18px 20px;
+}
+
+.panel-footer {
+    background: #fafbfd;
+    border-top: 1px solid var(--cloud-border);
+    padding: 14px 20px;
+}
+
+/* Section headings get the blue accent bar from the design. */
+
+.panel-group > h3,
+h3[id="folder_list"],
+.cloud-content > .row > div > h3 {
+    position: relative;
+    padding-left: 14px;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 8px;
+    margin-bottom: 14px;
+}
+
+.panel-group > h3::before,
+h3[id="folder_list"]::before,
+.cloud-content > .row > div > h3::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    bottom: 2px;
+    width: 4px;
+    border-radius: 3px;
+    background: var(--cloud-accent);
+}
+
+.cloud-content h4 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--cloud-muted);
+    font-weight: 700;
+}
+
+/* ---------- Key/value rows ---------- */
+
+.panel-body table th {
+    font-weight: 500;
+    color: var(--cloud-muted);
+}
+
+.panel-body table td {
+    font-weight: 600;
+    color: var(--cloud-text);
+}
+
+.panel-body table.table-condensed tr > th,
+.panel-body table.table-condensed tr > td {
+    border-top: 1px dashed var(--cloud-border-strong);
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+
+.panel-body table.table-condensed tr:first-child > th,
+.panel-body table.table-condensed tr:first-child > td {
+    border-top: none;
+}
+
+/* ---------- Status pills ---------- */
+
+.label {
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--cloud-gray-text);
+    background: var(--cloud-gray-bg);
+    display: inline-flex;
+    align-items: center;
+}
+
+.label-success,
+.label-primary {
+    background: var(--cloud-green-bg);
+    color: var(--cloud-green-text);
+}
+
+.label-success::before,
+.label-primary::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--cloud-green);
+    margin-right: 7px;
+}
+
+.label-default::before,
+.label-danger::before,
+.label-warning::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #94a3b8;
+    margin-right: 7px;
+}
+
+.label-danger {
+    background: #fdeaea;
+    color: #d64545;
+}
+
+.label-danger::before {
+    background: #e05252;
+}
+
+.label-warning {
+    background: #fff5e6;
+    color: #b7791f;
+}
+
+.label-warning::before {
+    background: #f0a020;
+}
+
+/* ---------- Progress bars ---------- */
+
+.progress {
+    height: 8px;
+    border-radius: 999px;
+    background-color: var(--cloud-gray-bg);
+    box-shadow: none;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.progress-bar {
+    background-color: var(--cloud-accent);
+    box-shadow: none;
+}
+
+.progress-bar-success {
+    background-color: var(--cloud-green);
+}
+
+/* ---------- Forms ---------- */
+
+.form-control {
+    border-radius: 10px;
+    border-color: var(--cloud-border-strong);
+    box-shadow: none;
+    height: auto;
+    padding: 9px 12px;
+}
+
+.form-control:focus {
+    border-color: var(--cloud-accent);
+    box-shadow: 0 0 0 3px var(--cloud-accent-soft);
+}
+
+/* ---------- Alerts ---------- */
+
+.alert {
+    border-radius: var(--cloud-radius-sm);
+    border: 1px solid var(--cloud-border);
+}
+
+/* ---------- Modals ---------- */
+
+.modal-content {
+    border-radius: var(--cloud-radius);
+    border: none;
+    box-shadow: 0 24px 60px rgba(16, 24, 40, .18);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--cloud-border);
+}
+
+.modal-footer {
+    border-top: 1px solid var(--cloud-border);
+}
+
+/* ---------- Misc ---------- */
+
+.navbar {
+    display: none;
+}
+
+.navbar-top {
+    display: none;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 991px) {
+    .cloud-app {
+        flex-direction: column;
+    }
+
+    .cloud-sidebar {
+        position: static;
+        width: 100%;
+        flex-basis: auto;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--cloud-border);
+    }
+
+    .cloud-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+
+    .cloud-nav-section {
+        width: 100%;
+        padding-top: 8px;
+    }
+
+    .cloud-nav-item {
+        margin: 0;
+    }
+
+    .cloud-content,
+    .cloud-topbar {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}

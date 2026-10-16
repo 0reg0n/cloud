@@ -24,6 +24,7 @@
   <link href="assets/css/tree.css" rel="stylesheet"/>
   <link href="assets/css/overrides.css" rel="stylesheet"/>
   <link href="assets/css/theme.css" rel="stylesheet"/>
+  <link href="assets/css/cloud.css" rel="stylesheet"/>
 </head>
 
 <body>
@@ -61,6 +62,86 @@
   </noscript>
 
   <div class="ng-cloak">
+    <div class="cloud-app" id="cloud-top">
+      <aside class="cloud-sidebar">
+        <div class="cloud-brand">
+          <div class="cloud-brand-logo">C</div>
+          <div class="cloud-brand-text">
+            <div class="cloud-brand-name">cloud</div>
+            <div class="cloud-brand-sub">v{{version.version}}</div>
+          </div>
+        </div>
+        <nav class="cloud-nav">
+          <div class="cloud-nav-section"><span translate>Overview</span></div>
+          <a class="cloud-nav-item cloud-nav-active" href="#cloud-top"><i class="fa fa-fw fa-th-large"></i><span translate>Dashboard</span></a>
+          <a class="cloud-nav-item" href="#cloud-folders"><i class="fa fa-fw fa-folder"></i><span translate>Folders</span><span class="cloud-nav-count" ng-if="folderList().length > 0">{{folderList().length}}</span></a>
+          <a class="cloud-nav-item" href="#cloud-devices"><i class="fa fa-fw fa-sitemap"></i><span translate>Devices</span><span class="cloud-nav-count" ng-if="otherDevices().length > 0">{{otherDevices().length}}</span></a>
+
+          <div class="cloud-nav-section"><span translate>System</span></div>
+          <a class="cloud-nav-item" href="" ng-click="showSettings()"><i class="fa fa-fw fa-cog"></i><span translate>Settings</span></a>
+          <a class="cloud-nav-item" href="" ng-click="advanced()"><i class="fa fa-fw fa-cogs"></i><span translate>Advanced</span></a>
+          <a class="cloud-nav-item" href="" ng-click="logging.show()"><i class="fa fa-fw fa-wrench"></i><span translate>Logs</span></a>
+          <a class="cloud-nav-item" href="/rest/debug/support" target="_blank"><i class="fa fa-fw fa-user-md"></i><span translate>Support Bundle</span></a>
+          <a class="cloud-nav-item" href="" ng-click="about.show()"><i class="fa fa-fw fa-heart"></i><span translate>About</span></a>
+          <a class="cloud-nav-item" ng-if="isAuthEnabled()" href="" ng-click="logout()"><i class="far fa-fw fa-sign-out"></i><span translate>Log Out</span></a>
+        </nav>
+        <div class="cloud-sidebar-footer">
+          <div class="cloud-device-name">{{thisDeviceName()}}</div>
+          <div class="cloud-device-meta">cloud {{version.version}}</div>
+          <div class="cloud-device-status">
+            <span class="cloud-dot cloud-dot-on"></span><span translate>Running</span>
+            <span class="cloud-dot" ng-class="{'cloud-dot-on': cloudConnectedCount() > 0}"></span><span translate>Connected</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="cloud-main">
+        <header class="cloud-topbar">
+          <div class="cloud-topbar-titles">
+            <h1 class="cloud-topbar-title" translate>Dashboard</h1>
+            <p class="cloud-topbar-subtitle" translate>Status of all components</p>
+          </div>
+          <ul class="nav cloud-topbar-actions">
+            <li ng-if="upgradeInfo && upgradeInfo.newer">
+              <button type="button" class="cloud-btn cloud-btn-primary" data-toggle="modal" data-target="#upgrade">
+                <span class="fas fa-arrow-circle-up"></span>
+                <span translate translate-value-version="{{upgradeInfo.latest}}">Upgrade To {%version%}</span>
+              </button>
+            </li>
+            <li class="dropdown" language-select></li>
+            <li class="dropdown" ng-if="authenticated">
+              <a href="#" class="cloud-btn cloud-btn-ghost dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <span class="fa fa-question-circle"></span>
+                <span class="hidden-xs" translate>Help</span>
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li><a class="navbar-link" href="{{docsURL('intro/gui')}}" target="_blank"><span class="fa fa-fw fa-info-circle"></span>&nbsp;<span translate>Introduction</span></a></li>
+                <li><a class="navbar-link" href="{{docsURL()}}" target="_blank"><span class="fa fa-fw fa-book"></span>&nbsp;<span translate>Documentation</span></a></li>
+                <li class="divider" aria-hidden="true"></li>
+                <li><a href="" ng-click="about.show()"><span class="fa fa-fw fa-heart"></span>&nbsp;<span translate>About</span></a></li>
+              </ul>
+            </li>
+            <li ng-if="authenticated" class="dropdown">
+              <a href="#" class="cloud-btn cloud-btn-ghost dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <span class="fa fa-cog"></span>
+                <span class="hidden-xs" translate>Actions</span>
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li><a href="" ng-click="showSettings()"><span class="fa fa-fw fa-cog"></span>&nbsp;<span translate>Settings</span></a></li>
+                <li><a href="" ng-click="advanced()"><span class="fa fa-fw fa-cogs"></span>&nbsp;<span translate>Advanced</span></a></li>
+                <li class="divider" aria-hidden="true"></li>
+                <li><a href="" ng-click="showDeviceIdentification(thisDevice())"><span class="fa fa-fw fa-qrcode"></span>&nbsp;<span translate>Show ID</span></a></li>
+                <li><a href="" ng-click="logging.show()"><span class="fa fa-fw fa-wrench"></span>&nbsp;<span translate>Logs</span></a></li>
+                <li ng-if="isAuthEnabled()"><a href="" ng-click="logout()"><span class="far fa-fw fa-sign-out"></span>&nbsp;<span translate>Log Out</span></a></li>
+                <li><a href="" ng-click="restart()"><span class="fa fa-fw fa-refresh"></span>&nbsp;<span translate>Restart</span></a></li>
+                <li><a href="" ng-click="shutdown()"><span class="fa fa-fw fa-power-off"></span>&nbsp;<span translate>Shut Down</span></a></li>
+              </ul>
+            </li>
+          </ul>
+        </header>
+
     <script type="text/javascript" src="syncthing/development/logbar.js"></script>
     <div ng-if="version.isBeta" ng-include="'syncthing/development/logbar.html'"></div>
     <!-- Top bar -->
@@ -131,7 +212,7 @@
       </div>
     </nav>
 
-    <div class="container content">
+    <div class="cloud-content">
 
       <!-- Panel: Open, no auth -->
 
@@ -379,7 +460,7 @@
 
         <!-- Folder list (top left) -->
 
-        <div class="col-md-6" aria-labelledby="folder_list" role="region" >
+        <div class="col-md-6" id="cloud-folders" aria-labelledby="folder_list" role="region" >
           <h3 id="folder_list"><span translate>Folders</span><span ng-if="folderList().length > 1"> ({{folderList().length}})</span></h3>
           <div ng-repeat="(folderGroupName, groupedFolders) in foldersGrouped">
             <h4 ng-if="folderGroupName !== ''">{{ folderGroupName }}
@@ -677,7 +758,7 @@
 
         <!-- This device -->
 
-        <div class="col-md-6" aria-label="{{'Devices' | translate}}" role="region">
+        <div class="col-md-6" id="cloud-devices" aria-label="{{'Devices' | translate}}" role="region">
           <h3 translate>This Device</h3>
           <div class="panel panel-default" ng-repeat="deviceCfg in [thisDevice()]">
             <button class="btn panel-heading" data-toggle="collapse" data-target="#device-this" aria-expanded="true">
@@ -1016,7 +1097,9 @@
         </div>
       </div> <!-- /row -->
 
-    </div> <!-- /container -->
+    </div> <!-- /cloud-content -->
+      </main>
+    </div> <!-- /cloud-app -->
   </div> <!-- /ng-cloak -->
 
   <ng-include src="'syncthing/core/networkErrorDialogView.html'"></ng-include>

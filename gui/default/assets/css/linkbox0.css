@@ -765,3 +765,55 @@ a {
     margin-left: auto;
 }
 
+/* ---------- Alignment ---------- */
+
+/* Column titles (This Device / Remote Devices) share a header row so the
+   panels below start at the same vertical position. */
+.linkbox0-col-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    min-height: 48px;
+    margin: 6px 0 14px;
+}
+
+.linkbox0-col-header > h3 {
+    margin: 0;
+}
+
+.linkbox0-col-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.linkbox0-col-actions .btn {
+    margin: 0;
+}
+
+/* The two device windows align at the top and stretch to equal height. */
+#linkbox0-devices > .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+#linkbox0-devices > .row > [class*="col-"] {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Consistent vertical rhythm for the panels inside the device windows. */
+#linkbox0-devices .panel-group,
+#linkbox0-devices .panel {
+    margin-bottom: 16px;
+}
+
+#linkbox0-devices .panel:last-child {
+    margin-bottom: 0;
+}
+
+

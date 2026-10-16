@@ -464,7 +464,9 @@
         <div class="col-md-12" id="linkbox0-devices" aria-label="{{'Devices' | translate}}" role="region">
           <div class="row">
           <div class="col-md-6" id="linkbox0-thisdevice">
-          <h3 translate>This Device</h3>
+          <div class="linkbox0-col-header">
+            <h3 translate>This Device</h3>
+          </div>
           <div class="panel panel-default" ng-repeat="deviceCfg in [thisDevice()]">
             <button class="btn panel-heading" data-toggle="collapse" data-target="#device-this" aria-expanded="true">
               <h4 class="panel-title">
@@ -569,7 +571,23 @@
           </div>
           <!-- Remote devices -->
           <div class="col-md-6" id="linkbox0-remotedevices">
-          <h3><span translate>Remote Devices</span> <span ng-if="otherDevices().length > 1"> ({{otherDevices().length}})</span></h3>
+          <div class="linkbox0-col-header">
+            <h3><span translate>Remote Devices</span> <span ng-if="otherDevices().length > 1"> ({{otherDevices().length}})</span></h3>
+            <div class="linkbox0-col-actions">
+              <button type="button" class="btn btn-sm btn-default" ng-click="setAllDevicesPause(true)" ng-if="isAtleastOneDevicePausedStateSetTo(false)">
+                <span class="fas fa-pause"></span>&nbsp;<span translate>Pause All</span>
+              </button>
+              <button type="button" class="btn btn-sm btn-default" ng-click="setAllDevicesPause(false)" ng-if="isAtleastOneDevicePausedStateSetTo(true)">
+                <span class="fas fa-play"></span>&nbsp;<span translate>Resume All</span>
+              </button>
+              <button type="button" class="btn btn-sm btn-default" ng-click="globalChanges()">
+                <span class="fas fa-fw fa-info-circle"></span>&nbsp;<span translate>Recent Changes</span>
+              </button>
+              <button type="button" class="btn btn-sm btn-default" ng-click="addDevice()">
+                <span class="fas fa-plus"></span>&nbsp;<span translate>Add Remote Device</span>
+              </button>
+            </div>
+          </div>
           <div class="panel panel-default" ng-if="otherDevices().length == 0">
             <div class="panel-body text-muted"><span class="fa fa-fw fa-plug"></span>&nbsp;<span translate>No remote devices configured</span></div>
           </div>
@@ -790,23 +808,6 @@
                 </div>
               </div>
             </div>
-          <div class="form-group">
-            <span class="pull-right">
-              <button type="button" class="btn btn-sm btn-default" ng-click="setAllDevicesPause(true)" ng-if="isAtleastOneDevicePausedStateSetTo(false)">
-                <span class="fas fa-pause"></span>&nbsp;<span translate>Pause All</span>
-              </button>
-              <button type="button" class="btn btn-sm btn-default" ng-click="setAllDevicesPause(false)" ng-if="isAtleastOneDevicePausedStateSetTo(true)">
-                <span class="fas fa-play"></span>&nbsp;<span translate>Resume All</span>
-              </button>
-              <button type="button" class="btn btn-sm btn-default" ng-click="globalChanges()">
-                <span class="fas fa-fw fa-info-circle"></span>&nbsp;<span translate>Recent Changes</span>
-              </button>
-              <button type="button" class="btn btn-sm btn-default" ng-click="addDevice()">
-                <span class="fas fa-plus"></span>&nbsp;<span translate>Add Remote Device</span>
-              </button>
-            </span>
-            <div class="clearfix"></div>
-          </div>
           </div>
           </div>
         </div>

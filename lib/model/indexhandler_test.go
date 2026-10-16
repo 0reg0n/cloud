@@ -12,11 +12,11 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/0reg0n/cloud/lib/model"
-	"github.com/0reg0n/cloud/lib/model/mocks"
-	"github.com/0reg0n/cloud/lib/protocol"
-	protomock "github.com/0reg0n/cloud/lib/protocol/mocks"
-	"github.com/0reg0n/cloud/lib/testutil"
+	"github.com/0reg0n/linkbox0/lib/model"
+	"github.com/0reg0n/linkbox0/lib/model/mocks"
+	"github.com/0reg0n/linkbox0/lib/protocol"
+	protomock "github.com/0reg0n/linkbox0/lib/protocol/mocks"
+	"github.com/0reg0n/linkbox0/lib/testutil"
 )
 
 func TestIndexhandlerConcurrency(t *testing.T) {

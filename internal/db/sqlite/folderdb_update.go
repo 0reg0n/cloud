@@ -14,13 +14,13 @@ import (
 	"slices"
 
 	"github.com/jmoiron/sqlx"
-	"github.com/0reg0n/cloud/internal/db"
-	"github.com/0reg0n/cloud/internal/gen/dbproto"
-	"github.com/0reg0n/cloud/internal/itererr"
-	"github.com/0reg0n/cloud/internal/slogutil"
-	"github.com/0reg0n/cloud/lib/osutil"
-	"github.com/0reg0n/cloud/lib/protocol"
-	"github.com/0reg0n/cloud/lib/sliceutil"
+	"github.com/0reg0n/linkbox0/internal/db"
+	"github.com/0reg0n/linkbox0/internal/gen/dbproto"
+	"github.com/0reg0n/linkbox0/internal/itererr"
+	"github.com/0reg0n/linkbox0/internal/slogutil"
+	"github.com/0reg0n/linkbox0/lib/osutil"
+	"github.com/0reg0n/linkbox0/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/sliceutil"
 	"google.golang.org/protobuf/proto"
 )
 

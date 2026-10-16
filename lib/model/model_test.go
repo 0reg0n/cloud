@@ -26,20 +26,20 @@ import (
 	"testing"
 	"time"
 
-	"github.com/0reg0n/cloud/internal/db"
-	"github.com/0reg0n/cloud/internal/itererr"
-	"github.com/0reg0n/cloud/lib/build"
-	"github.com/0reg0n/cloud/lib/config"
-	"github.com/0reg0n/cloud/lib/events"
-	"github.com/0reg0n/cloud/lib/fs"
-	"github.com/0reg0n/cloud/lib/ignore"
-	"github.com/0reg0n/cloud/lib/osutil"
-	"github.com/0reg0n/cloud/lib/protocol"
-	protocolmocks "github.com/0reg0n/cloud/lib/protocol/mocks"
-	srand "github.com/0reg0n/cloud/lib/rand"
-	"github.com/0reg0n/cloud/lib/semaphore"
-	"github.com/0reg0n/cloud/lib/testutil"
-	"github.com/0reg0n/cloud/lib/versioner"
+	"github.com/0reg0n/linkbox0/internal/db"
+	"github.com/0reg0n/linkbox0/internal/itererr"
+	"github.com/0reg0n/linkbox0/lib/build"
+	"github.com/0reg0n/linkbox0/lib/config"
+	"github.com/0reg0n/linkbox0/lib/events"
+	"github.com/0reg0n/linkbox0/lib/fs"
+	"github.com/0reg0n/linkbox0/lib/ignore"
+	"github.com/0reg0n/linkbox0/lib/osutil"
+	"github.com/0reg0n/linkbox0/lib/protocol"
+	protocolmocks "github.com/0reg0n/linkbox0/lib/protocol/mocks"
+	srand "github.com/0reg0n/linkbox0/lib/rand"
+	"github.com/0reg0n/linkbox0/lib/semaphore"
+	"github.com/0reg0n/linkbox0/lib/testutil"
+	"github.com/0reg0n/linkbox0/lib/versioner"
 )
 
 func newState(t testing.TB, cfg config.Configuration) (*testModel, context.CancelFunc) {
@@ -1045,8 +1045,8 @@ func TestIssue4897(t *testing.T) {
 // TestIssue5063 is about a panic in connection with modifying config in quick
 // succession, related with auto accepted folders. It's unclear what exactly, a
 // relevant bit seems to be here:
-// PR-comments: https://github.com/0reg0n/cloud/pull/5069/files#r203146546
-// Issue: https://github.com/0reg0n/cloud/pull/5509
+// PR-comments: https://github.com/0reg0n/linkbox0/pull/5069/files#r203146546
+// Issue: https://github.com/0reg0n/linkbox0/pull/5509
 func TestIssue5063(t *testing.T) {
 	m, cancel := newState(t, defaultAutoAcceptCfg)
 	defer cleanupModel(m)
@@ -3795,7 +3795,7 @@ func testConfigChangeTriggersClusterConfigs(t *testing.T, expectFirst, expectSec
 // The end result of the tested scenario is that the global version entry has an
 // empty version vector and is not deleted, while everything is actually deleted.
 // That then causes these files to be considered as needed, while they are not.
-// https://github.com/0reg0n/cloud/issues/6961
+// https://github.com/0reg0n/linkbox0/issues/6961
 func TestIssue6961(t *testing.T) {
 	wcfg, fcfg := newDefaultCfgWrapper(t)
 	tfs := fcfg.Filesystem()

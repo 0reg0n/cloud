@@ -16,8 +16,8 @@ import (
 
 	"golang.org/x/time/rate"
 
-	"github.com/0reg0n/cloud/lib/config"
-	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/config"
+	"github.com/0reg0n/linkbox0/lib/protocol"
 )
 
 // limiter manages a read and write rate limit, reacting to config changes

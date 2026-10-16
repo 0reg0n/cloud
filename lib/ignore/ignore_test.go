@@ -16,11 +16,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/0reg0n/cloud/lib/build"
-	"github.com/0reg0n/cloud/lib/fs"
-	"github.com/0reg0n/cloud/lib/ignore/ignoreresult"
-	"github.com/0reg0n/cloud/lib/osutil"
-	"github.com/0reg0n/cloud/lib/rand"
+	"github.com/0reg0n/linkbox0/lib/build"
+	"github.com/0reg0n/linkbox0/lib/fs"
+	"github.com/0reg0n/linkbox0/lib/ignore/ignoreresult"
+	"github.com/0reg0n/linkbox0/lib/osutil"
+	"github.com/0reg0n/linkbox0/lib/rand"
 )
 
 const escapePrefixEqual = escapePrefix + "="
@@ -953,7 +953,7 @@ func TestIssue4901(t *testing.T) {
 }
 
 // TestIssue5009 checks that ignored dirs are only skipped if there are no include patterns.
-// https://github.com/0reg0n/cloud/issues/5009 (rc-only bug)
+// https://github.com/0reg0n/linkbox0/issues/5009 (rc-only bug)
 func TestIssue5009(t *testing.T) {
 	testFs := newTestFS()
 

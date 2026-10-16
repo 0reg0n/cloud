@@ -5,7 +5,7 @@ import (
 	"context"
 	"sync"
 
-	"github.com/0reg0n/cloud/lib/model"
+	"github.com/0reg0n/linkbox0/lib/model"
 )
 
 type FolderSummaryService struct {

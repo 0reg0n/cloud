@@ -9,7 +9,7 @@ package model
 import (
 	"time"
 
-	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/protocol"
 )
 
 // sentFolderFileDownloadState represents a state of what we've announced as available

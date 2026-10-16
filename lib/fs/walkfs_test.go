@@ -13,7 +13,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/0reg0n/cloud/lib/build"
+	"github.com/0reg0n/linkbox0/lib/build"
 )
 
 func testWalkSkipSymlink(t *testing.T, fsType FilesystemType, uri string) {

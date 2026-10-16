@@ -31,7 +31,7 @@ func TestCLIReset(t *testing.T) {
 
 	// Run reset to clean up
 
-	cmd := exec.Command("../bin/comb", "--no-browser", "--home", "h1", "--reset-database")
+	cmd := exec.Command("../bin/linkbox0", "--no-browser", "--home", "h1", "--reset-database")
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stdout
 	err := cmd.Run()
@@ -65,7 +65,7 @@ func TestCLIGenerate(t *testing.T) {
 
 	// --generate should create a bunch of stuff
 
-	cmd := exec.Command("../bin/comb", "--no-browser", "--generate", "home.out")
+	cmd := exec.Command("../bin/linkbox0", "--no-browser", "--generate", "home.out")
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stdout
 	err = cmd.Run()
@@ -91,7 +91,7 @@ func TestCLIFirstStartup(t *testing.T) {
 
 	// First startup should create config, BEP certificate, and HTTP certificate.
 
-	cmd := exec.Command("../bin/comb", "--no-browser", "--home", "home.out")
+	cmd := exec.Command("../bin/linkbox0", "--no-browser", "--home", "home.out")
 	cmd.Env = append(os.Environ(), "STNORESTART=1")
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stdout

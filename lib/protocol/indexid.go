@@ -11,7 +11,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/0reg0n/cloud/lib/rand"
+	"github.com/0reg0n/linkbox0/lib/rand"
 )
 
 type IndexID uint64

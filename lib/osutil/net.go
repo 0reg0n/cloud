@@ -10,7 +10,7 @@ import (
 	"net"
 	"strings"
 
-	"github.com/0reg0n/cloud/lib/netutil"
+	"github.com/0reg0n/linkbox0/lib/netutil"
 )
 
 // GetInterfaceAddrs returns the IP networks of all interfaces that are up.

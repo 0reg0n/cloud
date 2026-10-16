@@ -11,10 +11,10 @@ import (
 	"iter"
 	"time"
 
-	"github.com/0reg0n/cloud/internal/db"
-	"github.com/0reg0n/cloud/lib/model"
-	"github.com/0reg0n/cloud/lib/protocol"
-	"github.com/0reg0n/cloud/lib/stats"
+	"github.com/0reg0n/linkbox0/internal/db"
+	"github.com/0reg0n/linkbox0/lib/model"
+	"github.com/0reg0n/linkbox0/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/stats"
 )
 
 // Internals allows access to a subset of functionality in model.Model. While intended for use from applications that import

@@ -10,8 +10,8 @@ import (
 	"errors"
 	"path/filepath"
 
-	"github.com/0reg0n/cloud/lib/build"
-	"github.com/0reg0n/cloud/lib/fs"
+	"github.com/0reg0n/linkbox0/lib/build"
+	"github.com/0reg0n/linkbox0/lib/fs"
 )
 
 var (

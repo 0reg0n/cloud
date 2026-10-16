@@ -13,7 +13,7 @@ import (
 	"net"
 	"time"
 
-	"github.com/0reg0n/cloud/lib/connections/registry"
+	"github.com/0reg0n/linkbox0/lib/connections/registry"
 	"golang.org/x/net/ipv4"
 	"golang.org/x/net/ipv6"
 	"golang.org/x/net/proxy"

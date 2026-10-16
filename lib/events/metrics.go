@@ -12,7 +12,7 @@ import (
 )
 
 var metricEvents = promauto.NewCounterVec(prometheus.CounterOpts{
-	Namespace: "comb",
+	Namespace: "linkbox0",
 	Subsystem: "events",
 	Name:      "total",
 	Help:      "Total number of created/forwarded/dropped events",

@@ -30,23 +30,23 @@ import (
 
 	"github.com/thejerf/suture/v4"
 
-	"github.com/0reg0n/cloud/internal/slogutil"
-	"github.com/0reg0n/cloud/lib/build"
-	"github.com/0reg0n/cloud/lib/config"
-	"github.com/0reg0n/cloud/lib/connections/registry"
-	"github.com/0reg0n/cloud/lib/discover"
-	"github.com/0reg0n/cloud/lib/events"
-	"github.com/0reg0n/cloud/lib/nat"
-	"github.com/0reg0n/cloud/lib/osutil"
-	"github.com/0reg0n/cloud/lib/protocol"
-	"github.com/0reg0n/cloud/lib/semaphore"
-	"github.com/0reg0n/cloud/lib/sliceutil"
-	"github.com/0reg0n/cloud/lib/stringutil"
-	"github.com/0reg0n/cloud/lib/svcutil"
+	"github.com/0reg0n/linkbox0/internal/slogutil"
+	"github.com/0reg0n/linkbox0/lib/build"
+	"github.com/0reg0n/linkbox0/lib/config"
+	"github.com/0reg0n/linkbox0/lib/connections/registry"
+	"github.com/0reg0n/linkbox0/lib/discover"
+	"github.com/0reg0n/linkbox0/lib/events"
+	"github.com/0reg0n/linkbox0/lib/nat"
+	"github.com/0reg0n/linkbox0/lib/osutil"
+	"github.com/0reg0n/linkbox0/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/semaphore"
+	"github.com/0reg0n/linkbox0/lib/sliceutil"
+	"github.com/0reg0n/linkbox0/lib/stringutil"
+	"github.com/0reg0n/linkbox0/lib/svcutil"
 
 	// Registers NAT service providers
-	_ "github.com/0reg0n/cloud/lib/pmp"
-	_ "github.com/0reg0n/cloud/lib/upnp"
+	_ "github.com/0reg0n/linkbox0/lib/pmp"
+	_ "github.com/0reg0n/linkbox0/lib/upnp"
 )
 
 var (

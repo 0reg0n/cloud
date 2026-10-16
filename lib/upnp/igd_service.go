@@ -41,10 +41,10 @@ import (
 	"net"
 	"time"
 
-	"github.com/0reg0n/cloud/internal/slogutil"
-	"github.com/0reg0n/cloud/lib/netutil"
+	"github.com/0reg0n/linkbox0/internal/slogutil"
+	"github.com/0reg0n/linkbox0/lib/netutil"
 
-	"github.com/0reg0n/cloud/lib/nat"
+	"github.com/0reg0n/linkbox0/lib/nat"
 )
 
 // An IGDService is a specific service provided by an IGD.

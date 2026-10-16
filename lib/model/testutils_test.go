@@ -12,14 +12,14 @@ import (
 	"testing"
 	"time"
 
-	"github.com/0reg0n/cloud/internal/db/sqlite"
-	"github.com/0reg0n/cloud/lib/config"
-	"github.com/0reg0n/cloud/lib/events"
-	"github.com/0reg0n/cloud/lib/fs"
-	"github.com/0reg0n/cloud/lib/ignore"
-	"github.com/0reg0n/cloud/lib/protocol"
-	"github.com/0reg0n/cloud/lib/protocol/mocks"
-	"github.com/0reg0n/cloud/lib/rand"
+	"github.com/0reg0n/linkbox0/internal/db/sqlite"
+	"github.com/0reg0n/linkbox0/lib/config"
+	"github.com/0reg0n/linkbox0/lib/events"
+	"github.com/0reg0n/linkbox0/lib/fs"
+	"github.com/0reg0n/linkbox0/lib/ignore"
+	"github.com/0reg0n/linkbox0/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/protocol/mocks"
+	"github.com/0reg0n/linkbox0/lib/rand"
 )
 
 var (

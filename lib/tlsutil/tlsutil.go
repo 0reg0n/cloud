@@ -23,8 +23,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/0reg0n/cloud/lib/dialer"
-	"github.com/0reg0n/cloud/lib/rand"
+	"github.com/0reg0n/linkbox0/lib/dialer"
+	"github.com/0reg0n/linkbox0/lib/rand"
 )
 
 // ShortLivedHTTPClient is used for infrequent HTTP requests. It supports

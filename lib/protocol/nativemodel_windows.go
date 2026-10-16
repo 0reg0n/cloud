@@ -15,7 +15,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/0reg0n/cloud/internal/slogutil"
+	"github.com/0reg0n/linkbox0/internal/slogutil"
 )
 
 func makeNative(m rawModel) rawModel { return nativeModel{m} }

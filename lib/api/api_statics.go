@@ -15,9 +15,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/0reg0n/cloud/lib/api/auto"
-	"github.com/0reg0n/cloud/lib/assets"
-	"github.com/0reg0n/cloud/lib/config"
+	"github.com/0reg0n/linkbox0/lib/api/auto"
+	"github.com/0reg0n/linkbox0/lib/assets"
+	"github.com/0reg0n/linkbox0/lib/config"
 )
 
 const themePrefix = "theme-assets/"

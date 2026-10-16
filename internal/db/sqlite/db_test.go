@@ -18,12 +18,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/0reg0n/cloud/internal/db"
-	"github.com/0reg0n/cloud/internal/itererr"
-	"github.com/0reg0n/cloud/internal/timeutil"
-	"github.com/0reg0n/cloud/lib/build"
-	"github.com/0reg0n/cloud/lib/config"
-	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/linkbox0/internal/db"
+	"github.com/0reg0n/linkbox0/internal/itererr"
+	"github.com/0reg0n/linkbox0/internal/timeutil"
+	"github.com/0reg0n/linkbox0/lib/build"
+	"github.com/0reg0n/linkbox0/lib/config"
+	"github.com/0reg0n/linkbox0/lib/protocol"
 )
 
 const (

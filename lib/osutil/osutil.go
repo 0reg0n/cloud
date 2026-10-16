@@ -13,8 +13,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/0reg0n/cloud/lib/build"
-	"github.com/0reg0n/cloud/lib/fs"
+	"github.com/0reg0n/linkbox0/lib/build"
+	"github.com/0reg0n/linkbox0/lib/fs"
 )
 
 // Try to keep this entire operation atomic-like. We shouldn't be doing this

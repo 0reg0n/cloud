@@ -18,7 +18,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/0reg0n/cloud/lib/syncutil"
+	"github.com/0reg0n/linkbox0/lib/syncutil"
 	"github.com/thejerf/suture/v4"
 )
 

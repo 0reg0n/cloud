@@ -7,8 +7,8 @@
 package syncthing
 
 import (
-	"github.com/0reg0n/cloud/internal/db"
-	"github.com/0reg0n/cloud/lib/config"
+	"github.com/0reg0n/linkbox0/internal/db"
+	"github.com/0reg0n/linkbox0/lib/config"
 )
 
 const (

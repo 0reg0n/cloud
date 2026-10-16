@@ -9,9 +9,9 @@ package connections
 import (
 	"testing"
 
-	"github.com/0reg0n/cloud/lib/config"
-	"github.com/0reg0n/cloud/lib/events"
-	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/config"
+	"github.com/0reg0n/linkbox0/lib/events"
+	"github.com/0reg0n/linkbox0/lib/protocol"
 )
 
 func TestIsLANHost(t *testing.T) {

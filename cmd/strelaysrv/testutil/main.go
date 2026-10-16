@@ -15,9 +15,9 @@ import (
 	"path/filepath"
 	"time"
 
-	syncthingprotocol "github.com/0reg0n/cloud/lib/protocol"
-	"github.com/0reg0n/cloud/lib/relay/client"
-	"github.com/0reg0n/cloud/lib/relay/protocol"
+	syncthingprotocol "github.com/0reg0n/linkbox0/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/relay/client"
+	"github.com/0reg0n/linkbox0/lib/relay/protocol"
 )
 
 func main() {

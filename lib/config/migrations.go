@@ -17,10 +17,10 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/0reg0n/cloud/internal/slogutil"
-	"github.com/0reg0n/cloud/lib/fs"
-	"github.com/0reg0n/cloud/lib/netutil"
-	"github.com/0reg0n/cloud/lib/upgrade"
+	"github.com/0reg0n/linkbox0/internal/slogutil"
+	"github.com/0reg0n/linkbox0/lib/fs"
+	"github.com/0reg0n/linkbox0/lib/netutil"
+	"github.com/0reg0n/linkbox0/lib/upgrade"
 )
 
 // migrations is the set of config migration functions, with their target

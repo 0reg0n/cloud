@@ -22,7 +22,7 @@ import (
 )
 
 var buildInfo = promauto.NewGaugeVec(prometheus.GaugeOpts{
-	Namespace: "comb",
+	Namespace: "linkbox0",
 	Subsystem: "build",
 	Name:      "info",
 	Help:      "A metric with a constant '1' value labeled by version information from when the binary was built.",
@@ -30,7 +30,7 @@ var buildInfo = promauto.NewGaugeVec(prometheus.GaugeOpts{
 
 // ProgramName is the canonical name of the program, used in version
 // strings, user agents and metrics.
-const ProgramName = "comb"
+const ProgramName = "linkbox0"
 
 const Codename = "Hafnium Hornet"
 
@@ -132,7 +132,7 @@ func LongVersionFor(program string) string {
 }
 
 func UserAgent() string {
-	return fmt.Sprintf(`Comb/%s (%s %s-%s)`, strings.TrimPrefix(Version, "v"), runtime.Version(), runtime.GOOS, runtime.GOARCH)
+	return fmt.Sprintf(`LinkBox0/%s (%s %s-%s)`, strings.TrimPrefix(Version, "v"), runtime.Version(), runtime.GOOS, runtime.GOARCH)
 }
 
 func TagsList() []string {

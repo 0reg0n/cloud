@@ -19,12 +19,12 @@ import (
 
 	"google.golang.org/protobuf/proto"
 
-	"github.com/0reg0n/cloud/internal/gen/bep"
-	"github.com/0reg0n/cloud/lib/config"
-	"github.com/0reg0n/cloud/lib/fs"
-	"github.com/0reg0n/cloud/lib/osutil"
-	"github.com/0reg0n/cloud/lib/protocol"
-	"github.com/0reg0n/cloud/lib/scanner"
+	"github.com/0reg0n/linkbox0/internal/gen/bep"
+	"github.com/0reg0n/linkbox0/lib/config"
+	"github.com/0reg0n/linkbox0/lib/fs"
+	"github.com/0reg0n/linkbox0/lib/osutil"
+	"github.com/0reg0n/linkbox0/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/scanner"
 )
 
 type CLI struct {

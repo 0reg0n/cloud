@@ -1,4 +1,4 @@
-module github.com/0reg0n/cloud
+module github.com/0reg0n/linkbox0
 
 go 1.26.2
 

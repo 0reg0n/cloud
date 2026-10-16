@@ -14,10 +14,10 @@ import (
 	"slices"
 
 	"github.com/jmoiron/sqlx"
-	"github.com/0reg0n/cloud/internal/gen/bep"
-	"github.com/0reg0n/cloud/internal/gen/dbproto"
-	"github.com/0reg0n/cloud/lib/osutil"
-	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/linkbox0/internal/gen/bep"
+	"github.com/0reg0n/linkbox0/internal/gen/dbproto"
+	"github.com/0reg0n/linkbox0/lib/osutil"
+	"github.com/0reg0n/linkbox0/lib/protocol"
 	"google.golang.org/protobuf/proto"
 )
 

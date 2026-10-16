@@ -21,8 +21,8 @@ import (
 	"time"
 
 	"github.com/syncthing/notify"
-	"github.com/0reg0n/cloud/lib/build"
-	"github.com/0reg0n/cloud/lib/ignore/ignoreresult"
+	"github.com/0reg0n/linkbox0/lib/build"
+	"github.com/0reg0n/linkbox0/lib/ignore/ignoreresult"
 )
 
 func TestMain(m *testing.M) {
@@ -152,7 +152,7 @@ func TestWatchRename(t *testing.T) {
 
 // TestWatchWinRoot checks that a watch at a drive letter does not panic due to
 // out of root event on every event.
-// https://github.com/0reg0n/cloud/issues/5695
+// https://github.com/0reg0n/linkbox0/issues/5695
 func TestWatchWinRoot(t *testing.T) {
 	if !build.IsWindows {
 		t.Skip("Windows specific test")

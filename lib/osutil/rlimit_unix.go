@@ -11,7 +11,7 @@ package osutil
 import (
 	"syscall"
 
-	"github.com/0reg0n/cloud/lib/build"
+	"github.com/0reg0n/linkbox0/lib/build"
 )
 
 const (

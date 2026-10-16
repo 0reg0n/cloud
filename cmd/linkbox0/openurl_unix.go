@@ -12,7 +12,7 @@ import (
 	"os/exec"
 	"syscall"
 
-	"github.com/0reg0n/cloud/lib/build"
+	"github.com/0reg0n/linkbox0/lib/build"
 )
 
 func openURL(url string) error {

@@ -7,7 +7,7 @@
 package api
 
 import (
-	"github.com/0reg0n/cloud/lib/config/mocks"
+	"github.com/0reg0n/linkbox0/lib/config/mocks"
 )
 
 func newMockedConfig() *mocks.Wrapper {

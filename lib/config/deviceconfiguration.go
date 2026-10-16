@@ -11,7 +11,7 @@ import (
 	"log/slog"
 	"slices"
 
-	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/protocol"
 )
 
 const defaultNumConnections = 3 // number of connections to use by default

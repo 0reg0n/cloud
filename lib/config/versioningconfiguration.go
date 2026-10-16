@@ -13,7 +13,7 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/0reg0n/cloud/lib/structutil"
+	"github.com/0reg0n/linkbox0/lib/structutil"
 )
 
 // VersioningConfiguration is used in the code and for JSON serialization

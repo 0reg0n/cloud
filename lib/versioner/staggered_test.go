@@ -16,7 +16,7 @@ import (
 
 	"github.com/d4l3k/messagediff"
 
-	"github.com/0reg0n/cloud/lib/config"
+	"github.com/0reg0n/linkbox0/lib/config"
 )
 
 func TestStaggeredVersioningVersionCount(t *testing.T) {

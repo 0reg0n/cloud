@@ -9,7 +9,7 @@ package osutil
 import (
 	"path/filepath"
 
-	"github.com/0reg0n/cloud/lib/fs"
+	"github.com/0reg0n/linkbox0/lib/fs"
 )
 
 // TraversesSymlinkError is an error indicating symlink traversal

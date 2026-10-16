@@ -13,8 +13,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/0reg0n/cloud/lib/build"
-	"github.com/0reg0n/cloud/lib/fs"
+	"github.com/0reg0n/linkbox0/lib/build"
+	"github.com/0reg0n/linkbox0/lib/fs"
 )
 
 type LocationEnum string
@@ -51,7 +51,7 @@ const (
 	levelDBDir          = "index-v0.14.0.db"
 	databaseName        = "index-v2"
 	configFileName      = "config.xml"
-	defaultStateDir     = ".local/state/comb"
+	defaultStateDir     = ".local/state/linkbox0"
 	oldDefaultConfigDir = ".config/syncthing"
 )
 
@@ -123,12 +123,12 @@ var locationTemplates = map[LocationEnum]string{
 	HTTPSKeyFile:   "${config}/https-key.pem",
 	LegacyDatabase: "${data}/" + levelDBDir,
 	Database:       "${data}/" + databaseName,
-	LogFile:        "${data}/comb.log", // --logfile on Windows
+	LogFile:        "${data}/linkbox0.log", // --logfile on Windows
 	PanicLog:       "${data}/panic-%{timestamp}.log",
 	AuditLog:       "${data}/audit-%{timestamp}.log",
 	GUIAssets:      "${config}/gui",
 	DefFolder:      "${userHome}/Sync",
-	LockFile:       "${data}/comb.lock",
+	LockFile:       "${data}/linkbox0.lock",
 }
 
 var locations = make(map[LocationEnum]string)
@@ -205,13 +205,13 @@ func defaultDataDir(userHome, configDir string) string {
 
 func windowsConfigDataDir() string {
 	if p := os.Getenv("LocalAppData"); p != "" {
-		return filepath.Join(p, "Comb")
+		return filepath.Join(p, "LinkBox0")
 	}
-	return filepath.Join(os.Getenv("AppData"), "Comb")
+	return filepath.Join(os.Getenv("AppData"), "LinkBox0")
 }
 
 func darwinConfigDataDir(userHome string) string {
-	return filepath.Join(userHome, "Library/Application Support/Comb")
+	return filepath.Join(userHome, "Library/Application Support/LinkBox0")
 }
 
 func unixConfigDir(userHome, xdgConfigHome, xdgStateHome string, fileExists func(string) bool) string {
@@ -234,7 +234,7 @@ func unixConfigDir(userHome, xdgConfigHome, xdgStateHome string, fileExists func
 
 	// If XDG_STATE_HOME is set to an absolute path, use that
 	if filepath.IsAbs(xdgStateHome) {
-		return filepath.Join(xdgStateHome, "comb")
+		return filepath.Join(xdgStateHome, "linkbox0")
 	}
 
 	// Use our default
@@ -272,7 +272,7 @@ func unixDataDir(userHome, configDir, xdgDataHome, xdgStateHome string, fileExis
 
 	// If XDG_STATE_HOME is set to an absolute path, use that
 	if filepath.IsAbs(xdgStateHome) {
-		return filepath.Join(xdgStateHome, "comb")
+		return filepath.Join(xdgStateHome, "linkbox0")
 	}
 
 	// Use our default

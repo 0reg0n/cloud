@@ -16,8 +16,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/0reg0n/cloud/internal/gen/bep"
-	"github.com/0reg0n/cloud/lib/build"
+	"github.com/0reg0n/linkbox0/internal/gen/bep"
+	"github.com/0reg0n/linkbox0/lib/build"
 )
 
 type FlagLocal uint32

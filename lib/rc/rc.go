@@ -25,11 +25,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/0reg0n/cloud/lib/config"
-	"github.com/0reg0n/cloud/lib/dialer"
-	"github.com/0reg0n/cloud/lib/events"
-	"github.com/0reg0n/cloud/lib/model"
-	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/config"
+	"github.com/0reg0n/linkbox0/lib/dialer"
+	"github.com/0reg0n/linkbox0/lib/events"
+	"github.com/0reg0n/linkbox0/lib/model"
+	"github.com/0reg0n/linkbox0/lib/protocol"
 )
 
 // APIKey is set via the STGUIAPIKEY variable when we launch the binary, to

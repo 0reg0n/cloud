@@ -21,14 +21,14 @@ import (
 	"testing"
 	"time"
 
-	"github.com/0reg0n/cloud/internal/itererr"
-	"github.com/0reg0n/cloud/lib/build"
-	"github.com/0reg0n/cloud/lib/config"
-	"github.com/0reg0n/cloud/lib/events"
-	"github.com/0reg0n/cloud/lib/fs"
-	"github.com/0reg0n/cloud/lib/ignore"
-	"github.com/0reg0n/cloud/lib/protocol"
-	"github.com/0reg0n/cloud/lib/scanner"
+	"github.com/0reg0n/linkbox0/internal/itererr"
+	"github.com/0reg0n/linkbox0/lib/build"
+	"github.com/0reg0n/linkbox0/lib/config"
+	"github.com/0reg0n/linkbox0/lib/events"
+	"github.com/0reg0n/linkbox0/lib/fs"
+	"github.com/0reg0n/linkbox0/lib/ignore"
+	"github.com/0reg0n/linkbox0/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/scanner"
 )
 
 var blocks = []protocol.BlockInfo{
@@ -876,7 +876,7 @@ func TestDeleteBehindSymlink(t *testing.T) {
 	}
 }
 
-// Reproduces https://github.com/0reg0n/cloud/issues/6559
+// Reproduces https://github.com/0reg0n/linkbox0/issues/6559
 func TestPullCtxCancel(t *testing.T) {
 	_, f := setupSendReceiveFolder(t)
 

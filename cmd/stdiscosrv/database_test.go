@@ -12,8 +12,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/0reg0n/cloud/internal/gen/discosrv"
-	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/linkbox0/internal/gen/discosrv"
+	"github.com/0reg0n/linkbox0/lib/protocol"
 )
 
 func TestDatabaseGetSet(t *testing.T) {

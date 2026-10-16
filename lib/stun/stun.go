@@ -16,8 +16,8 @@ import (
 
 	"github.com/ccding/go-stun/stun"
 
-	"github.com/0reg0n/cloud/lib/config"
-	"github.com/0reg0n/cloud/lib/svcutil"
+	"github.com/0reg0n/linkbox0/lib/config"
+	"github.com/0reg0n/linkbox0/lib/svcutil"
 )
 
 const stunRetryInterval = 5 * time.Minute

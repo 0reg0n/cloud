@@ -23,12 +23,12 @@ import (
 	"github.com/d4l3k/messagediff"
 	"golang.org/x/text/unicode/norm"
 
-	"github.com/0reg0n/cloud/lib/build"
-	"github.com/0reg0n/cloud/lib/events"
-	"github.com/0reg0n/cloud/lib/fs"
-	"github.com/0reg0n/cloud/lib/ignore"
-	"github.com/0reg0n/cloud/lib/protocol"
-	"github.com/0reg0n/cloud/lib/rand"
+	"github.com/0reg0n/linkbox0/lib/build"
+	"github.com/0reg0n/linkbox0/lib/events"
+	"github.com/0reg0n/linkbox0/lib/fs"
+	"github.com/0reg0n/linkbox0/lib/ignore"
+	"github.com/0reg0n/linkbox0/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/rand"
 )
 
 type testfile struct {
@@ -826,7 +826,7 @@ func TestIssue4841(t *testing.T) {
 	}
 }
 
-// TestNotExistingError reproduces https://github.com/0reg0n/cloud/issues/5385
+// TestNotExistingError reproduces https://github.com/0reg0n/linkbox0/issues/5385
 func TestNotExistingError(t *testing.T) {
 	sub := "notExisting"
 	testFs := newTestFs()
@@ -882,7 +882,7 @@ func TestSkipIgnoredDirs(t *testing.T) {
 	}
 }
 
-// https://github.com/0reg0n/cloud/issues/6487
+// https://github.com/0reg0n/linkbox0/issues/6487
 func TestIncludedSubdir(t *testing.T) {
 	fss := fs.NewFilesystem(fs.FilesystemTypeFake, "")
 

@@ -25,12 +25,12 @@ import (
 
 	"golang.org/x/net/http2"
 
-	"github.com/0reg0n/cloud/internal/slogutil"
-	"github.com/0reg0n/cloud/lib/build"
-	"github.com/0reg0n/cloud/lib/connections/registry"
-	"github.com/0reg0n/cloud/lib/dialer"
-	"github.com/0reg0n/cloud/lib/events"
-	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/linkbox0/internal/slogutil"
+	"github.com/0reg0n/linkbox0/lib/build"
+	"github.com/0reg0n/linkbox0/lib/connections/registry"
+	"github.com/0reg0n/linkbox0/lib/dialer"
+	"github.com/0reg0n/linkbox0/lib/events"
+	"github.com/0reg0n/linkbox0/lib/protocol"
 )
 
 type globalClient struct {

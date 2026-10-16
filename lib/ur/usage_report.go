@@ -22,16 +22,16 @@ import (
 	"time"
 
 	"github.com/shirou/gopsutil/v4/process"
-	"github.com/0reg0n/cloud/internal/db"
-	"github.com/0reg0n/cloud/internal/slogutil"
-	"github.com/0reg0n/cloud/lib/build"
-	"github.com/0reg0n/cloud/lib/config"
-	"github.com/0reg0n/cloud/lib/connections"
-	"github.com/0reg0n/cloud/lib/protocol"
-	"github.com/0reg0n/cloud/lib/scanner"
-	"github.com/0reg0n/cloud/lib/tlsutil"
-	"github.com/0reg0n/cloud/lib/upgrade"
-	"github.com/0reg0n/cloud/lib/ur/contract"
+	"github.com/0reg0n/linkbox0/internal/db"
+	"github.com/0reg0n/linkbox0/internal/slogutil"
+	"github.com/0reg0n/linkbox0/lib/build"
+	"github.com/0reg0n/linkbox0/lib/config"
+	"github.com/0reg0n/linkbox0/lib/connections"
+	"github.com/0reg0n/linkbox0/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/scanner"
+	"github.com/0reg0n/linkbox0/lib/tlsutil"
+	"github.com/0reg0n/linkbox0/lib/upgrade"
+	"github.com/0reg0n/linkbox0/lib/ur/contract"
 )
 
 // Current version number of the usage report, for acceptance purposes. If

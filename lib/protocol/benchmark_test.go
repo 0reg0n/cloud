@@ -13,8 +13,8 @@ import (
 	"net"
 	"testing"
 
-	"github.com/0reg0n/cloud/lib/dialer"
-	"github.com/0reg0n/cloud/lib/testutil"
+	"github.com/0reg0n/linkbox0/lib/dialer"
+	"github.com/0reg0n/linkbox0/lib/testutil"
 )
 
 func BenchmarkRequestsRawTCP(b *testing.B) {

@@ -11,7 +11,7 @@ import (
 	"slices"
 	"testing"
 
-	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/protocol"
 )
 
 var someBlocks = []protocol.BlockInfo{{Offset: 1}, {Offset: 2}, {Offset: 3}}

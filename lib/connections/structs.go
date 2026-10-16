@@ -18,12 +18,12 @@ import (
 
 	"github.com/thejerf/suture/v4"
 
-	"github.com/0reg0n/cloud/lib/config"
-	"github.com/0reg0n/cloud/lib/connections/registry"
-	"github.com/0reg0n/cloud/lib/nat"
-	"github.com/0reg0n/cloud/lib/osutil"
-	"github.com/0reg0n/cloud/lib/protocol"
-	"github.com/0reg0n/cloud/lib/stats"
+	"github.com/0reg0n/linkbox0/lib/config"
+	"github.com/0reg0n/linkbox0/lib/connections/registry"
+	"github.com/0reg0n/linkbox0/lib/nat"
+	"github.com/0reg0n/linkbox0/lib/osutil"
+	"github.com/0reg0n/linkbox0/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/stats"
 )
 
 type tlsConn interface {

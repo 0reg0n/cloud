@@ -6,6 +6,6 @@
 
 package versioner
 
-import "github.com/0reg0n/cloud/internal/slogutil"
+import "github.com/0reg0n/linkbox0/internal/slogutil"
 
 var l = slogutil.NewAdapter("File versioning")

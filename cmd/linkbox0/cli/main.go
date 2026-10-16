@@ -14,7 +14,7 @@ import (
 	"github.com/alecthomas/kong"
 	"github.com/kballard/go-shellquote"
 
-	"github.com/0reg0n/cloud/lib/config"
+	"github.com/0reg0n/linkbox0/lib/config"
 )
 
 type CLI struct {

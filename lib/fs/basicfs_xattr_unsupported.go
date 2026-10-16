@@ -8,7 +8,7 @@
 
 package fs
 
-import "github.com/0reg0n/cloud/lib/protocol"
+import "github.com/0reg0n/linkbox0/lib/protocol"
 
 func (f *BasicFilesystem) GetXattr(path string, xattrFilter XattrFilter) ([]protocol.Xattr, error) {
 	return nil, ErrXattrsNotSupported

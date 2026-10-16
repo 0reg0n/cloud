@@ -26,8 +26,8 @@ import (
 	"time"
 	"unicode"
 
-	"github.com/0reg0n/cloud/lib/build"
-	"github.com/0reg0n/cloud/lib/rc"
+	"github.com/0reg0n/linkbox0/lib/build"
+	"github.com/0reg0n/linkbox0/lib/rc"
 )
 
 func init() {
@@ -178,7 +178,7 @@ func alterFiles(dir string) error {
 			if build.IsDarwin || build.IsWindows {
 				// Syncthing is currently broken for case-only renames on case-
 				// insensitive platforms.
-				// https://github.com/0reg0n/cloud/issues/1787
+				// https://github.com/0reg0n/linkbox0/issues/1787
 				return nil
 			}
 
@@ -530,7 +530,7 @@ func startInstance(t *testing.T, i int) *rc.Process {
 
 	p := rc.NewProcess(addr)
 	p.LogTo(log)
-	if err := p.Start("../bin/comb", "--home", fmt.Sprintf("h%d", i), "--no-browser"); err != nil {
+	if err := p.Start("../bin/linkbox0", "--home", fmt.Sprintf("h%d", i), "--no-browser"); err != nil {
 		t.Fatal(err)
 	}
 	p.AwaitStartup()

@@ -9,7 +9,7 @@ package fs
 import (
 	"fmt"
 
-	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/protocol"
 	"golang.org/x/sys/windows"
 )
 

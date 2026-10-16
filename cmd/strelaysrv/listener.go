@@ -11,9 +11,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	syncthingprotocol "github.com/0reg0n/cloud/lib/protocol"
-	"github.com/0reg0n/cloud/lib/relay/protocol"
-	"github.com/0reg0n/cloud/lib/tlsutil"
+	syncthingprotocol "github.com/0reg0n/linkbox0/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/relay/protocol"
+	"github.com/0reg0n/linkbox0/lib/tlsutil"
 )
 
 var (

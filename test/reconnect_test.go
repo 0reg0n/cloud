@@ -14,7 +14,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/0reg0n/cloud/lib/rc"
+	"github.com/0reg0n/linkbox0/lib/rc"
 )
 
 func TestReconnectReceiverDuringTransfer(t *testing.T) {

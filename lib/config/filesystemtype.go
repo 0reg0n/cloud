@@ -6,7 +6,7 @@
 
 package config
 
-import "github.com/0reg0n/cloud/lib/fs"
+import "github.com/0reg0n/linkbox0/lib/fs"
 
 type FilesystemType string
 

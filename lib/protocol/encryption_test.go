@@ -15,14 +15,14 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/0reg0n/cloud/lib/build"
-	"github.com/0reg0n/cloud/lib/rand"
+	"github.com/0reg0n/linkbox0/lib/build"
+	"github.com/0reg0n/linkbox0/lib/rand"
 )
 
 var (
 	testKeyGen = NewKeyGenerator()
 
-	// https://github.com/0reg0n/cloud/issues/8799
+	// https://github.com/0reg0n/linkbox0/issues/8799
 	cryptoIsBrokenUnderRaceDetector = (build.IsLinux || build.IsDarwin) && strings.HasPrefix(runtime.Version(), "go1.20")
 )
 

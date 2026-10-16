@@ -10,7 +10,7 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/0reg0n/cloud/lib/signature"
+	"github.com/0reg0n/linkbox0/lib/signature"
 )
 
 var (

@@ -9,8 +9,8 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/0reg0n/cloud/lib/relay/protocol"
-	"github.com/0reg0n/cloud/lib/svcutil"
+	"github.com/0reg0n/linkbox0/lib/relay/protocol"
+	"github.com/0reg0n/linkbox0/lib/svcutil"
 
 	"github.com/thejerf/suture/v4"
 )

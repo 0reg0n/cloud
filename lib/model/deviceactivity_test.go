@@ -9,7 +9,7 @@ package model
 import (
 	"testing"
 
-	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/protocol"
 )
 
 func TestDeviceActivity(t *testing.T) {

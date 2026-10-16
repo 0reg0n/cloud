@@ -12,31 +12,31 @@ import (
 
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promauto"
-	"github.com/0reg0n/cloud/lib/config"
-	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/config"
+	"github.com/0reg0n/linkbox0/lib/protocol"
 )
 
 var (
 	metricCurrentOperations = promauto.NewGaugeVec(prometheus.GaugeOpts{
-		Namespace: "comb",
+		Namespace: "linkbox0",
 		Subsystem: "db",
 		Name:      "operations_current",
 		Help:      "Number of database operations currently ongoing, per folder and operation",
 	}, []string{"folder", "operation"})
 	metricTotalOperationSeconds = promauto.NewCounterVec(prometheus.CounterOpts{
-		Namespace: "comb",
+		Namespace: "linkbox0",
 		Subsystem: "db",
 		Name:      "operation_seconds_total",
 		Help:      "Total time spent in database operations, per folder and operation",
 	}, []string{"folder", "operation"})
 	metricTotalOperationsCount = promauto.NewCounterVec(prometheus.CounterOpts{
-		Namespace: "comb",
+		Namespace: "linkbox0",
 		Subsystem: "db",
 		Name:      "operations_total",
 		Help:      "Total number of database operations, per folder and operation",
 	}, []string{"folder", "operation"})
 	metricTotalFilesUpdatedCount = promauto.NewCounterVec(prometheus.CounterOpts{
-		Namespace: "comb",
+		Namespace: "linkbox0",
 		Subsystem: "db",
 		Name:      "files_updated_total",
 		Help:      "Total number of files updated",

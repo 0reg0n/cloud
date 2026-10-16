@@ -13,7 +13,7 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"github.com/0reg0n/cloud/lib/build"
+	"github.com/0reg0n/linkbox0/lib/build"
 )
 
 func TestCommonPrefix(t *testing.T) {

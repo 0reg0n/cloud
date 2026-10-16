@@ -13,8 +13,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/0reg0n/cloud/lib/nat"
-	"github.com/0reg0n/cloud/lib/osutil"
+	"github.com/0reg0n/linkbox0/lib/nat"
+	"github.com/0reg0n/linkbox0/lib/osutil"
 )
 
 func fixupPort(uri *url.URL, defaultPort int) *url.URL {

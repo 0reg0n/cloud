@@ -7,7 +7,7 @@
 package events
 
 import (
-	"github.com/0reg0n/cloud/internal/slogutil"
+	"github.com/0reg0n/linkbox0/internal/slogutil"
 )
 
 var dl = slogutil.NewAdapter("Event generation and logging")

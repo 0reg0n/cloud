@@ -12,8 +12,8 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/0reg0n/cloud/internal/slogutil"
-	"github.com/0reg0n/cloud/lib/fs"
+	"github.com/0reg0n/linkbox0/internal/slogutil"
+	"github.com/0reg0n/linkbox0/lib/fs"
 )
 
 type emptyDirTracker map[string]struct{}

@@ -18,7 +18,7 @@ import (
 
 	"github.com/quic-go/quic-go"
 
-	"github.com/0reg0n/cloud/lib/osutil"
+	"github.com/0reg0n/linkbox0/lib/osutil"
 )
 
 var quicConfig = &quic.Config{

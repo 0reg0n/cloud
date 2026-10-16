@@ -5,58 +5,58 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-// comb UI design system. Loaded after the Bootstrap theme so it can
+// linkbox0 UI design system. Loaded after the Bootstrap theme so it can
 // override component defaults and provide the dashboard shell.
 */
 
 :root {
-    --comb-bg: #f4f6f9;
-    --comb-surface: #ffffff;
-    --comb-border: #e9edf3;
-    --comb-border-strong: #dfe5ee;
-    --comb-text: #1f2733;
-    --comb-muted: #8b95a7;
-    --comb-accent: #2f6bff;
-    --comb-accent-dark: #2358d8;
-    --comb-accent-soft: #eaf1ff;
-    --comb-green: #22c55e;
-    --comb-green-bg: #e7f7ee;
-    --comb-green-text: #1f9d55;
-    --comb-gray-bg: #eef1f5;
-    --comb-gray-text: #64748b;
-    --comb-radius: 16px;
-    --comb-radius-sm: 10px;
-    --comb-shadow: 0 1px 2px rgba(16, 24, 40, .04), 0 8px 24px rgba(16, 24, 40, .04);
-    --comb-sidebar-width: 264px;
+    --linkbox0-bg: #f4f6f9;
+    --linkbox0-surface: #ffffff;
+    --linkbox0-border: #e9edf3;
+    --linkbox0-border-strong: #dfe5ee;
+    --linkbox0-text: #1f2733;
+    --linkbox0-muted: #8b95a7;
+    --linkbox0-accent: #2f6bff;
+    --linkbox0-accent-dark: #2358d8;
+    --linkbox0-accent-soft: #eaf1ff;
+    --linkbox0-green: #22c55e;
+    --linkbox0-green-bg: #e7f7ee;
+    --linkbox0-green-text: #1f9d55;
+    --linkbox0-gray-bg: #eef1f5;
+    --linkbox0-gray-text: #64748b;
+    --linkbox0-radius: 16px;
+    --linkbox0-radius-sm: 10px;
+    --linkbox0-shadow: 0 1px 2px rgba(16, 24, 40, .04), 0 8px 24px rgba(16, 24, 40, .04);
+    --linkbox0-sidebar-width: 264px;
 }
 
 /* ---------- Page ---------- */
 
 body {
-    background: var(--comb-bg);
-    color: var(--comb-text);
+    background: var(--linkbox0-bg);
+    color: var(--linkbox0-text);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-h1, h2, h3, h4, h5, .comb-topbar-title {
+h1, h2, h3, h4, h5, .linkbox0-topbar-title {
     font-family: inherit;
     font-weight: 700;
-    color: var(--comb-text);
+    color: var(--linkbox0-text);
 }
 
 /* ---------- Shell ---------- */
 
-.comb-app {
+.linkbox0-app {
     display: flex;
     min-height: 100vh;
     align-items: stretch;
 }
 
-.comb-sidebar {
-    width: var(--comb-sidebar-width);
-    flex: 0 0 var(--comb-sidebar-width);
-    background: var(--comb-surface);
-    border-right: 1px solid var(--comb-border);
+.linkbox0-sidebar {
+    width: var(--linkbox0-sidebar-width);
+    flex: 0 0 var(--linkbox0-sidebar-width);
+    background: var(--linkbox0-surface);
+    border-right: 1px solid var(--linkbox0-border);
     position: sticky;
     top: 0;
     align-self: flex-start;
@@ -66,72 +66,72 @@ h1, h2, h3, h4, h5, .comb-topbar-title {
     overflow-y: auto;
 }
 
-.comb-main {
+.linkbox0-main {
     flex: 1 1 auto;
     min-width: 0;
     display: flex;
     flex-direction: column;
 }
 
-.comb-content {
+.linkbox0-content {
     padding: 4px 28px 48px;
 }
 
 /* ---------- Sidebar: brand ---------- */
 
-.comb-brand {
+.linkbox0-brand {
     display: flex;
     align-items: center;
     gap: 12px;
     padding: 22px 20px 18px;
 }
 
-.comb-brand-logo {
+.linkbox0-brand-logo {
     width: 44px;
     height: 44px;
     padding: 5px;
     border-radius: 12px;
-    background: var(--comb-surface);
-    border: 1px solid var(--comb-border);
+    background: var(--linkbox0-surface);
+    border: 1px solid var(--linkbox0-border);
     object-fit: contain;
     flex: 0 0 auto;
 }
 
-.comb-brand-name {
+.linkbox0-brand-name {
     font-size: 18px;
     font-weight: 800;
     line-height: 1.1;
     letter-spacing: .2px;
 }
 
-.comb-brand-sub {
+.linkbox0-brand-sub {
     font-size: 12px;
-    color: var(--comb-muted);
+    color: var(--linkbox0-muted);
 }
 
 /* ---------- Sidebar: nav ---------- */
 
-.comb-nav {
+.linkbox0-nav {
     padding: 4px 12px 16px;
     flex: 1 1 auto;
 }
 
-.comb-nav-section {
+.linkbox0-nav-section {
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .08em;
-    color: var(--comb-muted);
+    color: var(--linkbox0-muted);
     padding: 16px 10px 8px;
 }
 
-.comb-nav-item {
+.linkbox0-nav-item {
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 10px 12px;
-    border-radius: var(--comb-radius-sm);
-    color: var(--comb-text);
+    border-radius: var(--linkbox0-radius-sm);
+    color: var(--linkbox0-text);
     font-size: 14px;
     font-weight: 500;
     text-decoration: none;
@@ -139,72 +139,72 @@ h1, h2, h3, h4, h5, .comb-topbar-title {
     transition: background .12s ease, color .12s ease;
 }
 
-.comb-nav-item:hover {
+.linkbox0-nav-item:hover {
     background: #f1f4f9;
     text-decoration: none;
-    color: var(--comb-text);
+    color: var(--linkbox0-text);
 }
 
-.comb-nav-item i {
+.linkbox0-nav-item i {
     width: 18px;
     text-align: center;
-    color: var(--comb-muted);
+    color: var(--linkbox0-muted);
 }
 
-.comb-nav-item.comb-nav-active,
-.comb-nav-item.comb-nav-active:hover {
-    background: var(--comb-accent);
+.linkbox0-nav-item.linkbox0-nav-active,
+.linkbox0-nav-item.linkbox0-nav-active:hover {
+    background: var(--linkbox0-accent);
     color: #fff;
 }
 
-.comb-nav-item.comb-nav-active i {
+.linkbox0-nav-item.linkbox0-nav-active i {
     color: #fff;
 }
 
-.comb-nav-count {
+.linkbox0-nav-count {
     margin-left: auto;
     font-size: 12px;
     font-weight: 700;
-    color: var(--comb-muted);
-    background: var(--comb-gray-bg);
+    color: var(--linkbox0-muted);
+    background: var(--linkbox0-gray-bg);
     border-radius: 999px;
     padding: 1px 8px;
 }
 
-.comb-nav-item.comb-nav-active .comb-nav-count {
+.linkbox0-nav-item.linkbox0-nav-active .linkbox0-nav-count {
     background: rgba(255, 255, 255, .25);
     color: #fff;
 }
 
 /* ---------- Sidebar: footer ---------- */
 
-.comb-sidebar-footer {
-    border-top: 1px solid var(--comb-border);
+.linkbox0-sidebar-footer {
+    border-top: 1px solid var(--linkbox0-border);
     padding: 16px 20px 20px;
 }
 
-.comb-device-name {
+.linkbox0-device-name {
     font-weight: 700;
     font-size: 14px;
     word-break: break-word;
 }
 
-.comb-device-meta {
+.linkbox0-device-meta {
     font-size: 12px;
-    color: var(--comb-muted);
+    color: var(--linkbox0-muted);
     margin-bottom: 10px;
 }
 
-.comb-device-status {
+.linkbox0-device-status {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     gap: 6px;
     font-size: 12px;
-    color: var(--comb-muted);
+    color: var(--linkbox0-muted);
 }
 
-.comb-dot {
+.linkbox0-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -213,18 +213,18 @@ h1, h2, h3, h4, h5, .comb-topbar-title {
     margin-left: 8px;
 }
 
-.comb-dot:first-child {
+.linkbox0-dot:first-child {
     margin-left: 0;
 }
 
-.comb-dot.comb-dot-on {
-    background: var(--comb-green);
+.linkbox0-dot.linkbox0-dot-on {
+    background: var(--linkbox0-green);
     box-shadow: 0 0 0 3px rgba(34, 197, 94, .15);
 }
 
 /* ---------- Topbar ---------- */
 
-.comb-topbar {
+.linkbox0-topbar {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -233,19 +233,19 @@ h1, h2, h3, h4, h5, .comb-topbar-title {
     flex-wrap: wrap;
 }
 
-.comb-topbar-title {
+.linkbox0-topbar-title {
     font-size: 26px;
     margin: 0;
     line-height: 1.15;
 }
 
-.comb-topbar-subtitle {
+.linkbox0-topbar-subtitle {
     margin: 4px 0 0;
-    color: var(--comb-muted);
+    color: var(--linkbox0-muted);
     font-size: 13px;
 }
 
-.comb-topbar-actions {
+.linkbox0-topbar-actions {
     float: none;
     padding-right: 0;
     display: flex;
@@ -253,15 +253,15 @@ h1, h2, h3, h4, h5, .comb-topbar-title {
     gap: 10px;
 }
 
-.comb-topbar-actions > li {
+.linkbox0-topbar-actions > li {
     float: none;
     list-style: none;
 }
 
 /* ---------- Buttons ---------- */
 
-.comb-btn,
-.comb-btn:visited {
+.linkbox0-btn,
+.linkbox0-btn:visited {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -275,29 +275,29 @@ h1, h2, h3, h4, h5, .comb-topbar-title {
     line-height: 1;
 }
 
-.comb-btn-primary,
-.comb-btn-primary:visited {
-    background: linear-gradient(135deg, var(--comb-accent), #6d8bff);
+.linkbox0-btn-primary,
+.linkbox0-btn-primary:visited {
+    background: linear-gradient(135deg, var(--linkbox0-accent), #6d8bff);
     color: #fff;
     box-shadow: 0 8px 18px rgba(47, 107, 255, .25);
 }
 
-.comb-btn-primary:hover {
+.linkbox0-btn-primary:hover {
     color: #fff;
     filter: brightness(1.05);
     text-decoration: none;
 }
 
-.comb-btn-ghost,
-.comb-btn-ghost:visited {
-    background: var(--comb-surface);
-    border-color: var(--comb-border-strong);
-    color: var(--comb-accent);
+.linkbox0-btn-ghost,
+.linkbox0-btn-ghost:visited {
+    background: var(--linkbox0-surface);
+    border-color: var(--linkbox0-border-strong);
+    color: var(--linkbox0-accent);
 }
 
-.comb-btn-ghost:hover {
-    color: var(--comb-accent-dark);
-    background: var(--comb-accent-soft);
+.linkbox0-btn-ghost:hover {
+    color: var(--linkbox0-accent-dark);
+    background: var(--linkbox0-accent-soft);
     text-decoration: none;
 }
 
@@ -306,38 +306,38 @@ h1, h2, h3, h4, h5, .comb-topbar-title {
 .btn {
     border-radius: 10px;
     font-weight: 600;
-    border-color: var(--comb-border-strong);
+    border-color: var(--linkbox0-border-strong);
 }
 
 .btn-default {
-    background: var(--comb-surface);
-    color: var(--comb-text);
+    background: var(--linkbox0-surface);
+    color: var(--linkbox0-text);
 }
 
 .btn-default:hover,
 .btn-default:focus {
     background: #f1f4f9;
-    color: var(--comb-text);
+    color: var(--linkbox0-text);
 }
 
 .btn-primary {
-    background: var(--comb-accent);
-    border-color: var(--comb-accent);
+    background: var(--linkbox0-accent);
+    border-color: var(--linkbox0-accent);
 }
 
 .btn-primary:hover,
 .btn-primary:focus {
-    background: var(--comb-accent-dark);
-    border-color: var(--comb-accent-dark);
+    background: var(--linkbox0-accent-dark);
+    border-color: var(--linkbox0-accent-dark);
 }
 
 /* ---------- Cards (Bootstrap panels) ---------- */
 
 .panel {
-    background: var(--comb-surface);
-    border: 1px solid var(--comb-border);
-    border-radius: var(--comb-radius);
-    box-shadow: var(--comb-shadow);
+    background: var(--linkbox0-surface);
+    border: 1px solid var(--linkbox0-border);
+    border-radius: var(--linkbox0-radius);
+    box-shadow: var(--linkbox0-shadow);
     overflow: hidden;
     margin-bottom: 20px;
 }
@@ -346,14 +346,14 @@ h1, h2, h3, h4, h5, .comb-topbar-title {
 .panel-success,
 .panel-warning,
 .panel-danger {
-    border-color: var(--comb-border);
+    border-color: var(--linkbox0-border);
 }
 
 .panel-heading,
 button.panel-heading {
     background: transparent;
-    border-radius: var(--comb-radius) var(--comb-radius) 0 0 !important;
-    border-bottom: 1px solid var(--comb-border);
+    border-radius: var(--linkbox0-radius) var(--linkbox0-radius) 0 0 !important;
+    border-bottom: 1px solid var(--linkbox0-border);
     padding: 16px 20px;
 }
 
@@ -369,7 +369,7 @@ button.panel-heading {
 
 .panel-footer {
     background: #fafbfd;
-    border-top: 1px solid var(--comb-border);
+    border-top: 1px solid var(--linkbox0-border);
     padding: 14px 20px;
 }
 
@@ -377,7 +377,7 @@ button.panel-heading {
 
 .panel-group > h3,
 h3[id="folder_list"],
-.comb-content > .row > div > h3 {
+.linkbox0-content > .row > div > h3 {
     position: relative;
     padding-left: 14px;
     font-size: 18px;
@@ -388,7 +388,7 @@ h3[id="folder_list"],
 
 .panel-group > h3::before,
 h3[id="folder_list"]::before,
-.comb-content > .row > div > h3::before {
+.linkbox0-content > .row > div > h3::before {
     content: "";
     position: absolute;
     left: 0;
@@ -396,14 +396,14 @@ h3[id="folder_list"]::before,
     bottom: 2px;
     width: 4px;
     border-radius: 3px;
-    background: var(--comb-accent);
+    background: var(--linkbox0-accent);
 }
 
-.comb-content h4 {
+.linkbox0-content h4 {
     font-size: 13px;
     text-transform: uppercase;
     letter-spacing: .05em;
-    color: var(--comb-muted);
+    color: var(--linkbox0-muted);
     font-weight: 700;
 }
 
@@ -411,17 +411,17 @@ h3[id="folder_list"]::before,
 
 .panel-body table th {
     font-weight: 500;
-    color: var(--comb-muted);
+    color: var(--linkbox0-muted);
 }
 
 .panel-body table td {
     font-weight: 600;
-    color: var(--comb-text);
+    color: var(--linkbox0-text);
 }
 
 .panel-body table.table-condensed tr > th,
 .panel-body table.table-condensed tr > td {
-    border-top: 1px dashed var(--comb-border-strong);
+    border-top: 1px dashed var(--linkbox0-border-strong);
     padding-top: 9px;
     padding-bottom: 9px;
 }
@@ -438,16 +438,16 @@ h3[id="folder_list"]::before,
     padding: 4px 10px;
     font-size: 12px;
     font-weight: 700;
-    color: var(--comb-gray-text);
-    background: var(--comb-gray-bg);
+    color: var(--linkbox0-gray-text);
+    background: var(--linkbox0-gray-bg);
     display: inline-flex;
     align-items: center;
 }
 
 .label-success,
 .label-primary {
-    background: var(--comb-green-bg);
-    color: var(--comb-green-text);
+    background: var(--linkbox0-green-bg);
+    color: var(--linkbox0-green-text);
 }
 
 .label-success::before,
@@ -456,7 +456,7 @@ h3[id="folder_list"]::before,
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: var(--comb-green);
+    background: var(--linkbox0-green);
     margin-right: 7px;
 }
 
@@ -494,57 +494,57 @@ h3[id="folder_list"]::before,
 .progress {
     height: 8px;
     border-radius: 999px;
-    background-color: var(--comb-gray-bg);
+    background-color: var(--linkbox0-gray-bg);
     box-shadow: none;
     overflow: hidden;
     margin-bottom: 0;
 }
 
 .progress-bar {
-    background-color: var(--comb-accent);
+    background-color: var(--linkbox0-accent);
     box-shadow: none;
 }
 
 .progress-bar-success {
-    background-color: var(--comb-green);
+    background-color: var(--linkbox0-green);
 }
 
 /* ---------- Forms ---------- */
 
 .form-control {
     border-radius: 10px;
-    border-color: var(--comb-border-strong);
+    border-color: var(--linkbox0-border-strong);
     box-shadow: none;
     height: auto;
     padding: 9px 12px;
 }
 
 .form-control:focus {
-    border-color: var(--comb-accent);
-    box-shadow: 0 0 0 3px var(--comb-accent-soft);
+    border-color: var(--linkbox0-accent);
+    box-shadow: 0 0 0 3px var(--linkbox0-accent-soft);
 }
 
 /* ---------- Alerts ---------- */
 
 .alert {
-    border-radius: var(--comb-radius-sm);
-    border: 1px solid var(--comb-border);
+    border-radius: var(--linkbox0-radius-sm);
+    border: 1px solid var(--linkbox0-border);
 }
 
 /* ---------- Modals ---------- */
 
 .modal-content {
-    border-radius: var(--comb-radius);
+    border-radius: var(--linkbox0-radius);
     border: none;
     box-shadow: 0 24px 60px rgba(16, 24, 40, .18);
 }
 
 .modal-header {
-    border-bottom: 1px solid var(--comb-border);
+    border-bottom: 1px solid var(--linkbox0-border);
 }
 
 .modal-footer {
-    border-top: 1px solid var(--comb-border);
+    border-top: 1px solid var(--linkbox0-border);
 }
 
 /* ---------- Misc ---------- */
@@ -560,36 +560,36 @@ h3[id="folder_list"]::before,
 /* ---------- Responsive ---------- */
 
 @media (max-width: 991px) {
-    .comb-app {
+    .linkbox0-app {
         flex-direction: column;
     }
 
-    .comb-sidebar {
+    .linkbox0-sidebar {
         position: static;
         width: 100%;
         flex-basis: auto;
         height: auto;
         border-right: none;
-        border-bottom: 1px solid var(--comb-border);
+        border-bottom: 1px solid var(--linkbox0-border);
     }
 
-    .comb-nav {
+    .linkbox0-nav {
         display: flex;
         flex-wrap: wrap;
         gap: 4px;
     }
 
-    .comb-nav-section {
+    .linkbox0-nav-section {
         width: 100%;
         padding-top: 8px;
     }
 
-    .comb-nav-item {
+    .linkbox0-nav-item {
         margin: 0;
     }
 
-    .comb-content,
-    .comb-topbar {
+    .linkbox0-content,
+    .linkbox0-topbar {
         padding-left: 16px;
         padding-right: 16px;
     }
@@ -601,16 +601,16 @@ h3[id="folder_list"]::before,
    for explicit selection in the settings). */
 
 body {
-    background-color: var(--comb-bg);
-    color: var(--comb-text);
+    background-color: var(--linkbox0-bg);
+    color: var(--linkbox0-text);
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: var(--comb-text);
+    color: var(--linkbox0-text);
 }
 
 a {
-    color: var(--comb-accent);
+    color: var(--linkbox0-accent);
 }
 
 .panel,
@@ -619,9 +619,9 @@ a {
 .panel-warning,
 .panel-danger,
 .panel-info {
-    background-color: var(--comb-surface);
-    border-color: var(--comb-border);
-    color: var(--comb-text);
+    background-color: var(--linkbox0-surface);
+    border-color: var(--linkbox0-border);
+    color: var(--linkbox0-text);
 }
 
 .panel-default > .panel-heading,
@@ -630,94 +630,94 @@ a {
 .panel-danger > .panel-heading,
 .panel-info > .panel-heading,
 .panel-heading {
-    background-color: var(--comb-surface);
-    color: var(--comb-text);
-    border-color: var(--comb-border);
+    background-color: var(--linkbox0-surface);
+    color: var(--linkbox0-text);
+    border-color: var(--linkbox0-border);
 }
 
 .panel-body {
-    background-color: var(--comb-surface);
-    color: var(--comb-text);
+    background-color: var(--linkbox0-surface);
+    color: var(--linkbox0-text);
 }
 
 .panel-footer {
     background-color: #fafbfd;
-    border-color: var(--comb-border);
-    color: var(--comb-muted);
+    border-color: var(--linkbox0-border);
+    color: var(--linkbox0-muted);
 }
 
 .panel-title,
 .panel-heading .panel-title {
-    color: var(--comb-text);
+    color: var(--linkbox0-text);
 }
 
 .panel-warning > .panel-heading .panel-title,
 .panel-danger > .panel-heading .panel-title {
-    color: var(--comb-text);
+    color: var(--linkbox0-text);
 }
 
 .well {
-    background-color: var(--comb-gray-bg);
-    border-color: var(--comb-border);
-    color: var(--comb-text);
+    background-color: var(--linkbox0-gray-bg);
+    border-color: var(--linkbox0-border);
+    color: var(--linkbox0-text);
 }
 
 .dropdown-menu {
-    background-color: var(--comb-surface);
-    border-color: var(--comb-border);
-    box-shadow: var(--comb-shadow);
+    background-color: var(--linkbox0-surface);
+    border-color: var(--linkbox0-border);
+    box-shadow: var(--linkbox0-shadow);
 }
 
 .dropdown-menu > li > a {
-    color: var(--comb-text);
+    color: var(--linkbox0-text);
 }
 
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
     background-color: #f1f4f9;
-    color: var(--comb-text);
+    color: var(--linkbox0-text);
 }
 
 .dropdown-menu > .active > a {
-    background-color: var(--comb-accent);
+    background-color: var(--linkbox0-accent);
     color: #fff;
 }
 
 .form-control {
-    background-color: var(--comb-surface);
-    color: var(--comb-text);
+    background-color: var(--linkbox0-surface);
+    color: var(--linkbox0-text);
 }
 
 .form-control[readonly="readonly"],
 .form-control[disabled] {
-    background-color: var(--comb-gray-bg);
+    background-color: var(--linkbox0-gray-bg);
 }
 
 .modal-content {
-    background-color: var(--comb-surface);
-    color: var(--comb-text);
+    background-color: var(--linkbox0-surface);
+    color: var(--linkbox0-text);
 }
 
 .modal-header,
 .modal-footer {
-    border-color: var(--comb-border);
+    border-color: var(--linkbox0-border);
 }
 
 .table {
-    color: var(--comb-text);
+    color: var(--linkbox0-text);
 }
 
 .text-muted,
 .help-block {
-    color: var(--comb-muted);
+    color: var(--linkbox0-muted);
 }
 
 /* Semantic alerts become soft pastel cards instead of solid bars. */
 
 .alert-success {
-    background-color: var(--comb-green-bg);
+    background-color: var(--linkbox0-green-bg);
     border-color: #cdeedd;
-    color: var(--comb-green-text);
+    color: var(--linkbox0-green-text);
 }
 
 .alert-warning {
@@ -733,9 +733,9 @@ a {
 }
 
 .alert-info {
-    background-color: var(--comb-accent-soft);
+    background-color: var(--linkbox0-accent-soft);
     border-color: #cfe0ff;
-    color: var(--comb-accent-dark);
+    color: var(--linkbox0-accent-dark);
 }
 
 /* Card title with an icon reads like the design mockup. */
@@ -750,7 +750,7 @@ a {
 .panel-heading .panel-icon {
     float: none;
     margin: 0;
-    color: var(--comb-muted);
+    color: var(--linkbox0-muted);
 }
 
 .panel-heading .panel-title {

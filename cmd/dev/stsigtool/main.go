@@ -12,8 +12,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/0reg0n/cloud/lib/signature"
-	"github.com/0reg0n/cloud/lib/upgrade"
+	"github.com/0reg0n/linkbox0/lib/signature"
+	"github.com/0reg0n/linkbox0/lib/upgrade"
 )
 
 func main() {

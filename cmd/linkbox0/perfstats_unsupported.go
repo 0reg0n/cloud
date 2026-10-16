@@ -8,7 +8,7 @@
 
 package main
 
-import "github.com/0reg0n/cloud/internal/db"
+import "github.com/0reg0n/linkbox0/internal/db"
 
 func startPerfStats(_ db.DB) {
 }

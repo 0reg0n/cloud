@@ -12,8 +12,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/0reg0n/cloud/lib/fs"
-	"github.com/0reg0n/cloud/lib/ignore"
+	"github.com/0reg0n/linkbox0/lib/fs"
+	"github.com/0reg0n/linkbox0/lib/ignore"
 )
 
 func main() {

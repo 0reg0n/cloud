@@ -13,7 +13,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/0reg0n/cloud/lib/build"
+	"github.com/0reg0n/linkbox0/lib/build"
 )
 
 func TestMtimeFS(t *testing.T) {

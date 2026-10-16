@@ -6,6 +6,6 @@
 
 package pmp
 
-import "github.com/0reg0n/cloud/internal/slogutil"
+import "github.com/0reg0n/linkbox0/internal/slogutil"
 
 func init() { slogutil.RegisterPackage("NAT-PMP discovery and port mapping") }

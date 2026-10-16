@@ -9,7 +9,7 @@ package stats
 import (
 	"time"
 
-	"github.com/0reg0n/cloud/internal/db"
+	"github.com/0reg0n/linkbox0/internal/db"
 )
 
 const (

@@ -28,8 +28,8 @@ import (
 	lz4 "github.com/pierrec/lz4/v4"
 	"google.golang.org/protobuf/proto"
 
-	"github.com/0reg0n/cloud/internal/gen/bep"
-	"github.com/0reg0n/cloud/internal/protoutil"
+	"github.com/0reg0n/linkbox0/internal/gen/bep"
+	"github.com/0reg0n/linkbox0/internal/protoutil"
 )
 
 const (

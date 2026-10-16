@@ -42,22 +42,22 @@ import (
 	"golang.org/x/text/transform"
 	"golang.org/x/text/unicode/norm"
 
-	"github.com/0reg0n/cloud/internal/db"
-	"github.com/0reg0n/cloud/internal/slogutil"
-	"github.com/0reg0n/cloud/lib/build"
-	"github.com/0reg0n/cloud/lib/config"
-	"github.com/0reg0n/cloud/lib/connections"
-	"github.com/0reg0n/cloud/lib/discover"
-	"github.com/0reg0n/cloud/lib/events"
-	"github.com/0reg0n/cloud/lib/fs"
-	"github.com/0reg0n/cloud/lib/locations"
-	"github.com/0reg0n/cloud/lib/model"
-	"github.com/0reg0n/cloud/lib/protocol"
-	"github.com/0reg0n/cloud/lib/rand"
-	"github.com/0reg0n/cloud/lib/svcutil"
-	"github.com/0reg0n/cloud/lib/tlsutil"
-	"github.com/0reg0n/cloud/lib/upgrade"
-	"github.com/0reg0n/cloud/lib/ur"
+	"github.com/0reg0n/linkbox0/internal/db"
+	"github.com/0reg0n/linkbox0/internal/slogutil"
+	"github.com/0reg0n/linkbox0/lib/build"
+	"github.com/0reg0n/linkbox0/lib/config"
+	"github.com/0reg0n/linkbox0/lib/connections"
+	"github.com/0reg0n/linkbox0/lib/discover"
+	"github.com/0reg0n/linkbox0/lib/events"
+	"github.com/0reg0n/linkbox0/lib/fs"
+	"github.com/0reg0n/linkbox0/lib/locations"
+	"github.com/0reg0n/linkbox0/lib/model"
+	"github.com/0reg0n/linkbox0/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/rand"
+	"github.com/0reg0n/linkbox0/lib/svcutil"
+	"github.com/0reg0n/linkbox0/lib/tlsutil"
+	"github.com/0reg0n/linkbox0/lib/upgrade"
+	"github.com/0reg0n/linkbox0/lib/ur"
 )
 
 const (
@@ -612,8 +612,8 @@ func noCacheMiddleware(h http.Handler) http.Handler {
 
 func withDetailsMiddleware(id protocol.DeviceID, h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("X-Comb-Version", build.Version)
-		w.Header().Set("X-Comb-ID", id.String())
+		w.Header().Set("X-LinkBox0-Version", build.Version)
+		w.Header().Set("X-LinkBox0-ID", id.String())
 		h.ServeHTTP(w, r)
 	})
 }
@@ -1198,7 +1198,7 @@ func (s *service) getSupportBundle(w http.ResponseWriter, r *http.Request) {
 	if p := pprof.Lookup("goroutine"); p != nil {
 		var goroutineBuf bytes.Buffer
 		_ = p.WriteTo(&goroutineBuf, 0)
-		filename := fmt.Sprintf("comb-goroutines-%s-%s-%s-%s.pprof", runtime.GOOS, runtime.GOARCH, build.Version, time.Now().Format("150405")) // hhmmss
+		filename := fmt.Sprintf("linkbox0-goroutines-%s-%s-%s-%s.pprof", runtime.GOOS, runtime.GOARCH, build.Version, time.Now().Format("150405")) // hhmmss
 		files = append(files, fileEntry{name: filename, data: goroutineBuf.Bytes()})
 	}
 
@@ -1206,7 +1206,7 @@ func (s *service) getSupportBundle(w http.ResponseWriter, r *http.Request) {
 	var heapBuf bytes.Buffer
 	runtime.GC()
 	if err := pprof.WriteHeapProfile(&heapBuf); err == nil {
-		filename := fmt.Sprintf("comb-heap-%s-%s-%s-%s.pprof", runtime.GOOS, runtime.GOARCH, build.Version, time.Now().Format("150405")) // hhmmss
+		filename := fmt.Sprintf("linkbox0-heap-%s-%s-%s-%s.pprof", runtime.GOOS, runtime.GOARCH, build.Version, time.Now().Format("150405")) // hhmmss
 		files = append(files, fileEntry{name: filename, data: heapBuf.Bytes()})
 	}
 
@@ -1220,7 +1220,7 @@ func (s *service) getSupportBundle(w http.ResponseWriter, r *http.Request) {
 	if err := pprof.StartCPUProfile(&cpuBuf); err == nil {
 		time.Sleep(profilingDuration)
 		pprof.StopCPUProfile()
-		filename := fmt.Sprintf("comb-cpu-%s-%s-%s-%s.pprof", runtime.GOOS, runtime.GOARCH, build.Version, time.Now().Format("150405")) // hhmmss
+		filename := fmt.Sprintf("linkbox0-cpu-%s-%s-%s-%s.pprof", runtime.GOOS, runtime.GOARCH, build.Version, time.Now().Format("150405")) // hhmmss
 		files = append(files, fileEntry{name: filename, data: cpuBuf.Bytes()})
 	}
 
@@ -1228,7 +1228,7 @@ func (s *service) getSupportBundle(w http.ResponseWriter, r *http.Request) {
 	if p := pprof.Lookup("block"); p != nil {
 		var blockBuf bytes.Buffer
 		_ = p.WriteTo(&blockBuf, 0)
-		filename := fmt.Sprintf("comb-block-%s-%s-%s-%s.pprof", runtime.GOOS, runtime.GOARCH, build.Version, time.Now().Format("150405")) // hhmmss
+		filename := fmt.Sprintf("linkbox0-block-%s-%s-%s-%s.pprof", runtime.GOOS, runtime.GOARCH, build.Version, time.Now().Format("150405")) // hhmmss
 		files = append(files, fileEntry{name: filename, data: blockBuf.Bytes()})
 	}
 
@@ -1738,7 +1738,7 @@ func (*service) getCPUProf(w http.ResponseWriter, r *http.Request) {
 		duration = 30 * time.Second
 	}
 
-	filename := fmt.Sprintf("comb-cpu-%s-%s-%s-%s.pprof", runtime.GOOS, runtime.GOARCH, build.Version, time.Now().Format("150405")) // hhmmss
+	filename := fmt.Sprintf("linkbox0-cpu-%s-%s-%s-%s.pprof", runtime.GOOS, runtime.GOARCH, build.Version, time.Now().Format("150405")) // hhmmss
 
 	w.Header().Set("Content-Type", "application/octet-stream")
 	w.Header().Set("Content-Disposition", "attachment; filename="+filename)
@@ -1750,7 +1750,7 @@ func (*service) getCPUProf(w http.ResponseWriter, r *http.Request) {
 }
 
 func (*service) getHeapProf(w http.ResponseWriter, _ *http.Request) {
-	filename := fmt.Sprintf("comb-heap-%s-%s-%s-%s.pprof", runtime.GOOS, runtime.GOARCH, build.Version, time.Now().Format("150405")) // hhmmss
+	filename := fmt.Sprintf("linkbox0-heap-%s-%s-%s-%s.pprof", runtime.GOOS, runtime.GOARCH, build.Version, time.Now().Format("150405")) // hhmmss
 
 	w.Header().Set("Content-Type", "application/octet-stream")
 	w.Header().Set("Content-Disposition", "attachment; filename="+filename)

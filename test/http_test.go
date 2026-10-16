@@ -17,8 +17,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/0reg0n/cloud/lib/protocol"
-	"github.com/0reg0n/cloud/lib/rc"
+	"github.com/0reg0n/linkbox0/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/rc"
 )
 
 func TestHTTPGetIndex(t *testing.T) {
@@ -173,7 +173,7 @@ func TestHTTPPOSTWithoutCSRF(t *testing.T) {
 	}
 	res.Body.Close()
 	hdr := res.Header.Get("Set-Cookie")
-	id := res.Header.Get("X-Comb-ID")[:protocol.ShortIDStringLength]
+	id := res.Header.Get("X-LinkBox0-ID")[:protocol.ShortIDStringLength]
 	if !strings.Contains(hdr, "CSRF-Token") {
 		t.Error("Missing CSRF-Token in", hdr)
 	}

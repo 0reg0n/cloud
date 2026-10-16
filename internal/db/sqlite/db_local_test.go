@@ -9,9 +9,9 @@ package sqlite
 import (
 	"testing"
 
-	"github.com/0reg0n/cloud/internal/db"
-	"github.com/0reg0n/cloud/internal/itererr"
-	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/linkbox0/internal/db"
+	"github.com/0reg0n/linkbox0/internal/itererr"
+	"github.com/0reg0n/linkbox0/lib/protocol"
 )
 
 func TestBlocks(t *testing.T) {

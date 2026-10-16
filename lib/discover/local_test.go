@@ -13,9 +13,9 @@ import (
 	"net"
 	"testing"
 
-	"github.com/0reg0n/cloud/internal/gen/discoproto"
-	"github.com/0reg0n/cloud/lib/events"
-	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/linkbox0/internal/gen/discoproto"
+	"github.com/0reg0n/linkbox0/lib/events"
+	"github.com/0reg0n/linkbox0/lib/protocol"
 )
 
 func TestLocalInstanceID(t *testing.T) {

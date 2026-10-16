@@ -19,7 +19,7 @@ import (
 
 	raven "github.com/getsentry/raven-go"
 	"github.com/maruel/panicparse/v2/stack"
-	"github.com/0reg0n/cloud/lib/build"
+	"github.com/0reg0n/linkbox0/lib/build"
 )
 
 const reportServer = "https://crash.syncthing.net/report/"

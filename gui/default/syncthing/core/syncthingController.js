@@ -2200,7 +2200,7 @@ angular.module('syncthing.core')
             }
         };
 
-        $scope.combConnectedCount = function () {
+        $scope.linkbox0ConnectedCount = function () {
             var count = 0;
             angular.forEach($scope.connections, function (conn) {
                 if (conn && conn.connected) {

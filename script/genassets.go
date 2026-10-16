@@ -31,7 +31,7 @@ package auto
 import (
 	"time"
 
-	"github.com/0reg0n/cloud/lib/assets"
+	"github.com/0reg0n/linkbox0/lib/assets"
 )
 
 func Assets() map[string]assets.Asset {

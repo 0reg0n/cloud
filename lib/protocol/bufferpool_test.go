@@ -11,7 +11,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/0reg0n/cloud/lib/rand"
+	"github.com/0reg0n/linkbox0/lib/rand"
 )
 
 func TestGetBucketNumbers(t *testing.T) {

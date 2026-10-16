@@ -14,7 +14,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/0reg0n/cloud/internal/gen/bep"
+	"github.com/0reg0n/linkbox0/internal/gen/bep"
 )
 
 // The Vector type represents a version vector. The zero value is a usable

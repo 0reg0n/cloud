@@ -13,8 +13,8 @@ import (
 	"net"
 	"time"
 
-	"github.com/0reg0n/cloud/lib/build"
-	"github.com/0reg0n/cloud/lib/netutil"
+	"github.com/0reg0n/linkbox0/lib/build"
+	"github.com/0reg0n/linkbox0/lib/netutil"
 
 	"golang.org/x/net/ipv6"
 )

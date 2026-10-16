@@ -178,8 +178,8 @@ func (h *formattingHandler) WithGroup(name string) slog.Handler {
 
 func funcNameToPkg(fn string) (string, string) {
 	fn = strings.ToLower(fn)
-	fn = strings.TrimPrefix(fn, "github.com/0reg0n/cloud/lib/")
-	fn = strings.TrimPrefix(fn, "github.com/0reg0n/cloud/internal/")
+	fn = strings.TrimPrefix(fn, "github.com/0reg0n/linkbox0/lib/")
+	fn = strings.TrimPrefix(fn, "github.com/0reg0n/linkbox0/internal/")
 
 	pkgTypFn := strings.Split(fn, ".") // [package, type, method] or [package, function]
 	if len(pkgTypFn) <= 2 {

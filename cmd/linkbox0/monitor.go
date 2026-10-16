@@ -22,12 +22,12 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/0reg0n/cloud/internal/slogutil"
-	"github.com/0reg0n/cloud/lib/build"
-	"github.com/0reg0n/cloud/lib/fs"
-	"github.com/0reg0n/cloud/lib/locations"
-	"github.com/0reg0n/cloud/lib/osutil"
-	"github.com/0reg0n/cloud/lib/svcutil"
+	"github.com/0reg0n/linkbox0/internal/slogutil"
+	"github.com/0reg0n/linkbox0/lib/build"
+	"github.com/0reg0n/linkbox0/lib/fs"
+	"github.com/0reg0n/linkbox0/lib/locations"
+	"github.com/0reg0n/linkbox0/lib/osutil"
+	"github.com/0reg0n/linkbox0/lib/svcutil"
 )
 
 var (
@@ -90,8 +90,8 @@ func (c *serveCmd) monitorMain() {
 	args := os.Args
 	binary, err := getBinary(args[0])
 	if err != nil {
-		slog.Error("Failed to start the main comb process", slogutil.Error(err))
-		panic("Error starting the main comb process")
+		slog.Error("Failed to start the main linkbox0 process", slogutil.Error(err))
+		panic("Error starting the main linkbox0 process")
 	}
 	var restarts [restartCounts]time.Time
 
@@ -127,11 +127,11 @@ func (c *serveCmd) monitorMain() {
 			panic(err)
 		}
 
-		slog.Debug("Starting comb")
+		slog.Debug("Starting linkbox0")
 		err = cmd.Start()
 		if err != nil {
-			slog.Error("Failed to start the main comb process", slogutil.Error(err))
-			panic("Error starting the main comb process")
+			slog.Error("Failed to start the main linkbox0 process", slogutil.Error(err))
+			panic("Error starting the main linkbox0 process")
 		}
 
 		stdoutMut.Lock()
@@ -198,7 +198,7 @@ func (c *serveCmd) monitorMain() {
 			os.Exit(svcutil.ExitError.AsInt())
 		}
 
-		slog.Info("comb exited", slogutil.Error(err))
+		slog.Info("linkbox0 exited", slogutil.Error(err))
 		time.Sleep(restartPause)
 
 		if first {
@@ -250,7 +250,7 @@ func copyStderr(stderr io.Reader, dst io.Writer) {
 			}
 
 			slog.Error("Panic detected, writing to file", slogutil.FilePath(panicFd.Name()))
-			slog.Info("Please check for existing issues with similar panic message at https://github.com/0reg0n/cloud/issues/")
+			slog.Info("Please check for existing issues with similar panic message at https://github.com/0reg0n/linkbox0/issues/")
 			slog.Info("If no issue with similar panic message exists, please create a new issue with the panic log attached")
 
 			stdoutMut.Lock()

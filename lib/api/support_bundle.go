@@ -10,7 +10,7 @@ import (
 	"archive/zip"
 	"io"
 
-	"github.com/0reg0n/cloud/lib/config"
+	"github.com/0reg0n/linkbox0/lib/config"
 )
 
 // getRedactedConfig redacting some parts of config

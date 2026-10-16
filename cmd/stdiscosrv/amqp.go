@@ -16,9 +16,9 @@ import (
 	"github.com/thejerf/suture/v4"
 	"google.golang.org/protobuf/proto"
 
-	"github.com/0reg0n/cloud/internal/gen/discosrv"
-	"github.com/0reg0n/cloud/internal/protoutil"
-	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/linkbox0/internal/gen/discosrv"
+	"github.com/0reg0n/linkbox0/internal/protoutil"
+	"github.com/0reg0n/linkbox0/lib/protocol"
 )
 
 type amqpReplicator struct {

@@ -10,7 +10,7 @@ import (
 	"slices"
 	"sync"
 
-	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/protocol"
 )
 
 // deviceFolderFileDownloadState holds current download state of a file that

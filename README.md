@@ -1,11 +1,11 @@
-# Comb
+# LinkBox0
 
-**Comb** is a continuous file synchronization program. It synchronizes files
+**LinkBox0** is a continuous file synchronization program. It synchronizes files
 between two or more computers, peer to peer, without a central server.
 
 This project is based on [Syncthing](https://github.com/syncthing/syncthing) and
 keeps its core functionality: continuous, decentralized, encrypted file
-synchronization. The design and identity are adapted for `Comb` on top of that
+synchronization. The design and identity are adapted for `LinkBox0` on top of that
 foundation.
 
 ## Goals
@@ -30,7 +30,7 @@ Building from source requires Go (see `go.mod` for the required version).
 
     go run build.go
 
-The binary is created in the current directory as `comb`. A guide with more
+The binary is created in the current directory as `linkbox0`. A guide with more
 details is available in the [upstream build documentation][5].
 
 ## Documentation
@@ -42,7 +42,7 @@ The protocol and user documentation are inherited from upstream:
 
 ## Attribution and License
 
-`Comb` is a derivative work of Syncthing, which is licensed under the
+`LinkBox0` is a derivative work of Syncthing, which is licensed under the
 [Mozilla Public License 2.0][7]. Files originating from Syncthing retain their
 original copyright notices and are distributed under the same license. See
 [NOTICE](NOTICE) for details.

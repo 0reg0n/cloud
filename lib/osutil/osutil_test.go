@@ -12,9 +12,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/0reg0n/cloud/lib/fs"
-	"github.com/0reg0n/cloud/lib/osutil"
-	"github.com/0reg0n/cloud/lib/rand"
+	"github.com/0reg0n/linkbox0/lib/fs"
+	"github.com/0reg0n/linkbox0/lib/osutil"
+	"github.com/0reg0n/linkbox0/lib/rand"
 )
 
 func TestIsDeleted(t *testing.T) {

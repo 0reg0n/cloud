@@ -9,7 +9,7 @@ package config
 import (
 	"time"
 
-	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/protocol"
 )
 
 type ObservedFolder struct {

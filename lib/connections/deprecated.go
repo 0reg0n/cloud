@@ -6,7 +6,7 @@
 
 package connections
 
-import "github.com/0reg0n/cloud/lib/config"
+import "github.com/0reg0n/linkbox0/lib/config"
 
 // invalidListener is never valid
 type invalidListener struct {

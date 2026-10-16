@@ -20,7 +20,7 @@ import (
 	"io"
 	"math/big"
 
-	"github.com/0reg0n/cloud/lib/rand"
+	"github.com/0reg0n/linkbox0/lib/rand"
 )
 
 // GenerateKeys returns a new key pair, with the private and public key

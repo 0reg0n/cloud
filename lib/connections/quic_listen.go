@@ -21,12 +21,12 @@ import (
 
 	"github.com/quic-go/quic-go"
 
-	"github.com/0reg0n/cloud/internal/slogutil"
-	"github.com/0reg0n/cloud/lib/config"
-	"github.com/0reg0n/cloud/lib/connections/registry"
-	"github.com/0reg0n/cloud/lib/nat"
-	"github.com/0reg0n/cloud/lib/stun"
-	"github.com/0reg0n/cloud/lib/svcutil"
+	"github.com/0reg0n/linkbox0/internal/slogutil"
+	"github.com/0reg0n/linkbox0/lib/config"
+	"github.com/0reg0n/linkbox0/lib/connections/registry"
+	"github.com/0reg0n/linkbox0/lib/nat"
+	"github.com/0reg0n/linkbox0/lib/stun"
+	"github.com/0reg0n/linkbox0/lib/svcutil"
 )
 
 func init() {

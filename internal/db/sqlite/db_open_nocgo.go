@@ -9,7 +9,7 @@
 package sqlite
 
 import (
-	"github.com/0reg0n/cloud/lib/build"
+	"github.com/0reg0n/linkbox0/lib/build"
 	_ "modernc.org/sqlite" // register sqlite database driver
 )
 

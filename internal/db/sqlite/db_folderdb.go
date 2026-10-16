@@ -17,10 +17,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/0reg0n/cloud/internal/db"
-	"github.com/0reg0n/cloud/lib/config"
-	"github.com/0reg0n/cloud/lib/protocol"
-	"github.com/0reg0n/cloud/lib/rand"
+	"github.com/0reg0n/linkbox0/internal/db"
+	"github.com/0reg0n/linkbox0/lib/config"
+	"github.com/0reg0n/linkbox0/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/rand"
 )
 
 var errNoSuchFolder = errors.New("no such folder")

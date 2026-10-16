@@ -24,8 +24,8 @@ import (
 	"golang.org/x/crypto/scrypt"
 	"google.golang.org/protobuf/proto"
 
-	"github.com/0reg0n/cloud/internal/gen/bep"
-	"github.com/0reg0n/cloud/lib/rand"
+	"github.com/0reg0n/linkbox0/internal/gen/bep"
+	"github.com/0reg0n/linkbox0/lib/rand"
 )
 
 const (

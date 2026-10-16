@@ -10,7 +10,7 @@ import (
 	"slices"
 	"testing"
 
-	"github.com/0reg0n/cloud/lib/sliceutil"
+	"github.com/0reg0n/linkbox0/lib/sliceutil"
 )
 
 func TestRemoveAndZero(t *testing.T) {

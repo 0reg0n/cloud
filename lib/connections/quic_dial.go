@@ -18,9 +18,9 @@ import (
 
 	"github.com/quic-go/quic-go"
 
-	"github.com/0reg0n/cloud/lib/config"
-	"github.com/0reg0n/cloud/lib/connections/registry"
-	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/config"
+	"github.com/0reg0n/linkbox0/lib/connections/registry"
+	"github.com/0reg0n/linkbox0/lib/protocol"
 )
 
 const (

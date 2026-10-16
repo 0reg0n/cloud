@@ -12,7 +12,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/0reg0n/cloud/lib/events"
+	"github.com/0reg0n/linkbox0/lib/events"
 )
 
 // The auditService subscribes to events and writes these in JSON format, one

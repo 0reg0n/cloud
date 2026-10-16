@@ -9,7 +9,7 @@ package ignoreresult_test
 import (
 	"testing"
 
-	"github.com/0reg0n/cloud/lib/ignore/ignoreresult"
+	"github.com/0reg0n/linkbox0/lib/ignore/ignoreresult"
 )
 
 func TestFlagCanSkipDir(t *testing.T) {

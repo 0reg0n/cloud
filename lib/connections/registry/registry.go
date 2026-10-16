@@ -13,7 +13,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/0reg0n/cloud/lib/sliceutil"
+	"github.com/0reg0n/linkbox0/lib/sliceutil"
 )
 
 type Registry struct {

@@ -32,8 +32,8 @@ import (
 	"text/template"
 	"time"
 
-	buildpkg "github.com/0reg0n/cloud/lib/build"
-	"github.com/0reg0n/cloud/lib/upgrade"
+	buildpkg "github.com/0reg0n/linkbox0/lib/build"
+	"github.com/0reg0n/linkbox0/lib/upgrade"
 	"sigs.k8s.io/yaml"
 )
 
@@ -85,14 +85,14 @@ var targets = map[string]target{
 		// Only valid for the "build" and "install" commands as it lacks all
 		// the archive creation stuff. buildPkgs gets filled out in init()
 	},
-	"comb": {
+	"linkbox0": {
 		// The default target for "build", "install", "tar", "zip", "deb", etc.
-		name:        "comb",
-		debname:     "comb",
+		name:        "linkbox0",
+		debname:     "linkbox0",
 		debdeps:     []string{"libc6", "procps"},
-		description: "comb - continuous file synchronization",
-		buildPkgs:   []string{"github.com/0reg0n/cloud/cmd/comb"},
-		binaryName:  "comb", // .exe will be added automatically for Windows builds
+		description: "linkbox0 - continuous file synchronization",
+		buildPkgs:   []string{"github.com/0reg0n/linkbox0/cmd/linkbox0"},
+		binaryName:  "linkbox0", // .exe will be added automatically for Windows builds
 		archiveFiles: []archiveFile{
 			{src: "{{binary}}", dst: "{{binary}}", perm: 0o755},
 			{src: "README.md", dst: "README.txt", perm: 0o644},
@@ -136,7 +136,7 @@ var targets = map[string]target{
 		debdeps:     []string{"libc6"},
 		debpre:      "cmd/stdiscosrv/scripts/preinst",
 		description: "Syncthing Discovery Server",
-		buildPkgs:   []string{"github.com/0reg0n/cloud/cmd/stdiscosrv"},
+		buildPkgs:   []string{"github.com/0reg0n/linkbox0/cmd/stdiscosrv"},
 		binaryName:  "stdiscosrv", // .exe will be added automatically for Windows builds
 		archiveFiles: []archiveFile{
 			{src: "{{binary}}", dst: "{{binary}}", perm: 0o755},
@@ -162,7 +162,7 @@ var targets = map[string]target{
 		debdeps:     []string{"libc6"},
 		debpre:      "cmd/strelaysrv/scripts/preinst",
 		description: "Syncthing Relay Server",
-		buildPkgs:   []string{"github.com/0reg0n/cloud/cmd/strelaysrv"},
+		buildPkgs:   []string{"github.com/0reg0n/linkbox0/cmd/strelaysrv"},
 		binaryName:  "strelaysrv", // .exe will be added automatically for Windows builds
 		archiveFiles: []archiveFile{
 			{src: "{{binary}}", dst: "{{binary}}", perm: 0o755},
@@ -187,25 +187,25 @@ var targets = map[string]target{
 	"strelaypoolsrv": {
 		name:        "strelaypoolsrv",
 		description: "Syncthing Relay Pool Server",
-		buildPkgs:   []string{"github.com/0reg0n/cloud/cmd/infra/strelaypoolsrv"},
+		buildPkgs:   []string{"github.com/0reg0n/linkbox0/cmd/infra/strelaypoolsrv"},
 		binaryName:  "strelaypoolsrv",
 	},
 	"stupgrades": {
 		name:        "stupgrades",
 		description: "Syncthing Upgrade Check Server",
-		buildPkgs:   []string{"github.com/0reg0n/cloud/cmd/infra/stupgrades"},
+		buildPkgs:   []string{"github.com/0reg0n/linkbox0/cmd/infra/stupgrades"},
 		binaryName:  "stupgrades",
 	},
 	"stcrashreceiver": {
 		name:        "stcrashreceiver",
 		description: "Syncthing Crash Server",
-		buildPkgs:   []string{"github.com/0reg0n/cloud/cmd/infra/stcrashreceiver"},
+		buildPkgs:   []string{"github.com/0reg0n/linkbox0/cmd/infra/stcrashreceiver"},
 		binaryName:  "stcrashreceiver",
 	},
 	"ursrv": {
 		name:        "ursrv",
 		description: "Syncthing Usage Reporting Server",
-		buildPkgs:   []string{"github.com/0reg0n/cloud/cmd/infra/ursrv"},
+		buildPkgs:   []string{"github.com/0reg0n/linkbox0/cmd/infra/ursrv"},
 		binaryName:  "ursrv",
 	},
 }
@@ -218,23 +218,23 @@ func initTargets() {
 			// No go files in the directory
 			continue
 		}
-		all.buildPkgs = append(all.buildPkgs, fmt.Sprintf("github.com/0reg0n/cloud/%s", pkg))
+		all.buildPkgs = append(all.buildPkgs, fmt.Sprintf("github.com/0reg0n/linkbox0/%s", pkg))
 	}
 	targets["all"] = all
 
-	// The "comb" target includes a few more files found in the "etc"
+	// The "linkbox0" target includes a few more files found in the "etc"
 	// and "extra" dirs.
-	combPkg := targets["comb"]
+	linkbox0Pkg := targets["linkbox0"]
 	for _, file := range listFiles("etc") {
-		combPkg.archiveFiles = append(combPkg.archiveFiles, archiveFile{src: file, dst: file, perm: 0o644})
+		linkbox0Pkg.archiveFiles = append(linkbox0Pkg.archiveFiles, archiveFile{src: file, dst: file, perm: 0o644})
 	}
 	for _, file := range listFiles("extra") {
-		combPkg.archiveFiles = append(combPkg.archiveFiles, archiveFile{src: file, dst: file, perm: 0o644})
+		linkbox0Pkg.archiveFiles = append(linkbox0Pkg.archiveFiles, archiveFile{src: file, dst: file, perm: 0o644})
 	}
 	for _, file := range listFiles("extra") {
-		combPkg.installationFiles = append(combPkg.installationFiles, archiveFile{src: file, dst: "deb/usr/share/doc/syncthing/" + filepath.Base(file), perm: 0o644})
+		linkbox0Pkg.installationFiles = append(linkbox0Pkg.installationFiles, archiveFile{src: file, dst: "deb/usr/share/doc/syncthing/" + filepath.Base(file), perm: 0o644})
 	}
-	targets["comb"] = combPkg
+	targets["linkbox0"] = linkbox0Pkg
 }
 
 func main() {
@@ -257,9 +257,9 @@ func main() {
 		runCommand("install", targets["all"])
 	} else {
 		// with any command given but not a target, the target is
-		// "comb". So "go run build.go install" is "go run build.go install
-		// comb" etc.
-		targetName := "comb"
+		// "linkbox0". So "go run build.go install" is "go run build.go install
+		// linkbox0" etc.
+		targetName := "linkbox0"
 		if flag.NArg() > 1 {
 			targetName = flag.Arg(1)
 		}
@@ -288,10 +288,10 @@ func runCommand(cmd string, target target) {
 		build(target, tags)
 
 	case "test":
-		test(strings.Fields(extraTags), "github.com/0reg0n/cloud/internal/...", "github.com/0reg0n/cloud/lib/...", "github.com/0reg0n/cloud/cmd/...")
+		test(strings.Fields(extraTags), "github.com/0reg0n/linkbox0/internal/...", "github.com/0reg0n/linkbox0/lib/...", "github.com/0reg0n/linkbox0/cmd/...")
 
 	case "bench":
-		bench(strings.Fields(extraTags), "github.com/0reg0n/cloud/internal/...", "github.com/0reg0n/cloud/lib/...", "github.com/0reg0n/cloud/cmd/...")
+		bench(strings.Fields(extraTags), "github.com/0reg0n/linkbox0/internal/...", "github.com/0reg0n/linkbox0/lib/...", "github.com/0reg0n/linkbox0/cmd/...")
 
 	case "integration":
 		integration(false)
@@ -703,12 +703,12 @@ func shouldBuildSyso(dir string) (string, error) {
 		},
 		"StringFileInfo": M{
 			"CompanyName":      "The Syncthing Authors",
-			"FileDescription":  "comb - continuous file synchronization",
+			"FileDescription":  "linkbox0 - continuous file synchronization",
 			"FileVersion":      version,
-			"InternalName":     "comb",
+			"InternalName":     "linkbox0",
 			"LegalCopyright":   "The Syncthing Authors",
-			"OriginalFilename": "comb",
-			"ProductName":      "comb",
+			"OriginalFilename": "linkbox0",
+			"ProductName":      "linkbox0",
 			"ProductVersion":   version,
 		},
 		"IconPath": "assets/logo.ico",
@@ -729,7 +729,7 @@ func shouldBuildSyso(dir string) (string, error) {
 		}
 	}()
 
-	sysoPath := filepath.Join(dir, "cmd", "comb", "resource.syso")
+	sysoPath := filepath.Join(dir, "cmd", "linkbox0", "resource.syso")
 
 	// See https://github.com/josephspurrier/goversioninfo#command-line-flags
 	// For manifest see https://learn.microsoft.com/en-us/windows/console/console-allocation-policy
@@ -808,7 +808,7 @@ func listFiles(dir string) []string {
 
 func rebuildAssets() {
 	os.Setenv("SOURCE_DATE_EPOCH", fmt.Sprint(buildStamp()))
-	runPrint(goCmd, "generate", "github.com/0reg0n/cloud/lib/api/auto", "github.com/0reg0n/cloud/cmd/infra/strelaypoolsrv/auto")
+	runPrint(goCmd, "generate", "github.com/0reg0n/linkbox0/lib/api/auto", "github.com/0reg0n/linkbox0/cmd/infra/strelaypoolsrv/auto")
 }
 
 func lazyRebuildAssets() {
@@ -875,12 +875,12 @@ func proto() {
 func testmocks() {
 	args := []string{
 		"generate",
-		"github.com/0reg0n/cloud/lib/config",
-		"github.com/0reg0n/cloud/lib/connections",
-		"github.com/0reg0n/cloud/lib/discover",
-		"github.com/0reg0n/cloud/lib/events",
-		"github.com/0reg0n/cloud/lib/model",
-		"github.com/0reg0n/cloud/lib/protocol",
+		"github.com/0reg0n/linkbox0/lib/config",
+		"github.com/0reg0n/linkbox0/lib/connections",
+		"github.com/0reg0n/linkbox0/lib/discover",
+		"github.com/0reg0n/linkbox0/lib/events",
+		"github.com/0reg0n/linkbox0/lib/model",
+		"github.com/0reg0n/linkbox0/lib/protocol",
 	}
 	runPrint(goCmd, args...)
 }
@@ -910,11 +910,11 @@ func ldflags(tags []string) string {
 	b := new(strings.Builder)
 	b.WriteString("-w")
 	b.WriteString(" -buildid=")
-	fmt.Fprintf(b, " -X github.com/0reg0n/cloud/lib/build.Version=%s", version)
-	fmt.Fprintf(b, " -X github.com/0reg0n/cloud/lib/build.Stamp=%d", buildStamp())
-	fmt.Fprintf(b, " -X github.com/0reg0n/cloud/lib/build.User=%s", buildUser())
-	fmt.Fprintf(b, " -X github.com/0reg0n/cloud/lib/build.Host=%s", buildHost())
-	fmt.Fprintf(b, " -X github.com/0reg0n/cloud/lib/build.Tags=%s", strings.Join(tags, ","))
+	fmt.Fprintf(b, " -X github.com/0reg0n/linkbox0/lib/build.Version=%s", version)
+	fmt.Fprintf(b, " -X github.com/0reg0n/linkbox0/lib/build.Stamp=%d", buildStamp())
+	fmt.Fprintf(b, " -X github.com/0reg0n/linkbox0/lib/build.User=%s", buildUser())
+	fmt.Fprintf(b, " -X github.com/0reg0n/linkbox0/lib/build.Host=%s", buildHost())
+	fmt.Fprintf(b, " -X github.com/0reg0n/linkbox0/lib/build.Tags=%s", strings.Join(tags, ","))
 	if v := os.Getenv("EXTRA_LDFLAGS"); v != "" {
 		fmt.Fprintf(b, " %s", v)
 	}

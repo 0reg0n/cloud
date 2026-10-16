@@ -11,8 +11,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/0reg0n/cloud/internal/slogutil"
-	"github.com/0reg0n/cloud/lib/events"
+	"github.com/0reg0n/linkbox0/internal/slogutil"
+	"github.com/0reg0n/linkbox0/lib/events"
 )
 
 type folderState int

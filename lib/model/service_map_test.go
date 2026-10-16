@@ -11,7 +11,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/0reg0n/cloud/lib/events"
+	"github.com/0reg0n/linkbox0/lib/events"
 	"github.com/thejerf/suture/v4"
 )
 

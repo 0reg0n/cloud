@@ -18,7 +18,7 @@ import (
 	"time"
 
 	"github.com/prometheus/client_golang/prometheus"
-	"github.com/0reg0n/cloud/lib/ur/contract"
+	"github.com/0reg0n/linkbox0/lib/ur/contract"
 )
 
 const namePrefix = "syncthing_usage_"

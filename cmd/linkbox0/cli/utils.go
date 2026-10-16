@@ -16,7 +16,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/0reg0n/cloud/lib/config"
+	"github.com/0reg0n/linkbox0/lib/config"
 )
 
 func responseToBArray(response *http.Response) ([]byte, error) {

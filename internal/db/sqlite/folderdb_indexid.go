@@ -12,8 +12,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/0reg0n/cloud/internal/itererr"
-	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/linkbox0/internal/itererr"
+	"github.com/0reg0n/linkbox0/lib/protocol"
 )
 
 func (s *folderDB) GetIndexID(device protocol.DeviceID) (protocol.IndexID, error) {

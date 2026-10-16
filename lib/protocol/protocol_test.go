@@ -21,9 +21,9 @@ import (
 	lz4 "github.com/pierrec/lz4/v4"
 	"google.golang.org/protobuf/proto"
 
-	"github.com/0reg0n/cloud/internal/gen/bep"
-	"github.com/0reg0n/cloud/lib/rand"
-	"github.com/0reg0n/cloud/lib/testutil"
+	"github.com/0reg0n/linkbox0/internal/gen/bep"
+	"github.com/0reg0n/linkbox0/lib/rand"
+	"github.com/0reg0n/linkbox0/lib/testutil"
 )
 
 var (
@@ -95,7 +95,7 @@ func TestClose(t *testing.T) {
 
 // TestCloseOnBlockingSend checks that the connection does not deadlock when
 // Close is called while the underlying connection is broken (send blocks).
-// https://github.com/0reg0n/cloud/pull/5442
+// https://github.com/0reg0n/linkbox0/pull/5442
 func TestCloseOnBlockingSend(t *testing.T) {
 	oldCloseTimeout := CloseTimeout
 	CloseTimeout = 100 * time.Millisecond
@@ -651,7 +651,7 @@ func TestRequestMaxSize(t *testing.T) {
 
 func TestRequestZeroSize(t *testing.T) {
 	// A zero-sized request should be accepted, since current versions of
-	// Syncthing send these. See https://github.com/0reg0n/cloud/issues/10709.
+	// Syncthing send these. See https://github.com/0reg0n/linkbox0/issues/10709.
 	m := newTestModel()
 	rw := testutil.NewBlockingRW()
 	c := getRawConnection(NewConnection(c0ID, rw, &testutil.NoopRW{}, testutil.NoopCloser{}, m, new(mockedConnectionInfo), CompressionAlways, testKeyGen))

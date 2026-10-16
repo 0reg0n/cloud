@@ -6,7 +6,7 @@
 
 package protocol
 
-import "github.com/0reg0n/cloud/internal/gen/bep"
+import "github.com/0reg0n/linkbox0/internal/gen/bep"
 
 type FileDownloadProgressUpdateType = bep.FileDownloadProgressUpdateType
 

@@ -13,10 +13,10 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/0reg0n/cloud/lib/protocol"
-	"github.com/0reg0n/cloud/lib/rand"
-	"github.com/0reg0n/cloud/lib/stringutil"
-	"github.com/0reg0n/cloud/lib/structutil"
+	"github.com/0reg0n/linkbox0/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/rand"
+	"github.com/0reg0n/linkbox0/lib/stringutil"
+	"github.com/0reg0n/linkbox0/lib/structutil"
 )
 
 type OptionsConfiguration struct {

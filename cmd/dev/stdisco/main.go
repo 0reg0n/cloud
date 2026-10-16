@@ -17,10 +17,10 @@ import (
 
 	"google.golang.org/protobuf/proto"
 
-	"github.com/0reg0n/cloud/internal/gen/discoproto"
-	"github.com/0reg0n/cloud/lib/beacon"
-	"github.com/0reg0n/cloud/lib/discover"
-	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/linkbox0/internal/gen/discoproto"
+	"github.com/0reg0n/linkbox0/lib/beacon"
+	"github.com/0reg0n/linkbox0/lib/discover"
+	"github.com/0reg0n/linkbox0/lib/protocol"
 )
 
 var (

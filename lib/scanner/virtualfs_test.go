@@ -14,8 +14,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/0reg0n/cloud/lib/fs"
-	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/fs"
+	"github.com/0reg0n/linkbox0/lib/protocol"
 )
 
 type infiniteFS struct {

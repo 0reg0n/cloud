@@ -11,9 +11,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/0reg0n/cloud/internal/db"
-	"github.com/0reg0n/cloud/internal/db/sqlite"
-	"github.com/0reg0n/cloud/lib/config"
+	"github.com/0reg0n/linkbox0/internal/db"
+	"github.com/0reg0n/linkbox0/internal/db/sqlite"
+	"github.com/0reg0n/linkbox0/lib/config"
 )
 
 var guiCfg config.GUIConfiguration

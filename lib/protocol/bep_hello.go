@@ -13,7 +13,7 @@ import (
 
 	"google.golang.org/protobuf/proto"
 
-	"github.com/0reg0n/cloud/internal/gen/bep"
+	"github.com/0reg0n/linkbox0/internal/gen/bep"
 )
 
 const (

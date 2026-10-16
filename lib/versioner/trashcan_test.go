@@ -14,8 +14,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/0reg0n/cloud/lib/config"
-	"github.com/0reg0n/cloud/lib/fs"
+	"github.com/0reg0n/linkbox0/lib/config"
+	"github.com/0reg0n/linkbox0/lib/fs"
 )
 
 func TestTrashcanArchiveRestoreSwitcharoo(t *testing.T) {

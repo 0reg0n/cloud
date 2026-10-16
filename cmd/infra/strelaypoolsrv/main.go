@@ -26,15 +26,15 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 
-	"github.com/0reg0n/cloud/cmd/infra/strelaypoolsrv/auto"
-	"github.com/0reg0n/cloud/lib/assets"
-	"github.com/0reg0n/cloud/lib/build"
-	"github.com/0reg0n/cloud/lib/geoip"
-	"github.com/0reg0n/cloud/lib/osutil"
-	"github.com/0reg0n/cloud/lib/protocol"
-	"github.com/0reg0n/cloud/lib/rand"
-	"github.com/0reg0n/cloud/lib/relay/client"
-	"github.com/0reg0n/cloud/lib/tlsutil"
+	"github.com/0reg0n/linkbox0/cmd/infra/strelaypoolsrv/auto"
+	"github.com/0reg0n/linkbox0/lib/assets"
+	"github.com/0reg0n/linkbox0/lib/build"
+	"github.com/0reg0n/linkbox0/lib/geoip"
+	"github.com/0reg0n/linkbox0/lib/osutil"
+	"github.com/0reg0n/linkbox0/lib/protocol"
+	"github.com/0reg0n/linkbox0/lib/rand"
+	"github.com/0reg0n/linkbox0/lib/relay/client"
+	"github.com/0reg0n/linkbox0/lib/tlsutil"
 )
 
 type location struct {

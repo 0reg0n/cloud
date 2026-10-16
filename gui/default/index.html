@@ -570,13 +570,16 @@
           <!-- Remote devices -->
           <div class="col-md-6" id="linkbox0-remotedevices">
           <h3><span translate>Remote Devices</span> <span ng-if="otherDevices().length > 1"> ({{otherDevices().length}})</span></h3>
+          <div class="panel panel-default" ng-if="otherDevices().length == 0">
+            <div class="panel-body text-muted"><span class="fa fa-fw fa-plug"></span>&nbsp;<span translate>No remote devices configured</span></div>
+          </div>
           <div ng-repeat="(deviceGroupName, groupedDevices) in devicesGrouped">
             <h4>{{ deviceGroupName }}
               <span ng-if="groupedDevices.length > 1 && deviceGroupName.length > 0"> ({{groupedDevices.length}})</span>
             </h4>
             <div class="panel-group" id="devices-{{ $index }}">
                 <div class="panel panel-default" ng-repeat="deviceCfg in groupedDevices">
-                  <button class="btn panel-heading" data-toggle="collapse" data-parent="#devices-{{ $parent.$index }}" data-target="#device-{{$parent.$index}}-{{$index}}" aria-expanded="false">
+                  <button class="btn panel-heading" data-toggle="collapse" data-parent="#devices-{{ $parent.$index }}" data-target="#device-{{$parent.$index}}-{{$index}}" aria-expanded="true">
                     <div class="panel-progress" ng-show="deviceStatus(deviceCfg) == 'syncing'" ng-attr-style="width: {{completion[deviceCfg.deviceID]._total | percent}}"></div>
                     <h4 class="panel-title">
                       <identicon class="panel-icon" data-value="deviceCfg.deviceID"></identicon>
@@ -593,8 +596,11 @@
                       <div class="panel-title-text">{{deviceName(deviceCfg)}}</div>
                     </h4>
                   </button>
-                  <div id="device-{{$parent.$index}}-{{$index}}" class="panel-collapse collapse" lazy-collapse>
-                    <div class="panel-body less-padding" ng-if="lazyReady">
+                  <div id="device-{{$parent.$index}}-{{$index}}" class="panel-collapse collapse in" lazy-collapse>
+                    <div class="panel-body less-padding" ng-if="lazyReady && !connections[deviceCfg.deviceID].connected">
+                      <span class="text-muted"><span class="fa fa-fw fa-plug"></span>&nbsp;<span translate>Waiting for connection…</span></span>
+                    </div>
+                    <div class="panel-body less-padding" ng-if="lazyReady && connections[deviceCfg.deviceID].connected">
                       <table class="table table-condensed table-striped table-auto">
                         <tbody>
                           <tr class="visible-xs">

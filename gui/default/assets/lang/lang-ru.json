@@ -572,4 +572,7 @@
     "Running": "Работает",
     "Connected": "Подключено",
     "Support Bundle": "Данные для поддержки"
+,
+    "Waiting for connection…": "Ожидание подключения…",
+    "No remote devices configured": "Удалённые устройства не настроены"
 }

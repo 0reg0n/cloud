@@ -564,4 +564,12 @@
     "{%device%} wants to share folder \"{%folder%}\".": "{{device}} хочет поделиться папкой «{{folder}}».",
     "{%device%} wants to share folder \"{%folderlabel%}\" ({%folder%}).": "{{device}} хочет поделиться папкой «{{folderlabel}}» ({{folder}}).",
     "{%reintroducer%} might reintroduce this device.": "{{reintroducer}} может повторно рекомендовать это устройство."
+,
+    "Overview": "Обзор",
+    "System": "Система",
+    "Dashboard": "Дашборд",
+    "Status of all components": "Состояние всех компонентов",
+    "Running": "Работает",
+    "Connected": "Подключено",
+    "Support Bundle": "Данные для поддержки"
 }

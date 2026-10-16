@@ -29,10 +29,10 @@ syncthing.config(function ($httpProvider, $translateProvider, LocaleServiceProvi
         prefix: 'assets/lang/lang-',
         suffix: '.json'
     });
-    $translateProvider.fallbackLanguage('en');
+    $translateProvider.fallbackLanguage('ru');
 
     LocaleServiceProvider.setAvailableLocales(validLangs);
-    LocaleServiceProvider.setDefaultLocale('en');
+    LocaleServiceProvider.setDefaultLocale('ru');
 
     $httpProvider.useApplyAsync(true);
 

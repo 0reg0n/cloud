@@ -52,7 +52,7 @@ angular.module('syncthing.core')
 
                 if (params.lang) {
                     useLocale(params.lang, true);
-                } else if (savedLang) {
+                } else if (savedLang && _availableLocales && _availableLocales.indexOf(savedLang) >= 0) {
                     useLocale(savedLang);
                 } else {
                     readBrowserLocales().success(function (langs) {

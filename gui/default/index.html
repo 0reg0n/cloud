@@ -12,7 +12,7 @@
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="shortcut icon" href="assets/img/favicon-default.png" ng-href="assets/img/favicon-{{syncthingStatus()}}.png" type="image/x-icon"/>
+  <link rel="shortcut icon" href="assets/img/cloud-logo.svg" type="image/svg+xml"/>
   <link rel="mask-icon" href="assets/img/safari-pinned-tab.svg" color="#0882c8"/>
 
   <title ng-bind="thisDeviceName() + ' | cloud'"></title>
@@ -32,8 +32,8 @@
     <nav class="navbar navbar-top navbar-default" role="navigation">
       <div class="container">
         <span class="navbar-brand" aria-hidden="true">
-          <img class="logo hidden-xs" src="assets/img/logo-horizontal.svg" height="32" width="117" alt=""/>
-          <img class="logo hidden visible-xs" src="assets/img/favicon-default.png" height="32" alt=""/>
+          <img class="logo hidden-xs" src="assets/img/cloud-logo.svg" height="32" width="117" alt=""/>
+          <img class="logo hidden visible-xs" src="assets/img/cloud-logo.svg" height="32" alt=""/>
         </span>
       </div>
     </nav>
@@ -65,7 +65,7 @@
     <div class="cloud-app" id="cloud-top">
       <aside class="cloud-sidebar">
         <div class="cloud-brand">
-          <div class="cloud-brand-logo">C</div>
+          <img class="cloud-brand-logo" src="assets/img/cloud-logo.svg" alt="cloud"/>
           <div class="cloud-brand-text">
             <div class="cloud-brand-name">cloud</div>
             <div class="cloud-brand-sub">v{{version.version}}</div>
@@ -149,8 +149,8 @@
     <nav class="navbar navbar-top navbar-default" role="navigation">
       <div class="container">
         <span class="navbar-brand" aria-hidden="true">
-          <img class="logo hidden-xs" src="assets/img/logo-horizontal.svg" height="32" width="117" alt=""/>
-          <img class="logo hidden visible-xs" src="assets/img/favicon-default.png" height="32" alt=""/>
+          <img class="logo hidden-xs" src="assets/img/cloud-logo.svg" height="32" width="117" alt=""/>
+          <img class="logo hidden visible-xs" src="assets/img/cloud-logo.svg" height="32" alt=""/>
         </span>
         <p ng-if="authenticated" class="navbar-text hidden-xs" ng-class="{'hidden-sm':upgradeInfo && upgradeInfo.newer}">{{thisDeviceName()}}</p>
         <ul class="nav navbar-nav navbar-right">

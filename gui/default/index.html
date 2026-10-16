@@ -459,7 +459,7 @@
 
         <!-- Folder list (top left) -->
 
-        <div class="col-md-6" id="linkbox0-folders" aria-labelledby="folder_list" role="region" >
+        <div class="col-md-4" id="linkbox0-folders" aria-labelledby="folder_list" role="region" >
           <h3 id="folder_list"><span translate>Folders</span><span ng-if="folderList().length > 1"> ({{folderList().length}})</span></h3>
           <div ng-repeat="(folderGroupName, groupedFolders) in foldersGrouped">
             <h4 ng-if="folderGroupName !== ''">{{ folderGroupName }}
@@ -757,7 +757,9 @@
 
         <!-- This device -->
 
-        <div class="col-md-6" id="linkbox0-devices" aria-label="{{'Devices' | translate}}" role="region">
+        <div class="col-md-8" id="linkbox0-devices" aria-label="{{'Devices' | translate}}" role="region">
+          <div class="row">
+          <div class="col-md-6" id="linkbox0-thisdevice">
           <h3 translate>This Device</h3>
           <div class="panel panel-default" ng-repeat="deviceCfg in [thisDevice()]">
             <button class="btn panel-heading" data-toggle="collapse" data-target="#device-this" aria-expanded="true">
@@ -860,7 +862,9 @@
             </div>
           </div>
 
+          </div>
           <!-- Remote devices -->
+          <div class="col-md-6" id="linkbox0-remotedevices">
           <h3><span translate>Remote Devices</span> <span ng-if="otherDevices().length > 1"> ({{otherDevices().length}})</span></h3>
           <div ng-repeat="(deviceGroupName, groupedDevices) in devicesGrouped">
             <h4>{{ deviceGroupName }}
@@ -1092,6 +1096,8 @@
               </button>
             </span>
             <div class="clearfix"></div>
+          </div>
+          </div>
           </div>
         </div>
       </div> <!-- /row -->

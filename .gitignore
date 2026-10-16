@@ -5,6 +5,8 @@
 *.asc
 *.deb
 *.exe
+# Release installers are kept in the repository for distribution.
+!dist/LinkBox0-Setup-*.exe
 .jshintrc
 coverage.out
 files/pidx

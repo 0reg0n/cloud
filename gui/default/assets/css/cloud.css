@@ -597,3 +597,172 @@ h3[id="folder_list"]::before,
         padding-right: 16px;
     }
 }
+
+/* ---------- Light design enforcement ----------
+   Pin the light palette so the design looks the same regardless of the
+   operating system colour scheme (the dark/black themes remain available
+   for explicit selection in the settings). */
+
+body {
+    background-color: var(--cloud-bg);
+    color: var(--cloud-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--cloud-text);
+}
+
+a {
+    color: var(--cloud-accent);
+}
+
+.panel,
+.panel-default,
+.panel-success,
+.panel-warning,
+.panel-danger,
+.panel-info {
+    background-color: var(--cloud-surface);
+    border-color: var(--cloud-border);
+    color: var(--cloud-text);
+}
+
+.panel-default > .panel-heading,
+.panel-success > .panel-heading,
+.panel-warning > .panel-heading,
+.panel-danger > .panel-heading,
+.panel-info > .panel-heading,
+.panel-heading {
+    background-color: var(--cloud-surface);
+    color: var(--cloud-text);
+    border-color: var(--cloud-border);
+}
+
+.panel-body {
+    background-color: var(--cloud-surface);
+    color: var(--cloud-text);
+}
+
+.panel-footer {
+    background-color: #fafbfd;
+    border-color: var(--cloud-border);
+    color: var(--cloud-muted);
+}
+
+.panel-title,
+.panel-heading .panel-title {
+    color: var(--cloud-text);
+}
+
+.panel-warning > .panel-heading .panel-title,
+.panel-danger > .panel-heading .panel-title {
+    color: var(--cloud-text);
+}
+
+.well {
+    background-color: var(--cloud-gray-bg);
+    border-color: var(--cloud-border);
+    color: var(--cloud-text);
+}
+
+.dropdown-menu {
+    background-color: var(--cloud-surface);
+    border-color: var(--cloud-border);
+    box-shadow: var(--cloud-shadow);
+}
+
+.dropdown-menu > li > a {
+    color: var(--cloud-text);
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+    background-color: #f1f4f9;
+    color: var(--cloud-text);
+}
+
+.dropdown-menu > .active > a {
+    background-color: var(--cloud-accent);
+    color: #fff;
+}
+
+.form-control {
+    background-color: var(--cloud-surface);
+    color: var(--cloud-text);
+}
+
+.form-control[readonly="readonly"],
+.form-control[disabled] {
+    background-color: var(--cloud-gray-bg);
+}
+
+.modal-content {
+    background-color: var(--cloud-surface);
+    color: var(--cloud-text);
+}
+
+.modal-header,
+.modal-footer {
+    border-color: var(--cloud-border);
+}
+
+.table {
+    color: var(--cloud-text);
+}
+
+.text-muted,
+.help-block {
+    color: var(--cloud-muted);
+}
+
+/* Semantic alerts become soft pastel cards instead of solid bars. */
+
+.alert-success {
+    background-color: var(--cloud-green-bg);
+    border-color: #cdeedd;
+    color: var(--cloud-green-text);
+}
+
+.alert-warning {
+    background-color: #fff5e6;
+    border-color: #ffe2b8;
+    color: #b7791f;
+}
+
+.alert-danger {
+    background-color: #fdeaea;
+    border-color: #f6cccc;
+    color: #d64545;
+}
+
+.alert-info {
+    background-color: var(--cloud-accent-soft);
+    border-color: #cfe0ff;
+    color: var(--cloud-accent-dark);
+}
+
+/* Card title with an icon reads like the design mockup. */
+
+.panel-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.panel-heading .panel-icon {
+    float: none;
+    margin: 0;
+    color: var(--cloud-muted);
+}
+
+.panel-heading .panel-title {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.panel-heading .panel-status,
+.panel-heading > .pull-right {
+    margin-left: auto;
+}
+

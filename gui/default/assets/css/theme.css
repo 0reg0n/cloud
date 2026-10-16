@@ -7,5 +7,9 @@
 
 */
 
-@import "../../theme-assets/dark/assets/css/theme.css" screen and (prefers-color-scheme: dark);
-@import "../../theme-assets/light/assets/css/theme.css" (prefers-color-scheme: light), (prefers-color-scheme: no-preference);
+/*
+ * The cloud design (see cloud.css) is a light design. Use the light theme
+ * as the default regardless of the operating system colour scheme. Other
+ * themes can still be selected explicitly in the settings.
+ */
+@import "../../theme-assets/light/assets/css/theme.css" screen;

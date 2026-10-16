@@ -102,12 +102,6 @@
             <p class="linkbox0-topbar-subtitle" translate>Status of all components</p>
           </div>
           <ul class="nav linkbox0-topbar-actions">
-            <li ng-if="upgradeInfo && upgradeInfo.newer">
-              <button type="button" class="linkbox0-btn linkbox0-btn-primary" data-toggle="modal" data-target="#upgrade">
-                <span class="fas fa-arrow-circle-up"></span>
-                <span translate translate-value-version="{{upgradeInfo.latest}}">Upgrade To {%version%}</span>
-              </button>
-            </li>
             <li class="dropdown" language-select></li>
             <li class="dropdown" ng-if="authenticated">
               <a href="#" class="linkbox0-btn linkbox0-btn-ghost dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -152,20 +146,8 @@
           <img class="logo hidden-xs" src="assets/img/linkbox0-logo.svg" height="32" width="117" alt=""/>
           <img class="logo hidden visible-xs" src="assets/img/linkbox0-logo.svg" height="32" alt=""/>
         </span>
-        <p ng-if="authenticated" class="navbar-text hidden-xs" ng-class="{'hidden-sm':upgradeInfo && upgradeInfo.newer}">{{thisDeviceName()}}</p>
+        <p ng-if="authenticated" class="navbar-text hidden-xs">{{thisDeviceName()}}</p>
         <ul class="nav navbar-nav navbar-right">
-          <li ng-if="upgradeInfo && upgradeInfo.newer" class="upgrade-newer">
-            <button type="button" class="btn navbar-btn btn-primary btn-sm" data-toggle="modal" data-target="#upgrade">
-              <span class="fas fa-arrow-circle-up"></span>
-              <span class="hidden-xs" translate translate-value-version="{{upgradeInfo.latest}}">Upgrade To {%version%}</span>
-            </button>
-          </li>
-          <li ng-if="upgradeInfo && upgradeInfo.majorNewer" class="upgrade-newer-major">
-            <button type="button" class="btn navbar-btn btn-danger btn-sm" data-toggle="modal" data-target="#majorUpgrade">
-              <span class="fas fa-arrow-circle-up"></span>
-              <span class="hidden-xs" translate translate-value-version="{{upgradeInfo.latest}}">Upgrade To {%version%}</span>
-            </button>
-          </li>
           <li class="dropdown" language-select></li>
           <li class="dropdown action-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -176,15 +158,13 @@
             <ul class="dropdown-menu">
               <li><a class="navbar-link" href="{{docsURL('intro/gui')}}" target="_blank"><span class="fa fa-fw fa-info-circle"></span>&nbsp;<span translate>Introduction</span></a></li>
               <li class="divider" aria-hidden="true"></li>
-              <li><a class="navbar-link" href="https://syncthing.net/" target="_blank"><span class="fa fa-fw fa-home"></span>&nbsp;<span translate>Home page</span></a></li>
+              <li><a class="navbar-link" href="{{docsURL()}}" target="_blank"><span class="fa fa-fw fa-home"></span>&nbsp;<span translate>Home page</span></a></li>
               <li><a class="navbar-link" href="{{docsURL()}}" target="_blank"><span class="fa fa-fw fa-book"></span>&nbsp;<span translate>Documentation</span></a></li>
-              <li><a class="navbar-link" href="https://forum.syncthing.net" target="_blank"><span class="fa fa-fw fa-users"></span>&nbsp;<span translate>Support</span></a></li>
               <li class="divider" aria-hidden="true"></li>
-              <li><a class="navbar-link" href="https://github.com/syncthing/linkbox0/releases" target="_blank"><span class="fa fa-fw fa-file-text"></span>&nbsp;<span translate>Changelog</span></a></li>
-              <li><a class="navbar-link" href="https://data.syncthing.net/" target="_blank"><span class="fa fa-fw fa-bar-chart"></span>&nbsp;<span translate>Statistics</span></a></li>
+              <li><a class="navbar-link" href="https://github.com/0reg0n/cloud/releases" target="_blank"><span class="fa fa-fw fa-file-text"></span>&nbsp;<span translate>Changelog</span></a></li>
               <li class="divider" aria-hidden="true"></li>
-              <li><a class="navbar-link" href="https://github.com/syncthing/linkbox0/issues" target="_blank"><span class="fa fa-fw fa-bug"></span>&nbsp;<span translate>Bugs</span></a></li>
-              <li><a class="navbar-link" href="https://github.com/syncthing/linkbox0" target="_blank"><span class="fa fa-fw fa-file-code-o"></span>&nbsp;<span translate>Source Code</span></a></li>
+              <li><a class="navbar-link" href="https://github.com/0reg0n/cloud/issues" target="_blank"><span class="fa fa-fw fa-bug"></span>&nbsp;<span translate>Bugs</span></a></li>
+              <li><a class="navbar-link" href="https://github.com/0reg0n/cloud" target="_blank"><span class="fa fa-fw fa-file-code-o"></span>&nbsp;<span translate>Source Code</span></a></li>
               <li class="divider" aria-hidden="true"></li>
               <li><a href="" ng-click="about.show()"><span class="fa fa-fw fa-heart"></span>&nbsp;<span translate>About</span></a></li>
             </ul>
@@ -406,7 +386,7 @@
             </div>
             <div class="panel-body">
               <p>
-                <span translate>For the following folders an error occurred while starting to watch for changes. It will be retried every minute, so the errors might go away soon. If they persist, try to fix the underlying issue and ask for help if you can't.</span>&emsp;<a href="https://forum.syncthing.net" target="_blank"><span class="fas fa-question-circle"></span>&nbsp;<span translate>Support</span></a>
+                <span translate>For the following folders an error occurred while starting to watch for changes. It will be retried every minute, so the errors might go away soon. If they persist, try to fix the underlying issue and ask for help if you can't.</span>&emsp;<a href="{{docsURL()}}" target="_blank"><span class="fas fa-question-circle"></span>&nbsp;<span translate>Support</span></a>
               </p>
               <table>
                 <tr ng-repeat="(id, err) in fsWatcherErrorMap()">
@@ -834,14 +814,10 @@
   <ng-include src="'linkbox0/settings/settingsModalView.html'"></ng-include>
   <ng-include src="'linkbox0/settings/advancedSettingsModalView.html'"></ng-include>
   <ng-include src="'linkbox0/settings/discardChangesConfirmation.html'"></ng-include>
-  <ng-include src="'linkbox0/usagereport/usageReportModalView.html'"></ng-include>
-  <ng-include src="'linkbox0/usagereport/usageReportPreviewModalView.html'"></ng-include>
   <ng-include src="'linkbox0/transfer/neededFilesModalView.html'"></ng-include>
   <ng-include src="'linkbox0/transfer/failedFilesModalView.html'"></ng-include>
   <ng-include src="'linkbox0/transfer/remoteNeededFilesModalView.html'"></ng-include>
   <ng-include src="'linkbox0/transfer/localChangedFilesModalView.html'"></ng-include>
-  <ng-include src="'linkbox0/core/upgradeModalView.html'"></ng-include>
-  <ng-include src="'linkbox0/core/majorUpgradeModalView.html'"></ng-include>
   <ng-include src="'linkbox0/core/aboutModalView.html'"></ng-include>
   <ng-include src="'linkbox0/core/connectivityStatusModalView.html'"></ng-include>
   <ng-include src="'linkbox0/folder/foldersModalView.html'"></ng-include>

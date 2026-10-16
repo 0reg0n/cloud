@@ -219,15 +219,6 @@ angular.module('linkbox0.core')
                     $scope.version = data;
                 }).error($scope.emitHTTPError);
 
-                if ($scope.system && $scope.config.options.urAccepted > -1 && $scope.config.options.urSeen < $scope.system.urVersionMax && $scope.config.options.urAccepted < $scope.system.urVersionMax) {
-                    // Usage reporting decision has not been taken or format
-                    // has changed, prompt the user to (re-)accept.
-                    $http.get(urlbase + '/svc/report').success(function (data) {
-                        $scope.reportData = data;
-                        showModal('#ur');
-                    }).error($scope.emitHTTPError);
-                }
-
                 $http.get(urlbase + '/system/upgrade').success(function (data) {
                     $scope.upgradeInfo = data;
                 }).error(function () {
@@ -418,23 +409,7 @@ angular.module('linkbox0.core')
         });
 
         $scope.$on('ConfigLoaded', function () {
-            if ($scope.config.options.urAccepted === 0) {
-                // If usage reporting has been neither accepted nor declined,
-                // we want to ask the user to make a choice. But we don't want
-                // to bug them during initial setup, so we set a cookie with
-                // the time of the first visit. When that cookie is present
-                // and the time is more than four hours ago, we ask the
-                // question.
-
-                var firstVisit = document.cookie.replace(/(?:(?:^|.*;\s*)firstVisit\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-                if (!firstVisit) {
-                    document.cookie = "firstVisit=" + Date.now() + ";max-age=" + 30 * 24 * 3600;
-                } else {
-                    if (+firstVisit < Date.now() - 4 * 3600 * 1000) {
-                        showModal('#ur');
-                    }
-                }
-            }
+            // Usage reporting has been removed; never prompt for it.
         });
 
         $scope.$on(Events.CONFIG_SAVED, function (event, arg) {
@@ -1804,7 +1779,7 @@ angular.module('linkbox0.core')
             // Use "$scope.saveConfig().then" when hiding modals after saving
             // changes, or otherwise the background modal will be hidden before
             // the #savingChanges modal, causing the right body margin increase
-            // bug (see https://github.com/syncthing/linkbox0/pull/9078).
+            // bug (see https://github.com/0reg0n/cloud).
             var timeout = setTimeout(function () {
                 // Only block the UI when there is a significant delay.
                 showModal('#savingChanges');
@@ -3444,24 +3419,9 @@ angular.module('linkbox0.core')
         };
 
         $scope.docsURL = function (path) {
-            var url = 'https://docs.syncthing.net';
-            if (!$scope.versionBase()) {
-                return url;
-            }
-            if (!path) {
-                // Undefined or null should become a valid string.
-                path = '';
-            }
-            var hash = path.indexOf('#');
-            if (hash != -1) {
-                url += '/' + path.slice(0, hash);
-                url += '?version=' + $scope.versionBase();
-                url += path.slice(hash);
-            } else {
-                url += '/' + path;
-                url += '?version=' + $scope.versionBase();
-            }
-            return url;
+            // Documentation links point at the project repository. There are
+            // no Syncthing documentation or website ties anymore.
+            return 'https://github.com/0reg0n/cloud';
         };
 
         $scope.inputTypeFor = function (key, value) {
@@ -3571,7 +3531,7 @@ angular.module('linkbox0.core')
             // Title and footer can be reused between different sharing
             // methods, hence we define them separately before the body.
             var title = $translate.instant('LinkBox0 device ID for "{%devicename%}"', {devicename: deviceName});
-            var footer = $translate.instant("Learn more at {%url%}", {url: "https://syncthing.net"});
+            var footer = $translate.instant("Learn more at {%url%}", {url: "https://github.com/0reg0n/cloud"});
 
             switch (method) {
                 case "email":

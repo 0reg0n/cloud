@@ -90,6 +90,11 @@ func upgradeClientGet(url string) (*http.Response, context.CancelFunc, error) {
 // FetchLatestReleases returns the latest releases. The "current" parameter
 // is used for setting the User-Agent only.
 func FetchLatestReleases(releasesURL, current string) []Release {
+	if releasesURL == "" {
+		// No release server is configured; there is nothing to check and
+		// nothing to report. This avoids any upgrade-related network ties.
+		return nil
+	}
 	resp, cancel, err := upgradeClientGet(releasesURL)
 	if err != nil {
 		slog.Warn("Failed to fetch latest release information", slogutil.Error(err))

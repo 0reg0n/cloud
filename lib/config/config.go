@@ -33,7 +33,7 @@ import (
 
 const (
 	OldestHandledVersion = 10
-	CurrentVersion       = 52
+	CurrentVersion = 53
 	MaxRescanIntervalS   = 365 * 24 * 60 * 60
 )
 
@@ -48,21 +48,16 @@ var (
 	// config.
 	DefaultListenAddresses = []string{
 		netutil.AddressURL("tcp", net.JoinHostPort("0.0.0.0", strconv.Itoa(DefaultTCPPort))),
-		"dynamic+https://relays.syncthing.net/endpoint",
 		netutil.AddressURL("quic", net.JoinHostPort("0.0.0.0", strconv.Itoa(DefaultQUICPort))),
 	}
 	// DefaultDiscoveryServersV4 should be substituted when the configuration
 	// contains <globalAnnounceServer>default-v4</globalAnnounceServer>.
-	DefaultDiscoveryServersV4 = []string{
-		"https://discovery-lookup.syncthing.net/v2/?noannounce",
-		"https://discovery-announce-v4.syncthing.net/v2/?nolookup",
-	}
+	// There are no default servers, so devices are only discovered on the
+	// local network or via explicitly configured servers.
+	DefaultDiscoveryServersV4 = []string{}
 	// DefaultDiscoveryServersV6 should be substituted when the configuration
 	// contains <globalAnnounceServer>default-v6</globalAnnounceServer>.
-	DefaultDiscoveryServersV6 = []string{
-		"https://discovery-lookup.syncthing.net/v2/?noannounce",
-		"https://discovery-announce-v6.syncthing.net/v2/?nolookup",
-	}
+	DefaultDiscoveryServersV6 = []string{}
 	// DefaultDiscoveryServers should be substituted when the configuration
 	// contains <globalAnnounceServer>default</globalAnnounceServer>.
 	DefaultDiscoveryServers = append(DefaultDiscoveryServersV4, DefaultDiscoveryServersV6...)
@@ -155,7 +150,6 @@ func (cfg *Configuration) ProbeFreePorts() error {
 	} else {
 		cfg.Options.RawListenAddresses = []string{
 			netutil.AddressURL("tcp", net.JoinHostPort("0.0.0.0", strconv.Itoa(port))),
-			"dynamic+https://relays.syncthing.net/endpoint",
 			netutil.AddressURL("quic", net.JoinHostPort("0.0.0.0", strconv.Itoa(port))),
 		}
 	}

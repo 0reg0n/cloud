@@ -29,6 +29,7 @@ import (
 // put the newest on top for readability.
 var (
 	migrations = migrationSet{
+		{53, migrateToConfigV53},
 		{52, migrateToConfigV52},
 		{51, migrateToConfigV51},
 		{50, migrateToConfigV50},
@@ -62,6 +63,51 @@ var (
 	}
 	migrationsMut = sync.Mutex{}
 )
+
+// migrateToConfigV53 removes every remaining tie to Syncthing services from
+// an existing configuration: Syncthing relay/discovery/STUN servers and the
+// usage, crash and upgrade reporting URLs.
+func migrateToConfigV53(cfg *Configuration) {
+	listen := cfg.Options.RawListenAddresses[:0]
+	for _, addr := range cfg.Options.RawListenAddresses {
+		if strings.Contains(addr, "syncthing.net") {
+			continue
+		}
+		listen = append(listen, addr)
+	}
+	cfg.Options.RawListenAddresses = append([]string(nil), listen...)
+
+	ann := cfg.Options.RawGlobalAnnServers[:0]
+	for _, addr := range cfg.Options.RawGlobalAnnServers {
+		if strings.Contains(addr, "syncthing.net") {
+			continue
+		}
+		ann = append(ann, addr)
+	}
+	cfg.Options.RawGlobalAnnServers = append([]string(nil), ann...)
+
+	stun := cfg.Options.RawStunServers[:0]
+	for _, addr := range cfg.Options.RawStunServers {
+		if addr == "default" || strings.Contains(addr, "syncthing.net") {
+			continue
+		}
+		stun = append(stun, addr)
+	}
+	cfg.Options.RawStunServers = append([]string(nil), stun...)
+
+	if strings.Contains(cfg.Options.URURL, "syncthing.net") {
+		cfg.Options.URURL = ""
+	}
+	if strings.Contains(cfg.Options.CRURL, "syncthing.net") {
+		cfg.Options.CRURL = ""
+	}
+	if strings.Contains(cfg.Options.ReleasesURL, "syncthing") {
+		cfg.Options.ReleasesURL = ""
+	}
+	cfg.Options.CREnabled = false
+	cfg.Options.URAccepted = 0
+	cfg.Options.AutoUpgradeIntervalH = 0
+}
 
 type migrationSet []migration
 
@@ -392,13 +438,13 @@ func migrateToConfigV14(cfg *Configuration) {
 	}
 	// v0.13-beta already had config version 13 but did not get the new URL
 	if cfg.Options.ReleasesURL == "https://api.github.com/repos/syncthing/syncthing/releases?per_page=30" {
-		cfg.Options.ReleasesURL = "https://upgrades.syncthing.net/meta.json"
+		cfg.Options.ReleasesURL = ""
 	}
 }
 
 func migrateToConfigV13(cfg *Configuration) {
 	if cfg.Options.ReleasesURL == "https://api.github.com/repos/syncthing/syncthing/releases?per_page=30" {
-		cfg.Options.ReleasesURL = "https://upgrades.syncthing.net/meta.json"
+		cfg.Options.ReleasesURL = ""
 	}
 }
 

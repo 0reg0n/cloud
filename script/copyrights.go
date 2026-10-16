@@ -286,9 +286,9 @@ func getModules() []string {
 	modules = slices.DeleteFunc(modules, func(s string) bool { return s == "" })
 
 	// List all packages in use by the syncthing binary, map them to modules
-	data, err = exec.Command("go", "list", "-deps", "./cmd/syncthing").Output()
+	data, err = exec.Command("go", "list", "-deps", "./cmd/cloud").Output()
 	if err != nil {
-		log.Fatalf("go list -deps ./cmd/syncthing: %v", err)
+		log.Fatalf("go list -deps ./cmd/cloud: %v", err)
 	}
 	packages := strings.Split(string(data), "\n")
 	packages = slices.DeleteFunc(packages, func(s string) bool { return s == "" })

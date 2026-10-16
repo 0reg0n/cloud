@@ -85,14 +85,14 @@ var targets = map[string]target{
 		// Only valid for the "build" and "install" commands as it lacks all
 		// the archive creation stuff. buildPkgs gets filled out in init()
 	},
-	"syncthing": {
+	"cloud": {
 		// The default target for "build", "install", "tar", "zip", "deb", etc.
-		name:        "syncthing",
-		debname:     "syncthing",
+		name:        "cloud",
+		debname:     "cloud",
 		debdeps:     []string{"libc6", "procps"},
-		description: "Open Source Continuous File Synchronization",
-		buildPkgs:   []string{"github.com/0reg0n/cloud/cmd/syncthing"},
-		binaryName:  "syncthing", // .exe will be added automatically for Windows builds
+		description: "cloud - continuous file synchronization",
+		buildPkgs:   []string{"github.com/0reg0n/cloud/cmd/cloud"},
+		binaryName:  "cloud", // .exe will be added automatically for Windows builds
 		archiveFiles: []archiveFile{
 			{src: "{{binary}}", dst: "{{binary}}", perm: 0o755},
 			{src: "README.md", dst: "README.txt", perm: 0o644},
@@ -222,19 +222,19 @@ func initTargets() {
 	}
 	targets["all"] = all
 
-	// The "syncthing" target includes a few more files found in the "etc"
+	// The "cloud" target includes a few more files found in the "etc"
 	// and "extra" dirs.
-	syncthingPkg := targets["syncthing"]
+	cloudPkg := targets["cloud"]
 	for _, file := range listFiles("etc") {
-		syncthingPkg.archiveFiles = append(syncthingPkg.archiveFiles, archiveFile{src: file, dst: file, perm: 0o644})
+		cloudPkg.archiveFiles = append(cloudPkg.archiveFiles, archiveFile{src: file, dst: file, perm: 0o644})
 	}
 	for _, file := range listFiles("extra") {
-		syncthingPkg.archiveFiles = append(syncthingPkg.archiveFiles, archiveFile{src: file, dst: file, perm: 0o644})
+		cloudPkg.archiveFiles = append(cloudPkg.archiveFiles, archiveFile{src: file, dst: file, perm: 0o644})
 	}
 	for _, file := range listFiles("extra") {
-		syncthingPkg.installationFiles = append(syncthingPkg.installationFiles, archiveFile{src: file, dst: "deb/usr/share/doc/syncthing/" + filepath.Base(file), perm: 0o644})
+		cloudPkg.installationFiles = append(cloudPkg.installationFiles, archiveFile{src: file, dst: "deb/usr/share/doc/syncthing/" + filepath.Base(file), perm: 0o644})
 	}
-	targets["syncthing"] = syncthingPkg
+	targets["cloud"] = cloudPkg
 }
 
 func main() {
@@ -257,9 +257,9 @@ func main() {
 		runCommand("install", targets["all"])
 	} else {
 		// with any command given but not a target, the target is
-		// "syncthing". So "go run build.go install" is "go run build.go install
-		// syncthing" etc.
-		targetName := "syncthing"
+		// "cloud". So "go run build.go install" is "go run build.go install
+		// cloud" etc.
+		targetName := "cloud"
 		if flag.NArg() > 1 {
 			targetName = flag.Arg(1)
 		}
@@ -703,12 +703,12 @@ func shouldBuildSyso(dir string) (string, error) {
 		},
 		"StringFileInfo": M{
 			"CompanyName":      "The Syncthing Authors",
-			"FileDescription":  "Syncthing - Open Source Continuous File Synchronization",
+			"FileDescription":  "cloud - continuous file synchronization",
 			"FileVersion":      version,
-			"InternalName":     "syncthing",
+			"InternalName":     "cloud",
 			"LegalCopyright":   "The Syncthing Authors",
-			"OriginalFilename": "syncthing",
-			"ProductName":      "Syncthing",
+			"OriginalFilename": "cloud",
+			"ProductName":      "cloud",
 			"ProductVersion":   version,
 		},
 		"IconPath": "assets/logo.ico",
@@ -729,7 +729,7 @@ func shouldBuildSyso(dir string) (string, error) {
 		}
 	}()
 
-	sysoPath := filepath.Join(dir, "cmd", "syncthing", "resource.syso")
+	sysoPath := filepath.Join(dir, "cmd", "cloud", "resource.syso")
 
 	// See https://github.com/josephspurrier/goversioninfo#command-line-flags
 	// For manifest see https://learn.microsoft.com/en-us/windows/console/console-allocation-policy

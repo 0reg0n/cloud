@@ -36,9 +36,9 @@ import (
 	"github.com/thejerf/suture/v4"
 	"github.com/willabides/kongplete"
 
-	"github.com/0reg0n/cloud/cmd/syncthing/cli"
-	"github.com/0reg0n/cloud/cmd/syncthing/decrypt"
-	"github.com/0reg0n/cloud/cmd/syncthing/generate"
+	"github.com/0reg0n/cloud/cmd/cloud/cli"
+	"github.com/0reg0n/cloud/cmd/cloud/decrypt"
+	"github.com/0reg0n/cloud/cmd/cloud/generate"
 	"github.com/0reg0n/cloud/internal/db"
 	"github.com/0reg0n/cloud/internal/db/sqlite"
 	"github.com/0reg0n/cloud/internal/slogutil"

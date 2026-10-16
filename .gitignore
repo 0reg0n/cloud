@@ -22,9 +22,11 @@ deb
 /compat.json
 
 # Android project build outputs
-android/**/build/
+android/build/
+android/app/build/
+android/syncthing/build/
 android/.gradle/
 android/.idea/
 android/local.properties
-android/**/.cxx/
+android/app/.cxx/
 android/app/src/main/jniLibs/

@@ -17,9 +17,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/syncthing/syncthing/internal/slogutil"
-	"github.com/syncthing/syncthing/lib/config"
-	"github.com/syncthing/syncthing/lib/protocol"
+	"github.com/0reg0n/cloud/internal/slogutil"
+	"github.com/0reg0n/cloud/lib/config"
+	"github.com/0reg0n/cloud/lib/protocol"
 )
 
 // Service runs a loop for discovery of IGDs (Internet Gateway Devices) and

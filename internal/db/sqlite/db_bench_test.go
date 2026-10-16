@@ -12,11 +12,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/syncthing/syncthing/internal/timeutil"
-	"github.com/syncthing/syncthing/lib/config"
-	"github.com/syncthing/syncthing/lib/osutil"
-	"github.com/syncthing/syncthing/lib/protocol"
-	"github.com/syncthing/syncthing/lib/rand"
+	"github.com/0reg0n/cloud/internal/timeutil"
+	"github.com/0reg0n/cloud/lib/config"
+	"github.com/0reg0n/cloud/lib/osutil"
+	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/cloud/lib/rand"
 )
 
 var globalFi protocol.FileInfo

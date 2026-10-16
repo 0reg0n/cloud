@@ -12,7 +12,7 @@ import (
 	"os/user"
 	"strconv"
 
-	"github.com/syncthing/syncthing/lib/protocol"
+	"github.com/0reg0n/cloud/lib/protocol"
 )
 
 func (f *sendReceiveFolder) syncOwnership(file *protocol.FileInfo, path string) error {

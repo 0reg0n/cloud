@@ -17,8 +17,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/syncthing/syncthing/lib/protocol"
-	"github.com/syncthing/syncthing/lib/rc"
+	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/cloud/lib/rc"
 )
 
 func TestHTTPGetIndex(t *testing.T) {

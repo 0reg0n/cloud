@@ -1,4 +1,4 @@
-module github.com/syncthing/syncthing
+module github.com/0reg0n/cloud
 
 go 1.26.2
 

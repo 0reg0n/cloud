@@ -11,7 +11,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/syncthing/syncthing/lib/fs"
+	"github.com/0reg0n/cloud/lib/fs"
 )
 
 type Size struct {

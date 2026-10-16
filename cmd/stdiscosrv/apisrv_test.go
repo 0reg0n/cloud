@@ -19,8 +19,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/syncthing/syncthing/lib/protocol"
-	"github.com/syncthing/syncthing/lib/tlsutil"
+	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/cloud/lib/tlsutil"
 )
 
 func TestFixupAddresses(t *testing.T) {

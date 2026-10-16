@@ -18,12 +18,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/syncthing/syncthing/lib/build"
-	"github.com/syncthing/syncthing/lib/config"
-	"github.com/syncthing/syncthing/lib/events"
-	"github.com/syncthing/syncthing/lib/fs"
-	"github.com/syncthing/syncthing/lib/protocol"
-	"github.com/syncthing/syncthing/lib/rand"
+	"github.com/0reg0n/cloud/lib/build"
+	"github.com/0reg0n/cloud/lib/config"
+	"github.com/0reg0n/cloud/lib/events"
+	"github.com/0reg0n/cloud/lib/fs"
+	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/cloud/lib/rand"
 )
 
 func TestRequestSimple(t *testing.T) {
@@ -533,7 +533,7 @@ func TestParentDeletion(t *testing.T) {
 }
 
 // TestRequestSymlinkWindows checks that symlinks aren't marked as deleted on windows
-// Issue: https://github.com/syncthing/syncthing/issues/5125
+// Issue: https://github.com/0reg0n/cloud/issues/5125
 func TestRequestSymlinkWindows(t *testing.T) {
 	if !build.IsWindows {
 		t.Skip("windows specific test")
@@ -956,7 +956,7 @@ func TestNeedFolderFiles(t *testing.T) {
 
 // TestIgnoreDeleteUnignore checks that the deletion of an ignored file is not
 // propagated upon un-ignoring.
-// https://github.com/syncthing/syncthing/issues/6038
+// https://github.com/0reg0n/cloud/issues/6038
 func TestIgnoreDeleteUnignore(t *testing.T) {
 	w, fcfg := newDefaultCfgWrapper(t)
 	m := setupModel(t, w)

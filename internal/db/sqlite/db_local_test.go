@@ -9,9 +9,9 @@ package sqlite
 import (
 	"testing"
 
-	"github.com/syncthing/syncthing/internal/db"
-	"github.com/syncthing/syncthing/internal/itererr"
-	"github.com/syncthing/syncthing/lib/protocol"
+	"github.com/0reg0n/cloud/internal/db"
+	"github.com/0reg0n/cloud/internal/itererr"
+	"github.com/0reg0n/cloud/lib/protocol"
 )
 
 func TestBlocks(t *testing.T) {

@@ -6,6 +6,6 @@
 
 package upgrade
 
-import "github.com/syncthing/syncthing/internal/slogutil"
+import "github.com/0reg0n/cloud/internal/slogutil"
 
 var l = slogutil.NewAdapter("Binary upgrades")

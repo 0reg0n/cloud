@@ -19,9 +19,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/syncthing/syncthing/lib/build"
-	"github.com/syncthing/syncthing/lib/protocol"
-	"github.com/syncthing/syncthing/lib/rand"
+	"github.com/0reg0n/cloud/lib/build"
+	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/cloud/lib/rand"
 )
 
 func setup(t *testing.T) (*BasicFilesystem, string) {

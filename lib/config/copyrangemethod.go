@@ -6,7 +6,7 @@
 
 package config
 
-import "github.com/syncthing/syncthing/lib/fs"
+import "github.com/0reg0n/cloud/lib/fs"
 
 type CopyRangeMethod int32
 

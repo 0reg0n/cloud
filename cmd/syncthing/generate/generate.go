@@ -15,12 +15,12 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/syncthing/syncthing/lib/config"
-	"github.com/syncthing/syncthing/lib/events"
-	"github.com/syncthing/syncthing/lib/fs"
-	"github.com/syncthing/syncthing/lib/locations"
-	"github.com/syncthing/syncthing/lib/protocol"
-	"github.com/syncthing/syncthing/lib/syncthing"
+	"github.com/0reg0n/cloud/lib/config"
+	"github.com/0reg0n/cloud/lib/events"
+	"github.com/0reg0n/cloud/lib/fs"
+	"github.com/0reg0n/cloud/lib/locations"
+	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/cloud/lib/syncthing"
 )
 
 type CLI struct {

@@ -14,11 +14,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/syncthing/syncthing/lib/build"
-	"github.com/syncthing/syncthing/lib/osutil"
-	"github.com/syncthing/syncthing/lib/rand"
-	"github.com/syncthing/syncthing/lib/relay/protocol"
-	"github.com/syncthing/syncthing/lib/tlsutil"
+	"github.com/0reg0n/cloud/lib/build"
+	"github.com/0reg0n/cloud/lib/osutil"
+	"github.com/0reg0n/cloud/lib/rand"
+	"github.com/0reg0n/cloud/lib/relay/protocol"
+	"github.com/0reg0n/cloud/lib/tlsutil"
 )
 
 type dynamicClient struct {

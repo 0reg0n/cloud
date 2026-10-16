@@ -11,7 +11,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/syncthing/syncthing/lib/build"
+	"github.com/0reg0n/cloud/lib/build"
 )
 
 var rc *rateCalculator

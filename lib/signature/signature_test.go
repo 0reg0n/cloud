@@ -10,7 +10,7 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/syncthing/syncthing/lib/signature"
+	"github.com/0reg0n/cloud/lib/signature"
 )
 
 var (

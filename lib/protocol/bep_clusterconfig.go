@@ -10,7 +10,7 @@ import (
 	"fmt"
 	"log/slog"
 
-	"github.com/syncthing/syncthing/internal/gen/bep"
+	"github.com/0reg0n/cloud/internal/gen/bep"
 )
 
 type Compression bep.Compression

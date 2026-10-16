@@ -18,7 +18,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/syncthing/syncthing/lib/build"
+	"github.com/0reg0n/cloud/lib/build"
 )
 
 func TestFakeFS(t *testing.T) {

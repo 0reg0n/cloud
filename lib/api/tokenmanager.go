@@ -16,11 +16,11 @@ import (
 
 	"google.golang.org/protobuf/proto"
 
-	"github.com/syncthing/syncthing/internal/db"
-	"github.com/syncthing/syncthing/internal/gen/apiproto"
-	"github.com/syncthing/syncthing/lib/config"
-	"github.com/syncthing/syncthing/lib/events"
-	"github.com/syncthing/syncthing/lib/rand"
+	"github.com/0reg0n/cloud/internal/db"
+	"github.com/0reg0n/cloud/internal/gen/apiproto"
+	"github.com/0reg0n/cloud/lib/config"
+	"github.com/0reg0n/cloud/lib/events"
+	"github.com/0reg0n/cloud/lib/rand"
 )
 
 type tokenManager struct {

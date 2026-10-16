@@ -11,7 +11,7 @@ import (
 	"slices"
 	"sync"
 
-	"github.com/syncthing/syncthing/internal/db/olddb/backend"
+	"github.com/0reg0n/cloud/internal/db/olddb/backend"
 )
 
 // A smallIndex is an in memory bidirectional []byte to uint32 map. It gives

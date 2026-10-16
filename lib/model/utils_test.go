@@ -9,9 +9,9 @@ package model
 import (
 	"testing"
 
-	"github.com/syncthing/syncthing/lib/build"
-	"github.com/syncthing/syncthing/lib/fs"
-	"github.com/syncthing/syncthing/lib/rand"
+	"github.com/0reg0n/cloud/lib/build"
+	"github.com/0reg0n/cloud/lib/fs"
+	"github.com/0reg0n/cloud/lib/rand"
 )
 
 func TestInWriteableDir(t *testing.T) {

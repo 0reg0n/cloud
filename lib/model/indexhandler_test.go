@@ -12,11 +12,11 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/syncthing/syncthing/lib/model"
-	"github.com/syncthing/syncthing/lib/model/mocks"
-	"github.com/syncthing/syncthing/lib/protocol"
-	protomock "github.com/syncthing/syncthing/lib/protocol/mocks"
-	"github.com/syncthing/syncthing/lib/testutil"
+	"github.com/0reg0n/cloud/lib/model"
+	"github.com/0reg0n/cloud/lib/model/mocks"
+	"github.com/0reg0n/cloud/lib/protocol"
+	protomock "github.com/0reg0n/cloud/lib/protocol/mocks"
+	"github.com/0reg0n/cloud/lib/testutil"
 )
 
 func TestIndexhandlerConcurrency(t *testing.T) {

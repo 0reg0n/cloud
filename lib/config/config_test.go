@@ -24,11 +24,11 @@ import (
 	"github.com/d4l3k/messagediff"
 	"golang.org/x/crypto/bcrypt"
 
-	"github.com/syncthing/syncthing/lib/build"
-	"github.com/syncthing/syncthing/lib/events"
-	"github.com/syncthing/syncthing/lib/fs"
-	"github.com/syncthing/syncthing/lib/protocol"
-	"github.com/syncthing/syncthing/lib/rand"
+	"github.com/0reg0n/cloud/lib/build"
+	"github.com/0reg0n/cloud/lib/events"
+	"github.com/0reg0n/cloud/lib/fs"
+	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/cloud/lib/rand"
 )
 
 var device1, device2, device3, device4 protocol.DeviceID

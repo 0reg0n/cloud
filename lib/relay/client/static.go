@@ -12,11 +12,11 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/syncthing/syncthing/internal/slogutil"
-	"github.com/syncthing/syncthing/lib/dialer"
-	"github.com/syncthing/syncthing/lib/osutil"
-	syncthingprotocol "github.com/syncthing/syncthing/lib/protocol"
-	"github.com/syncthing/syncthing/lib/relay/protocol"
+	"github.com/0reg0n/cloud/internal/slogutil"
+	"github.com/0reg0n/cloud/lib/dialer"
+	"github.com/0reg0n/cloud/lib/osutil"
+	syncthingprotocol "github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/cloud/lib/relay/protocol"
 )
 
 type staticClient struct {

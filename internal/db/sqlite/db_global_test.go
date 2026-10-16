@@ -10,8 +10,8 @@ import (
 	"slices"
 	"testing"
 
-	"github.com/syncthing/syncthing/lib/config"
-	"github.com/syncthing/syncthing/lib/protocol"
+	"github.com/0reg0n/cloud/lib/config"
+	"github.com/0reg0n/cloud/lib/protocol"
 )
 
 func TestNeed(t *testing.T) {

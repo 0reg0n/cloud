@@ -26,10 +26,10 @@ import (
 
 	"github.com/alecthomas/kong"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
-	"github.com/syncthing/syncthing/internal/slogutil"
-	"github.com/syncthing/syncthing/lib/build"
-	"github.com/syncthing/syncthing/lib/httpcache"
-	"github.com/syncthing/syncthing/lib/upgrade"
+	"github.com/0reg0n/cloud/internal/slogutil"
+	"github.com/0reg0n/cloud/lib/build"
+	"github.com/0reg0n/cloud/lib/httpcache"
+	"github.com/0reg0n/cloud/lib/upgrade"
 )
 
 type cli struct {

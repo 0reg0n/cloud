@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/syncthing/syncthing/internal/db"
+	"github.com/0reg0n/cloud/internal/db"
 )
 
 const (

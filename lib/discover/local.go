@@ -23,13 +23,13 @@ import (
 	"github.com/thejerf/suture/v4"
 	"google.golang.org/protobuf/proto"
 
-	"github.com/syncthing/syncthing/internal/gen/discoproto"
-	"github.com/syncthing/syncthing/internal/slogutil"
-	"github.com/syncthing/syncthing/lib/beacon"
-	"github.com/syncthing/syncthing/lib/events"
-	"github.com/syncthing/syncthing/lib/protocol"
-	"github.com/syncthing/syncthing/lib/rand"
-	"github.com/syncthing/syncthing/lib/svcutil"
+	"github.com/0reg0n/cloud/internal/gen/discoproto"
+	"github.com/0reg0n/cloud/internal/slogutil"
+	"github.com/0reg0n/cloud/lib/beacon"
+	"github.com/0reg0n/cloud/lib/events"
+	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/cloud/lib/rand"
+	"github.com/0reg0n/cloud/lib/svcutil"
 )
 
 type localClient struct {

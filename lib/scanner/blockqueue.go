@@ -11,8 +11,8 @@ import (
 	"errors"
 	"sync"
 
-	"github.com/syncthing/syncthing/lib/fs"
-	"github.com/syncthing/syncthing/lib/protocol"
+	"github.com/0reg0n/cloud/lib/fs"
+	"github.com/0reg0n/cloud/lib/protocol"
 )
 
 // HashFile hashes the files and returns a list of blocks representing the file.

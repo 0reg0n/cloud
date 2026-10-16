@@ -15,11 +15,11 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/syncthing/syncthing/internal/db"
-	"github.com/syncthing/syncthing/lib/build"
-	"github.com/syncthing/syncthing/lib/locations"
-	"github.com/syncthing/syncthing/lib/osutil"
-	"github.com/syncthing/syncthing/lib/protocol"
+	"github.com/0reg0n/cloud/internal/db"
+	"github.com/0reg0n/cloud/lib/build"
+	"github.com/0reg0n/cloud/lib/locations"
+	"github.com/0reg0n/cloud/lib/osutil"
+	"github.com/0reg0n/cloud/lib/protocol"
 	"golang.org/x/exp/constraints"
 )
 

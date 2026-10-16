@@ -17,7 +17,7 @@ import (
 	"time"
 
 	"github.com/shirou/gopsutil/v4/disk"
-	"github.com/syncthing/syncthing/lib/build"
+	"github.com/0reg0n/cloud/lib/build"
 )
 
 const FilesystemTypeBasic FilesystemType = "basic"

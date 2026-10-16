@@ -8,7 +8,7 @@
 
 package main
 
-import "github.com/syncthing/syncthing/internal/db"
+import "github.com/0reg0n/cloud/internal/db"
 
 func startPerfStats(_ db.DB) {
 }

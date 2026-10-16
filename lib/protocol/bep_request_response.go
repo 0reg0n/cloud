@@ -6,7 +6,7 @@
 
 package protocol
 
-import "github.com/syncthing/syncthing/internal/gen/bep"
+import "github.com/0reg0n/cloud/internal/gen/bep"
 
 type ErrorCode = bep.ErrorCode
 

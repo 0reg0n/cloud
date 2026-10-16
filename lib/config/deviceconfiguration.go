@@ -11,7 +11,7 @@ import (
 	"log/slog"
 	"slices"
 
-	"github.com/syncthing/syncthing/lib/protocol"
+	"github.com/0reg0n/cloud/lib/protocol"
 )
 
 const defaultNumConnections = 3 // number of connections to use by default

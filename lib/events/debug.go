@@ -7,7 +7,7 @@
 package events
 
 import (
-	"github.com/syncthing/syncthing/internal/slogutil"
+	"github.com/0reg0n/cloud/internal/slogutil"
 )
 
 var dl = slogutil.NewAdapter("Event generation and logging")

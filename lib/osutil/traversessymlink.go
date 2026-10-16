@@ -9,7 +9,7 @@ package osutil
 import (
 	"path/filepath"
 
-	"github.com/syncthing/syncthing/lib/fs"
+	"github.com/0reg0n/cloud/lib/fs"
 )
 
 // TraversesSymlinkError is an error indicating symlink traversal

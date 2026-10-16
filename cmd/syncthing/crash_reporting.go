@@ -19,9 +19,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/syncthing/syncthing/internal/slogutil"
-	"github.com/syncthing/syncthing/lib/build"
-	"github.com/syncthing/syncthing/lib/tlsutil"
+	"github.com/0reg0n/cloud/internal/slogutil"
+	"github.com/0reg0n/cloud/lib/build"
+	"github.com/0reg0n/cloud/lib/tlsutil"
 )
 
 const (

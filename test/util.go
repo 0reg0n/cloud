@@ -26,8 +26,8 @@ import (
 	"time"
 	"unicode"
 
-	"github.com/syncthing/syncthing/lib/build"
-	"github.com/syncthing/syncthing/lib/rc"
+	"github.com/0reg0n/cloud/lib/build"
+	"github.com/0reg0n/cloud/lib/rc"
 )
 
 func init() {
@@ -178,7 +178,7 @@ func alterFiles(dir string) error {
 			if build.IsDarwin || build.IsWindows {
 				// Syncthing is currently broken for case-only renames on case-
 				// insensitive platforms.
-				// https://github.com/syncthing/syncthing/issues/1787
+				// https://github.com/0reg0n/cloud/issues/1787
 				return nil
 			}
 

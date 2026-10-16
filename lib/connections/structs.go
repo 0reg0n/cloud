@@ -18,12 +18,12 @@ import (
 
 	"github.com/thejerf/suture/v4"
 
-	"github.com/syncthing/syncthing/lib/config"
-	"github.com/syncthing/syncthing/lib/connections/registry"
-	"github.com/syncthing/syncthing/lib/nat"
-	"github.com/syncthing/syncthing/lib/osutil"
-	"github.com/syncthing/syncthing/lib/protocol"
-	"github.com/syncthing/syncthing/lib/stats"
+	"github.com/0reg0n/cloud/lib/config"
+	"github.com/0reg0n/cloud/lib/connections/registry"
+	"github.com/0reg0n/cloud/lib/nat"
+	"github.com/0reg0n/cloud/lib/osutil"
+	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/cloud/lib/stats"
 )
 
 type tlsConn interface {

@@ -16,7 +16,7 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/syncthing/syncthing/internal/slogutil"
+	"github.com/0reg0n/cloud/internal/slogutil"
 )
 
 func (s *DB) DropFolder(folder string) error {

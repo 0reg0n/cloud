@@ -7,7 +7,7 @@
 package dialer
 
 import (
-	"github.com/syncthing/syncthing/internal/slogutil"
+	"github.com/0reg0n/cloud/internal/slogutil"
 )
 
 var l = slogutil.NewAdapter("Dialing connections")

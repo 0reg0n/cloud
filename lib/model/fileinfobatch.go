@@ -7,7 +7,7 @@
 package model
 
 import (
-	"github.com/syncthing/syncthing/lib/protocol"
+	"github.com/0reg0n/cloud/lib/protocol"
 )
 
 // How many files & blocks to send in each Index/IndexUpdate message.

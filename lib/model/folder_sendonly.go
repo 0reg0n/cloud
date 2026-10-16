@@ -9,13 +9,13 @@ package model
 import (
 	"context"
 
-	"github.com/syncthing/syncthing/internal/itererr"
-	"github.com/syncthing/syncthing/lib/config"
-	"github.com/syncthing/syncthing/lib/events"
-	"github.com/syncthing/syncthing/lib/ignore"
-	"github.com/syncthing/syncthing/lib/protocol"
-	"github.com/syncthing/syncthing/lib/semaphore"
-	"github.com/syncthing/syncthing/lib/versioner"
+	"github.com/0reg0n/cloud/internal/itererr"
+	"github.com/0reg0n/cloud/lib/config"
+	"github.com/0reg0n/cloud/lib/events"
+	"github.com/0reg0n/cloud/lib/ignore"
+	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/cloud/lib/semaphore"
+	"github.com/0reg0n/cloud/lib/versioner"
 )
 
 func init() {

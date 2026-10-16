@@ -8,7 +8,7 @@
 
 package auto
 
-import "github.com/syncthing/syncthing/lib/assets"
+import "github.com/0reg0n/cloud/lib/assets"
 
 func Assets() map[string]assets.Asset {
 	return nil

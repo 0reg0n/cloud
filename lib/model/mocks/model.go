@@ -8,12 +8,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/syncthing/syncthing/internal/db"
-	"github.com/syncthing/syncthing/lib/model"
-	"github.com/syncthing/syncthing/lib/protocol"
-	"github.com/syncthing/syncthing/lib/stats"
-	"github.com/syncthing/syncthing/lib/ur/contract"
-	"github.com/syncthing/syncthing/lib/versioner"
+	"github.com/0reg0n/cloud/internal/db"
+	"github.com/0reg0n/cloud/lib/model"
+	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/cloud/lib/stats"
+	"github.com/0reg0n/cloud/lib/ur/contract"
+	"github.com/0reg0n/cloud/lib/versioner"
 )
 
 type Model struct {

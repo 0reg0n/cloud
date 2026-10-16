@@ -9,8 +9,8 @@ package model
 import (
 	"testing"
 
-	"github.com/syncthing/syncthing/lib/fs"
-	"github.com/syncthing/syncthing/lib/rand"
+	"github.com/0reg0n/cloud/lib/fs"
+	"github.com/0reg0n/cloud/lib/rand"
 )
 
 // Test creating temporary file inside read-only directory

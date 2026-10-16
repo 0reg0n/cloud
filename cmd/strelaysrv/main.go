@@ -22,16 +22,16 @@ import (
 
 	"golang.org/x/time/rate"
 
-	"github.com/syncthing/syncthing/lib/build"
-	"github.com/syncthing/syncthing/lib/config"
-	"github.com/syncthing/syncthing/lib/events"
-	"github.com/syncthing/syncthing/lib/nat"
-	"github.com/syncthing/syncthing/lib/osutil"
-	_ "github.com/syncthing/syncthing/lib/pmp"
-	syncthingprotocol "github.com/syncthing/syncthing/lib/protocol"
-	"github.com/syncthing/syncthing/lib/relay/protocol"
-	"github.com/syncthing/syncthing/lib/tlsutil"
-	_ "github.com/syncthing/syncthing/lib/upnp"
+	"github.com/0reg0n/cloud/lib/build"
+	"github.com/0reg0n/cloud/lib/config"
+	"github.com/0reg0n/cloud/lib/events"
+	"github.com/0reg0n/cloud/lib/nat"
+	"github.com/0reg0n/cloud/lib/osutil"
+	_ "github.com/0reg0n/cloud/lib/pmp"
+	syncthingprotocol "github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/cloud/lib/relay/protocol"
+	"github.com/0reg0n/cloud/lib/tlsutil"
+	_ "github.com/0reg0n/cloud/lib/upnp"
 )
 
 var (

@@ -14,7 +14,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/syncthing/syncthing/internal/slogutil"
+	"github.com/0reg0n/cloud/internal/slogutil"
 	"github.com/thejerf/suture/v4"
 )
 

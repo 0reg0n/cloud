@@ -16,8 +16,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/syncthing/syncthing/internal/gen/bep"
-	"github.com/syncthing/syncthing/lib/build"
+	"github.com/0reg0n/cloud/internal/gen/bep"
+	"github.com/0reg0n/cloud/lib/build"
 )
 
 type FlagLocal uint32

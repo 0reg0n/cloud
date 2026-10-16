@@ -23,8 +23,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/syncthing/syncthing/lib/dialer"
-	"github.com/syncthing/syncthing/lib/rand"
+	"github.com/0reg0n/cloud/lib/dialer"
+	"github.com/0reg0n/cloud/lib/rand"
 )
 
 // ShortLivedHTTPClient is used for infrequent HTTP requests. It supports

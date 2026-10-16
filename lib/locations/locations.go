@@ -13,8 +13,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/syncthing/syncthing/lib/build"
-	"github.com/syncthing/syncthing/lib/fs"
+	"github.com/0reg0n/cloud/lib/build"
+	"github.com/0reg0n/cloud/lib/fs"
 )
 
 type LocationEnum string

@@ -11,7 +11,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/syncthing/syncthing/lib/protocol"
+	"github.com/0reg0n/cloud/lib/protocol"
 )
 
 // unixPlatformData is used on all platforms, because apart from being the

@@ -13,8 +13,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/syncthing/syncthing/lib/protocol"
-	"github.com/syncthing/syncthing/lib/scanner"
+	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/cloud/lib/scanner"
 )
 
 func main() {

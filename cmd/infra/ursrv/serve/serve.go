@@ -26,12 +26,12 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/puzpuzpuz/xsync/v3"
-	"github.com/syncthing/syncthing/internal/blob"
-	"github.com/syncthing/syncthing/internal/blob/s3"
-	"github.com/syncthing/syncthing/internal/slogutil"
-	"github.com/syncthing/syncthing/lib/build"
-	"github.com/syncthing/syncthing/lib/geoip"
-	"github.com/syncthing/syncthing/lib/ur/contract"
+	"github.com/0reg0n/cloud/internal/blob"
+	"github.com/0reg0n/cloud/internal/blob/s3"
+	"github.com/0reg0n/cloud/internal/slogutil"
+	"github.com/0reg0n/cloud/lib/build"
+	"github.com/0reg0n/cloud/lib/geoip"
+	"github.com/0reg0n/cloud/lib/ur/contract"
 	"github.com/thejerf/suture/v4"
 )
 

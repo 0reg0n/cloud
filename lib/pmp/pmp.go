@@ -16,11 +16,11 @@ import (
 
 	natpmp "github.com/jackpal/go-nat-pmp"
 
-	"github.com/syncthing/syncthing/internal/slogutil"
-	"github.com/syncthing/syncthing/lib/nat"
-	"github.com/syncthing/syncthing/lib/netutil"
-	"github.com/syncthing/syncthing/lib/osutil"
-	"github.com/syncthing/syncthing/lib/svcutil"
+	"github.com/0reg0n/cloud/internal/slogutil"
+	"github.com/0reg0n/cloud/lib/nat"
+	"github.com/0reg0n/cloud/lib/netutil"
+	"github.com/0reg0n/cloud/lib/osutil"
+	"github.com/0reg0n/cloud/lib/svcutil"
 )
 
 func init() {

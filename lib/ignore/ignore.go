@@ -24,10 +24,10 @@ import (
 	"github.com/gobwas/glob"
 	"golang.org/x/text/unicode/norm"
 
-	"github.com/syncthing/syncthing/lib/build"
-	"github.com/syncthing/syncthing/lib/fs"
-	"github.com/syncthing/syncthing/lib/ignore/ignoreresult"
-	"github.com/syncthing/syncthing/lib/osutil"
+	"github.com/0reg0n/cloud/lib/build"
+	"github.com/0reg0n/cloud/lib/fs"
+	"github.com/0reg0n/cloud/lib/ignore/ignoreresult"
+	"github.com/0reg0n/cloud/lib/osutil"
 )
 
 const escapePrefix = "#escape"

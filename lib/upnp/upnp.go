@@ -49,13 +49,13 @@ import (
 	"sync"
 	"time"
 
-	"github.com/syncthing/syncthing/internal/slogutil"
-	"github.com/syncthing/syncthing/lib/netutil"
+	"github.com/0reg0n/cloud/internal/slogutil"
+	"github.com/0reg0n/cloud/lib/netutil"
 
-	"github.com/syncthing/syncthing/lib/build"
-	"github.com/syncthing/syncthing/lib/dialer"
-	"github.com/syncthing/syncthing/lib/nat"
-	"github.com/syncthing/syncthing/lib/osutil"
+	"github.com/0reg0n/cloud/lib/build"
+	"github.com/0reg0n/cloud/lib/dialer"
+	"github.com/0reg0n/cloud/lib/nat"
+	"github.com/0reg0n/cloud/lib/osutil"
 )
 
 func init() {

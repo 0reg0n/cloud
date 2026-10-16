@@ -1,0 +1,20 @@
+cloud
+=====
+
+This product is a derivative work based on Syncthing.
+
+Upstream project: Syncthing — Open Source Continuous File Synchronization
+Upstream source:  https://github.com/syncthing/syncthing
+Upstream license: Mozilla Public License, v. 2.0 (see LICENSE)
+
+Copyright
+---------
+
+Files inherited from Syncthing retain their original copyright headers
+("Copyright (C) ... The Syncthing Authors") and remain subject to the terms of
+the Mozilla Public License, v. 2.0. Those notices must be preserved.
+
+Modifications made in this repository are distributed under the same license
+(MPL-2.0) as the files they modify.
+
+The list of upstream authors is available in the AUTHORS file.

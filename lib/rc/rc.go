@@ -25,11 +25,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/syncthing/syncthing/lib/config"
-	"github.com/syncthing/syncthing/lib/dialer"
-	"github.com/syncthing/syncthing/lib/events"
-	"github.com/syncthing/syncthing/lib/model"
-	"github.com/syncthing/syncthing/lib/protocol"
+	"github.com/0reg0n/cloud/lib/config"
+	"github.com/0reg0n/cloud/lib/dialer"
+	"github.com/0reg0n/cloud/lib/events"
+	"github.com/0reg0n/cloud/lib/model"
+	"github.com/0reg0n/cloud/lib/protocol"
 )
 
 // APIKey is set via the STGUIAPIKEY variable when we launch the binary, to

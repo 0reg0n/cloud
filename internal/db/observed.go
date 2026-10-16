@@ -14,8 +14,8 @@ import (
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/types/known/timestamppb"
 
-	"github.com/syncthing/syncthing/internal/gen/dbproto"
-	"github.com/syncthing/syncthing/lib/protocol"
+	"github.com/0reg0n/cloud/internal/gen/dbproto"
+	"github.com/0reg0n/cloud/lib/protocol"
 )
 
 type ObservedDB struct {

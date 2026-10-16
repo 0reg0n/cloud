@@ -27,25 +27,25 @@ import (
 	"github.com/d4l3k/messagediff"
 	"github.com/thejerf/suture/v4"
 
-	"github.com/syncthing/syncthing/internal/db"
-	"github.com/syncthing/syncthing/internal/db/sqlite"
-	"github.com/syncthing/syncthing/internal/slogutil"
-	"github.com/syncthing/syncthing/lib/assets"
-	"github.com/syncthing/syncthing/lib/build"
-	"github.com/syncthing/syncthing/lib/config"
-	connmocks "github.com/syncthing/syncthing/lib/connections/mocks"
-	discovermocks "github.com/syncthing/syncthing/lib/discover/mocks"
-	"github.com/syncthing/syncthing/lib/events"
-	eventmocks "github.com/syncthing/syncthing/lib/events/mocks"
-	"github.com/syncthing/syncthing/lib/fs"
-	"github.com/syncthing/syncthing/lib/locations"
-	"github.com/syncthing/syncthing/lib/model"
-	modelmocks "github.com/syncthing/syncthing/lib/model/mocks"
-	"github.com/syncthing/syncthing/lib/protocol"
-	"github.com/syncthing/syncthing/lib/rand"
-	"github.com/syncthing/syncthing/lib/svcutil"
-	"github.com/syncthing/syncthing/lib/tlsutil"
-	"github.com/syncthing/syncthing/lib/ur"
+	"github.com/0reg0n/cloud/internal/db"
+	"github.com/0reg0n/cloud/internal/db/sqlite"
+	"github.com/0reg0n/cloud/internal/slogutil"
+	"github.com/0reg0n/cloud/lib/assets"
+	"github.com/0reg0n/cloud/lib/build"
+	"github.com/0reg0n/cloud/lib/config"
+	connmocks "github.com/0reg0n/cloud/lib/connections/mocks"
+	discovermocks "github.com/0reg0n/cloud/lib/discover/mocks"
+	"github.com/0reg0n/cloud/lib/events"
+	eventmocks "github.com/0reg0n/cloud/lib/events/mocks"
+	"github.com/0reg0n/cloud/lib/fs"
+	"github.com/0reg0n/cloud/lib/locations"
+	"github.com/0reg0n/cloud/lib/model"
+	modelmocks "github.com/0reg0n/cloud/lib/model/mocks"
+	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/cloud/lib/rand"
+	"github.com/0reg0n/cloud/lib/svcutil"
+	"github.com/0reg0n/cloud/lib/tlsutil"
+	"github.com/0reg0n/cloud/lib/ur"
 )
 
 var (
@@ -444,7 +444,7 @@ func TestAPIServiceRequests(t *testing.T) {
 // content type, and result prefix.
 func testHTTPRequest(t *testing.T, baseURL string, tc httpTestCase, apikey string) {
 	// Since running tests in parallel, the previous 1s timeout proved to be too short.
-	// https://github.com/syncthing/syncthing/issues/9455
+	// https://github.com/0reg0n/cloud/issues/9455
 	timeout := 10 * time.Second
 	if tc.Timeout > 0 {
 		timeout = tc.Timeout

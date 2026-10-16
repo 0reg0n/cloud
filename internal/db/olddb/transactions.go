@@ -11,10 +11,10 @@ import (
 
 	"google.golang.org/protobuf/proto"
 
-	"github.com/syncthing/syncthing/internal/db/olddb/backend"
-	"github.com/syncthing/syncthing/internal/gen/bep"
-	"github.com/syncthing/syncthing/internal/gen/dbproto"
-	"github.com/syncthing/syncthing/lib/protocol"
+	"github.com/0reg0n/cloud/internal/db/olddb/backend"
+	"github.com/0reg0n/cloud/internal/gen/bep"
+	"github.com/0reg0n/cloud/internal/gen/dbproto"
+	"github.com/0reg0n/cloud/lib/protocol"
 )
 
 // A readOnlyTransaction represents a database snapshot.

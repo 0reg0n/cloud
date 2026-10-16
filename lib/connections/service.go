@@ -30,23 +30,23 @@ import (
 
 	"github.com/thejerf/suture/v4"
 
-	"github.com/syncthing/syncthing/internal/slogutil"
-	"github.com/syncthing/syncthing/lib/build"
-	"github.com/syncthing/syncthing/lib/config"
-	"github.com/syncthing/syncthing/lib/connections/registry"
-	"github.com/syncthing/syncthing/lib/discover"
-	"github.com/syncthing/syncthing/lib/events"
-	"github.com/syncthing/syncthing/lib/nat"
-	"github.com/syncthing/syncthing/lib/osutil"
-	"github.com/syncthing/syncthing/lib/protocol"
-	"github.com/syncthing/syncthing/lib/semaphore"
-	"github.com/syncthing/syncthing/lib/sliceutil"
-	"github.com/syncthing/syncthing/lib/stringutil"
-	"github.com/syncthing/syncthing/lib/svcutil"
+	"github.com/0reg0n/cloud/internal/slogutil"
+	"github.com/0reg0n/cloud/lib/build"
+	"github.com/0reg0n/cloud/lib/config"
+	"github.com/0reg0n/cloud/lib/connections/registry"
+	"github.com/0reg0n/cloud/lib/discover"
+	"github.com/0reg0n/cloud/lib/events"
+	"github.com/0reg0n/cloud/lib/nat"
+	"github.com/0reg0n/cloud/lib/osutil"
+	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/cloud/lib/semaphore"
+	"github.com/0reg0n/cloud/lib/sliceutil"
+	"github.com/0reg0n/cloud/lib/stringutil"
+	"github.com/0reg0n/cloud/lib/svcutil"
 
 	// Registers NAT service providers
-	_ "github.com/syncthing/syncthing/lib/pmp"
-	_ "github.com/syncthing/syncthing/lib/upnp"
+	_ "github.com/0reg0n/cloud/lib/pmp"
+	_ "github.com/0reg0n/cloud/lib/upnp"
 )
 
 var (

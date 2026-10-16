@@ -15,7 +15,7 @@ import (
 
 	"github.com/AudriusButkevicius/recli"
 	"github.com/alecthomas/kong"
-	"github.com/syncthing/syncthing/lib/config"
+	"github.com/0reg0n/cloud/lib/config"
 	"github.com/urfave/cli"
 )
 

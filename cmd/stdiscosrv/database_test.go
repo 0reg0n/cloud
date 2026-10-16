@@ -12,8 +12,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/syncthing/syncthing/internal/gen/discosrv"
-	"github.com/syncthing/syncthing/lib/protocol"
+	"github.com/0reg0n/cloud/internal/gen/discosrv"
+	"github.com/0reg0n/cloud/lib/protocol"
 )
 
 func TestDatabaseGetSet(t *testing.T) {

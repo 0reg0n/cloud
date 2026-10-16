@@ -22,12 +22,12 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/syncthing/syncthing/internal/slogutil"
-	"github.com/syncthing/syncthing/lib/build"
-	"github.com/syncthing/syncthing/lib/fs"
-	"github.com/syncthing/syncthing/lib/locations"
-	"github.com/syncthing/syncthing/lib/osutil"
-	"github.com/syncthing/syncthing/lib/svcutil"
+	"github.com/0reg0n/cloud/internal/slogutil"
+	"github.com/0reg0n/cloud/lib/build"
+	"github.com/0reg0n/cloud/lib/fs"
+	"github.com/0reg0n/cloud/lib/locations"
+	"github.com/0reg0n/cloud/lib/osutil"
+	"github.com/0reg0n/cloud/lib/svcutil"
 )
 
 var (
@@ -250,7 +250,7 @@ func copyStderr(stderr io.Reader, dst io.Writer) {
 			}
 
 			slog.Error("Panic detected, writing to file", slogutil.FilePath(panicFd.Name()))
-			slog.Info("Please check for existing issues with similar panic message at https://github.com/syncthing/syncthing/issues/")
+			slog.Info("Please check for existing issues with similar panic message at https://github.com/0reg0n/cloud/issues/")
 			slog.Info("If no issue with similar panic message exists, please create a new issue with the panic log attached")
 
 			stdoutMut.Lock()

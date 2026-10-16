@@ -26,15 +26,15 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 
-	"github.com/syncthing/syncthing/cmd/infra/strelaypoolsrv/auto"
-	"github.com/syncthing/syncthing/lib/assets"
-	"github.com/syncthing/syncthing/lib/build"
-	"github.com/syncthing/syncthing/lib/geoip"
-	"github.com/syncthing/syncthing/lib/osutil"
-	"github.com/syncthing/syncthing/lib/protocol"
-	"github.com/syncthing/syncthing/lib/rand"
-	"github.com/syncthing/syncthing/lib/relay/client"
-	"github.com/syncthing/syncthing/lib/tlsutil"
+	"github.com/0reg0n/cloud/cmd/infra/strelaypoolsrv/auto"
+	"github.com/0reg0n/cloud/lib/assets"
+	"github.com/0reg0n/cloud/lib/build"
+	"github.com/0reg0n/cloud/lib/geoip"
+	"github.com/0reg0n/cloud/lib/osutil"
+	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/cloud/lib/rand"
+	"github.com/0reg0n/cloud/lib/relay/client"
+	"github.com/0reg0n/cloud/lib/tlsutil"
 )
 
 type location struct {

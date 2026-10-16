@@ -15,13 +15,13 @@ import (
 	"sync"
 	"time"
 
-	"github.com/syncthing/syncthing/internal/slogutil"
-	"github.com/syncthing/syncthing/lib/config"
-	"github.com/syncthing/syncthing/lib/connections/registry"
-	"github.com/syncthing/syncthing/lib/dialer"
-	"github.com/syncthing/syncthing/lib/nat"
-	"github.com/syncthing/syncthing/lib/relay/client"
-	"github.com/syncthing/syncthing/lib/svcutil"
+	"github.com/0reg0n/cloud/internal/slogutil"
+	"github.com/0reg0n/cloud/lib/config"
+	"github.com/0reg0n/cloud/lib/connections/registry"
+	"github.com/0reg0n/cloud/lib/dialer"
+	"github.com/0reg0n/cloud/lib/nat"
+	"github.com/0reg0n/cloud/lib/relay/client"
+	"github.com/0reg0n/cloud/lib/svcutil"
 )
 
 func init() {

@@ -13,7 +13,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/syncthing/syncthing/lib/fs"
+	"github.com/0reg0n/cloud/lib/fs"
 )
 
 var (

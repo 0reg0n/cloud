@@ -10,7 +10,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/syncthing/syncthing/lib/protocol"
+	"github.com/0reg0n/cloud/lib/protocol"
 )
 
 type folderDB struct {

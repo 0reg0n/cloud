@@ -32,8 +32,8 @@ import (
 	"text/template"
 	"time"
 
-	buildpkg "github.com/syncthing/syncthing/lib/build"
-	"github.com/syncthing/syncthing/lib/upgrade"
+	buildpkg "github.com/0reg0n/cloud/lib/build"
+	"github.com/0reg0n/cloud/lib/upgrade"
 	"sigs.k8s.io/yaml"
 )
 
@@ -91,7 +91,7 @@ var targets = map[string]target{
 		debname:     "syncthing",
 		debdeps:     []string{"libc6", "procps"},
 		description: "Open Source Continuous File Synchronization",
-		buildPkgs:   []string{"github.com/syncthing/syncthing/cmd/syncthing"},
+		buildPkgs:   []string{"github.com/0reg0n/cloud/cmd/syncthing"},
 		binaryName:  "syncthing", // .exe will be added automatically for Windows builds
 		archiveFiles: []archiveFile{
 			{src: "{{binary}}", dst: "{{binary}}", perm: 0o755},
@@ -136,7 +136,7 @@ var targets = map[string]target{
 		debdeps:     []string{"libc6"},
 		debpre:      "cmd/stdiscosrv/scripts/preinst",
 		description: "Syncthing Discovery Server",
-		buildPkgs:   []string{"github.com/syncthing/syncthing/cmd/stdiscosrv"},
+		buildPkgs:   []string{"github.com/0reg0n/cloud/cmd/stdiscosrv"},
 		binaryName:  "stdiscosrv", // .exe will be added automatically for Windows builds
 		archiveFiles: []archiveFile{
 			{src: "{{binary}}", dst: "{{binary}}", perm: 0o755},
@@ -162,7 +162,7 @@ var targets = map[string]target{
 		debdeps:     []string{"libc6"},
 		debpre:      "cmd/strelaysrv/scripts/preinst",
 		description: "Syncthing Relay Server",
-		buildPkgs:   []string{"github.com/syncthing/syncthing/cmd/strelaysrv"},
+		buildPkgs:   []string{"github.com/0reg0n/cloud/cmd/strelaysrv"},
 		binaryName:  "strelaysrv", // .exe will be added automatically for Windows builds
 		archiveFiles: []archiveFile{
 			{src: "{{binary}}", dst: "{{binary}}", perm: 0o755},
@@ -187,25 +187,25 @@ var targets = map[string]target{
 	"strelaypoolsrv": {
 		name:        "strelaypoolsrv",
 		description: "Syncthing Relay Pool Server",
-		buildPkgs:   []string{"github.com/syncthing/syncthing/cmd/infra/strelaypoolsrv"},
+		buildPkgs:   []string{"github.com/0reg0n/cloud/cmd/infra/strelaypoolsrv"},
 		binaryName:  "strelaypoolsrv",
 	},
 	"stupgrades": {
 		name:        "stupgrades",
 		description: "Syncthing Upgrade Check Server",
-		buildPkgs:   []string{"github.com/syncthing/syncthing/cmd/infra/stupgrades"},
+		buildPkgs:   []string{"github.com/0reg0n/cloud/cmd/infra/stupgrades"},
 		binaryName:  "stupgrades",
 	},
 	"stcrashreceiver": {
 		name:        "stcrashreceiver",
 		description: "Syncthing Crash Server",
-		buildPkgs:   []string{"github.com/syncthing/syncthing/cmd/infra/stcrashreceiver"},
+		buildPkgs:   []string{"github.com/0reg0n/cloud/cmd/infra/stcrashreceiver"},
 		binaryName:  "stcrashreceiver",
 	},
 	"ursrv": {
 		name:        "ursrv",
 		description: "Syncthing Usage Reporting Server",
-		buildPkgs:   []string{"github.com/syncthing/syncthing/cmd/infra/ursrv"},
+		buildPkgs:   []string{"github.com/0reg0n/cloud/cmd/infra/ursrv"},
 		binaryName:  "ursrv",
 	},
 }
@@ -218,7 +218,7 @@ func initTargets() {
 			// No go files in the directory
 			continue
 		}
-		all.buildPkgs = append(all.buildPkgs, fmt.Sprintf("github.com/syncthing/syncthing/%s", pkg))
+		all.buildPkgs = append(all.buildPkgs, fmt.Sprintf("github.com/0reg0n/cloud/%s", pkg))
 	}
 	targets["all"] = all
 
@@ -288,10 +288,10 @@ func runCommand(cmd string, target target) {
 		build(target, tags)
 
 	case "test":
-		test(strings.Fields(extraTags), "github.com/syncthing/syncthing/internal/...", "github.com/syncthing/syncthing/lib/...", "github.com/syncthing/syncthing/cmd/...")
+		test(strings.Fields(extraTags), "github.com/0reg0n/cloud/internal/...", "github.com/0reg0n/cloud/lib/...", "github.com/0reg0n/cloud/cmd/...")
 
 	case "bench":
-		bench(strings.Fields(extraTags), "github.com/syncthing/syncthing/internal/...", "github.com/syncthing/syncthing/lib/...", "github.com/syncthing/syncthing/cmd/...")
+		bench(strings.Fields(extraTags), "github.com/0reg0n/cloud/internal/...", "github.com/0reg0n/cloud/lib/...", "github.com/0reg0n/cloud/cmd/...")
 
 	case "integration":
 		integration(false)
@@ -808,7 +808,7 @@ func listFiles(dir string) []string {
 
 func rebuildAssets() {
 	os.Setenv("SOURCE_DATE_EPOCH", fmt.Sprint(buildStamp()))
-	runPrint(goCmd, "generate", "github.com/syncthing/syncthing/lib/api/auto", "github.com/syncthing/syncthing/cmd/infra/strelaypoolsrv/auto")
+	runPrint(goCmd, "generate", "github.com/0reg0n/cloud/lib/api/auto", "github.com/0reg0n/cloud/cmd/infra/strelaypoolsrv/auto")
 }
 
 func lazyRebuildAssets() {
@@ -875,12 +875,12 @@ func proto() {
 func testmocks() {
 	args := []string{
 		"generate",
-		"github.com/syncthing/syncthing/lib/config",
-		"github.com/syncthing/syncthing/lib/connections",
-		"github.com/syncthing/syncthing/lib/discover",
-		"github.com/syncthing/syncthing/lib/events",
-		"github.com/syncthing/syncthing/lib/model",
-		"github.com/syncthing/syncthing/lib/protocol",
+		"github.com/0reg0n/cloud/lib/config",
+		"github.com/0reg0n/cloud/lib/connections",
+		"github.com/0reg0n/cloud/lib/discover",
+		"github.com/0reg0n/cloud/lib/events",
+		"github.com/0reg0n/cloud/lib/model",
+		"github.com/0reg0n/cloud/lib/protocol",
 	}
 	runPrint(goCmd, args...)
 }
@@ -910,11 +910,11 @@ func ldflags(tags []string) string {
 	b := new(strings.Builder)
 	b.WriteString("-w")
 	b.WriteString(" -buildid=")
-	fmt.Fprintf(b, " -X github.com/syncthing/syncthing/lib/build.Version=%s", version)
-	fmt.Fprintf(b, " -X github.com/syncthing/syncthing/lib/build.Stamp=%d", buildStamp())
-	fmt.Fprintf(b, " -X github.com/syncthing/syncthing/lib/build.User=%s", buildUser())
-	fmt.Fprintf(b, " -X github.com/syncthing/syncthing/lib/build.Host=%s", buildHost())
-	fmt.Fprintf(b, " -X github.com/syncthing/syncthing/lib/build.Tags=%s", strings.Join(tags, ","))
+	fmt.Fprintf(b, " -X github.com/0reg0n/cloud/lib/build.Version=%s", version)
+	fmt.Fprintf(b, " -X github.com/0reg0n/cloud/lib/build.Stamp=%d", buildStamp())
+	fmt.Fprintf(b, " -X github.com/0reg0n/cloud/lib/build.User=%s", buildUser())
+	fmt.Fprintf(b, " -X github.com/0reg0n/cloud/lib/build.Host=%s", buildHost())
+	fmt.Fprintf(b, " -X github.com/0reg0n/cloud/lib/build.Tags=%s", strings.Join(tags, ","))
 	if v := os.Getenv("EXTRA_LDFLAGS"); v != "" {
 		fmt.Fprintf(b, " %s", v)
 	}

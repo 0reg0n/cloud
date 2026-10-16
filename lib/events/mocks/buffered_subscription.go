@@ -5,7 +5,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/syncthing/syncthing/lib/events"
+	"github.com/0reg0n/cloud/lib/events"
 )
 
 type BufferedSubscription struct {

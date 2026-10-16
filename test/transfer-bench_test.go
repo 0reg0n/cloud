@@ -16,7 +16,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/syncthing/syncthing/lib/rc"
+	"github.com/0reg0n/cloud/lib/rc"
 )
 
 func TestBenchmarkTransferManyFiles(t *testing.T) {

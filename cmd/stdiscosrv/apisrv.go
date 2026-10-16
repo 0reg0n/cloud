@@ -30,9 +30,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/syncthing/syncthing/internal/gen/discosrv"
-	"github.com/syncthing/syncthing/lib/protocol"
-	"github.com/syncthing/syncthing/lib/stringutil"
+	"github.com/0reg0n/cloud/internal/gen/discosrv"
+	"github.com/0reg0n/cloud/lib/protocol"
+	"github.com/0reg0n/cloud/lib/stringutil"
 )
 
 // announcement is the format received from and sent to clients

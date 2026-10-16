@@ -15,9 +15,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/syncthing/syncthing/internal/db"
-	"github.com/syncthing/syncthing/internal/slogutil"
-	"github.com/syncthing/syncthing/lib/build"
+	"github.com/0reg0n/cloud/internal/db"
+	"github.com/0reg0n/cloud/internal/slogutil"
+	"github.com/0reg0n/cloud/lib/build"
 )
 
 const (

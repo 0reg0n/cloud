@@ -17,10 +17,10 @@ import (
 
 	"google.golang.org/protobuf/proto"
 
-	"github.com/syncthing/syncthing/internal/gen/discoproto"
-	"github.com/syncthing/syncthing/lib/beacon"
-	"github.com/syncthing/syncthing/lib/discover"
-	"github.com/syncthing/syncthing/lib/protocol"
+	"github.com/0reg0n/cloud/internal/gen/discoproto"
+	"github.com/0reg0n/cloud/lib/beacon"
+	"github.com/0reg0n/cloud/lib/discover"
+	"github.com/0reg0n/cloud/lib/protocol"
 )
 
 var (

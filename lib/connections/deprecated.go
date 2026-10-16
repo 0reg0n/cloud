@@ -6,7 +6,7 @@
 
 package connections
 
-import "github.com/syncthing/syncthing/lib/config"
+import "github.com/0reg0n/cloud/lib/config"
 
 // invalidListener is never valid
 type invalidListener struct {

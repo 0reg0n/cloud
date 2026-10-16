@@ -51,7 +51,7 @@ const (
 	levelDBDir          = "index-v0.14.0.db"
 	databaseName        = "index-v2"
 	configFileName      = "config.xml"
-	defaultStateDir     = ".local/state/cloud"
+	defaultStateDir     = ".local/state/comb"
 	oldDefaultConfigDir = ".config/syncthing"
 )
 
@@ -123,12 +123,12 @@ var locationTemplates = map[LocationEnum]string{
 	HTTPSKeyFile:   "${config}/https-key.pem",
 	LegacyDatabase: "${data}/" + levelDBDir,
 	Database:       "${data}/" + databaseName,
-	LogFile:        "${data}/cloud.log", // --logfile on Windows
+	LogFile:        "${data}/comb.log", // --logfile on Windows
 	PanicLog:       "${data}/panic-%{timestamp}.log",
 	AuditLog:       "${data}/audit-%{timestamp}.log",
 	GUIAssets:      "${config}/gui",
 	DefFolder:      "${userHome}/Sync",
-	LockFile:       "${data}/cloud.lock",
+	LockFile:       "${data}/comb.lock",
 }
 
 var locations = make(map[LocationEnum]string)
@@ -205,13 +205,13 @@ func defaultDataDir(userHome, configDir string) string {
 
 func windowsConfigDataDir() string {
 	if p := os.Getenv("LocalAppData"); p != "" {
-		return filepath.Join(p, "Cloud")
+		return filepath.Join(p, "Comb")
 	}
-	return filepath.Join(os.Getenv("AppData"), "Cloud")
+	return filepath.Join(os.Getenv("AppData"), "Comb")
 }
 
 func darwinConfigDataDir(userHome string) string {
-	return filepath.Join(userHome, "Library/Application Support/Cloud")
+	return filepath.Join(userHome, "Library/Application Support/Comb")
 }
 
 func unixConfigDir(userHome, xdgConfigHome, xdgStateHome string, fileExists func(string) bool) string {
@@ -234,7 +234,7 @@ func unixConfigDir(userHome, xdgConfigHome, xdgStateHome string, fileExists func
 
 	// If XDG_STATE_HOME is set to an absolute path, use that
 	if filepath.IsAbs(xdgStateHome) {
-		return filepath.Join(xdgStateHome, "cloud")
+		return filepath.Join(xdgStateHome, "comb")
 	}
 
 	// Use our default
@@ -272,7 +272,7 @@ func unixDataDir(userHome, configDir, xdgDataHome, xdgStateHome string, fileExis
 
 	// If XDG_STATE_HOME is set to an absolute path, use that
 	if filepath.IsAbs(xdgStateHome) {
-		return filepath.Join(xdgStateHome, "cloud")
+		return filepath.Join(xdgStateHome, "comb")
 	}
 
 	// Use our default

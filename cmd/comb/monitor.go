@@ -90,8 +90,8 @@ func (c *serveCmd) monitorMain() {
 	args := os.Args
 	binary, err := getBinary(args[0])
 	if err != nil {
-		slog.Error("Failed to start the main cloud process", slogutil.Error(err))
-		panic("Error starting the main cloud process")
+		slog.Error("Failed to start the main comb process", slogutil.Error(err))
+		panic("Error starting the main comb process")
 	}
 	var restarts [restartCounts]time.Time
 
@@ -127,11 +127,11 @@ func (c *serveCmd) monitorMain() {
 			panic(err)
 		}
 
-		slog.Debug("Starting cloud")
+		slog.Debug("Starting comb")
 		err = cmd.Start()
 		if err != nil {
-			slog.Error("Failed to start the main cloud process", slogutil.Error(err))
-			panic("Error starting the main cloud process")
+			slog.Error("Failed to start the main comb process", slogutil.Error(err))
+			panic("Error starting the main comb process")
 		}
 
 		stdoutMut.Lock()
@@ -198,7 +198,7 @@ func (c *serveCmd) monitorMain() {
 			os.Exit(svcutil.ExitError.AsInt())
 		}
 
-		slog.Info("cloud exited", slogutil.Error(err))
+		slog.Info("comb exited", slogutil.Error(err))
 		time.Sleep(restartPause)
 
 		if first {

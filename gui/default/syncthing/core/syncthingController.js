@@ -2200,7 +2200,7 @@ angular.module('syncthing.core')
             }
         };
 
-        $scope.cloudConnectedCount = function () {
+        $scope.combConnectedCount = function () {
             var count = 0;
             angular.forEach($scope.connections, function (conn) {
                 if (conn && conn.connected) {

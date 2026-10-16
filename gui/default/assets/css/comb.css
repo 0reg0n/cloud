@@ -5,58 +5,58 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // You can obtain one at https://mozilla.org/MPL/2.0/.
 
-// cloud UI design system. Loaded after the Bootstrap theme so it can
+// comb UI design system. Loaded after the Bootstrap theme so it can
 // override component defaults and provide the dashboard shell.
 */
 
 :root {
-    --cloud-bg: #f4f6f9;
-    --cloud-surface: #ffffff;
-    --cloud-border: #e9edf3;
-    --cloud-border-strong: #dfe5ee;
-    --cloud-text: #1f2733;
-    --cloud-muted: #8b95a7;
-    --cloud-accent: #2f6bff;
-    --cloud-accent-dark: #2358d8;
-    --cloud-accent-soft: #eaf1ff;
-    --cloud-green: #22c55e;
-    --cloud-green-bg: #e7f7ee;
-    --cloud-green-text: #1f9d55;
-    --cloud-gray-bg: #eef1f5;
-    --cloud-gray-text: #64748b;
-    --cloud-radius: 16px;
-    --cloud-radius-sm: 10px;
-    --cloud-shadow: 0 1px 2px rgba(16, 24, 40, .04), 0 8px 24px rgba(16, 24, 40, .04);
-    --cloud-sidebar-width: 264px;
+    --comb-bg: #f4f6f9;
+    --comb-surface: #ffffff;
+    --comb-border: #e9edf3;
+    --comb-border-strong: #dfe5ee;
+    --comb-text: #1f2733;
+    --comb-muted: #8b95a7;
+    --comb-accent: #2f6bff;
+    --comb-accent-dark: #2358d8;
+    --comb-accent-soft: #eaf1ff;
+    --comb-green: #22c55e;
+    --comb-green-bg: #e7f7ee;
+    --comb-green-text: #1f9d55;
+    --comb-gray-bg: #eef1f5;
+    --comb-gray-text: #64748b;
+    --comb-radius: 16px;
+    --comb-radius-sm: 10px;
+    --comb-shadow: 0 1px 2px rgba(16, 24, 40, .04), 0 8px 24px rgba(16, 24, 40, .04);
+    --comb-sidebar-width: 264px;
 }
 
 /* ---------- Page ---------- */
 
 body {
-    background: var(--cloud-bg);
-    color: var(--cloud-text);
+    background: var(--comb-bg);
+    color: var(--comb-text);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-h1, h2, h3, h4, h5, .cloud-topbar-title {
+h1, h2, h3, h4, h5, .comb-topbar-title {
     font-family: inherit;
     font-weight: 700;
-    color: var(--cloud-text);
+    color: var(--comb-text);
 }
 
 /* ---------- Shell ---------- */
 
-.cloud-app {
+.comb-app {
     display: flex;
     min-height: 100vh;
     align-items: stretch;
 }
 
-.cloud-sidebar {
-    width: var(--cloud-sidebar-width);
-    flex: 0 0 var(--cloud-sidebar-width);
-    background: var(--cloud-surface);
-    border-right: 1px solid var(--cloud-border);
+.comb-sidebar {
+    width: var(--comb-sidebar-width);
+    flex: 0 0 var(--comb-sidebar-width);
+    background: var(--comb-surface);
+    border-right: 1px solid var(--comb-border);
     position: sticky;
     top: 0;
     align-self: flex-start;
@@ -66,72 +66,72 @@ h1, h2, h3, h4, h5, .cloud-topbar-title {
     overflow-y: auto;
 }
 
-.cloud-main {
+.comb-main {
     flex: 1 1 auto;
     min-width: 0;
     display: flex;
     flex-direction: column;
 }
 
-.cloud-content {
+.comb-content {
     padding: 4px 28px 48px;
 }
 
 /* ---------- Sidebar: brand ---------- */
 
-.cloud-brand {
+.comb-brand {
     display: flex;
     align-items: center;
     gap: 12px;
     padding: 22px 20px 18px;
 }
 
-.cloud-brand-logo {
+.comb-brand-logo {
     width: 44px;
     height: 44px;
     padding: 5px;
     border-radius: 12px;
-    background: var(--cloud-surface);
-    border: 1px solid var(--cloud-border);
+    background: var(--comb-surface);
+    border: 1px solid var(--comb-border);
     object-fit: contain;
     flex: 0 0 auto;
 }
 
-.cloud-brand-name {
+.comb-brand-name {
     font-size: 18px;
     font-weight: 800;
     line-height: 1.1;
     letter-spacing: .2px;
 }
 
-.cloud-brand-sub {
+.comb-brand-sub {
     font-size: 12px;
-    color: var(--cloud-muted);
+    color: var(--comb-muted);
 }
 
 /* ---------- Sidebar: nav ---------- */
 
-.cloud-nav {
+.comb-nav {
     padding: 4px 12px 16px;
     flex: 1 1 auto;
 }
 
-.cloud-nav-section {
+.comb-nav-section {
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .08em;
-    color: var(--cloud-muted);
+    color: var(--comb-muted);
     padding: 16px 10px 8px;
 }
 
-.cloud-nav-item {
+.comb-nav-item {
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 10px 12px;
-    border-radius: var(--cloud-radius-sm);
-    color: var(--cloud-text);
+    border-radius: var(--comb-radius-sm);
+    color: var(--comb-text);
     font-size: 14px;
     font-weight: 500;
     text-decoration: none;
@@ -139,72 +139,72 @@ h1, h2, h3, h4, h5, .cloud-topbar-title {
     transition: background .12s ease, color .12s ease;
 }
 
-.cloud-nav-item:hover {
+.comb-nav-item:hover {
     background: #f1f4f9;
     text-decoration: none;
-    color: var(--cloud-text);
+    color: var(--comb-text);
 }
 
-.cloud-nav-item i {
+.comb-nav-item i {
     width: 18px;
     text-align: center;
-    color: var(--cloud-muted);
+    color: var(--comb-muted);
 }
 
-.cloud-nav-item.cloud-nav-active,
-.cloud-nav-item.cloud-nav-active:hover {
-    background: var(--cloud-accent);
+.comb-nav-item.comb-nav-active,
+.comb-nav-item.comb-nav-active:hover {
+    background: var(--comb-accent);
     color: #fff;
 }
 
-.cloud-nav-item.cloud-nav-active i {
+.comb-nav-item.comb-nav-active i {
     color: #fff;
 }
 
-.cloud-nav-count {
+.comb-nav-count {
     margin-left: auto;
     font-size: 12px;
     font-weight: 700;
-    color: var(--cloud-muted);
-    background: var(--cloud-gray-bg);
+    color: var(--comb-muted);
+    background: var(--comb-gray-bg);
     border-radius: 999px;
     padding: 1px 8px;
 }
 
-.cloud-nav-item.cloud-nav-active .cloud-nav-count {
+.comb-nav-item.comb-nav-active .comb-nav-count {
     background: rgba(255, 255, 255, .25);
     color: #fff;
 }
 
 /* ---------- Sidebar: footer ---------- */
 
-.cloud-sidebar-footer {
-    border-top: 1px solid var(--cloud-border);
+.comb-sidebar-footer {
+    border-top: 1px solid var(--comb-border);
     padding: 16px 20px 20px;
 }
 
-.cloud-device-name {
+.comb-device-name {
     font-weight: 700;
     font-size: 14px;
     word-break: break-word;
 }
 
-.cloud-device-meta {
+.comb-device-meta {
     font-size: 12px;
-    color: var(--cloud-muted);
+    color: var(--comb-muted);
     margin-bottom: 10px;
 }
 
-.cloud-device-status {
+.comb-device-status {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     gap: 6px;
     font-size: 12px;
-    color: var(--cloud-muted);
+    color: var(--comb-muted);
 }
 
-.cloud-dot {
+.comb-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -213,18 +213,18 @@ h1, h2, h3, h4, h5, .cloud-topbar-title {
     margin-left: 8px;
 }
 
-.cloud-dot:first-child {
+.comb-dot:first-child {
     margin-left: 0;
 }
 
-.cloud-dot.cloud-dot-on {
-    background: var(--cloud-green);
+.comb-dot.comb-dot-on {
+    background: var(--comb-green);
     box-shadow: 0 0 0 3px rgba(34, 197, 94, .15);
 }
 
 /* ---------- Topbar ---------- */
 
-.cloud-topbar {
+.comb-topbar {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -233,19 +233,19 @@ h1, h2, h3, h4, h5, .cloud-topbar-title {
     flex-wrap: wrap;
 }
 
-.cloud-topbar-title {
+.comb-topbar-title {
     font-size: 26px;
     margin: 0;
     line-height: 1.15;
 }
 
-.cloud-topbar-subtitle {
+.comb-topbar-subtitle {
     margin: 4px 0 0;
-    color: var(--cloud-muted);
+    color: var(--comb-muted);
     font-size: 13px;
 }
 
-.cloud-topbar-actions {
+.comb-topbar-actions {
     float: none;
     padding-right: 0;
     display: flex;
@@ -253,15 +253,15 @@ h1, h2, h3, h4, h5, .cloud-topbar-title {
     gap: 10px;
 }
 
-.cloud-topbar-actions > li {
+.comb-topbar-actions > li {
     float: none;
     list-style: none;
 }
 
 /* ---------- Buttons ---------- */
 
-.cloud-btn,
-.cloud-btn:visited {
+.comb-btn,
+.comb-btn:visited {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -275,29 +275,29 @@ h1, h2, h3, h4, h5, .cloud-topbar-title {
     line-height: 1;
 }
 
-.cloud-btn-primary,
-.cloud-btn-primary:visited {
-    background: linear-gradient(135deg, var(--cloud-accent), #6d8bff);
+.comb-btn-primary,
+.comb-btn-primary:visited {
+    background: linear-gradient(135deg, var(--comb-accent), #6d8bff);
     color: #fff;
     box-shadow: 0 8px 18px rgba(47, 107, 255, .25);
 }
 
-.cloud-btn-primary:hover {
+.comb-btn-primary:hover {
     color: #fff;
     filter: brightness(1.05);
     text-decoration: none;
 }
 
-.cloud-btn-ghost,
-.cloud-btn-ghost:visited {
-    background: var(--cloud-surface);
-    border-color: var(--cloud-border-strong);
-    color: var(--cloud-accent);
+.comb-btn-ghost,
+.comb-btn-ghost:visited {
+    background: var(--comb-surface);
+    border-color: var(--comb-border-strong);
+    color: var(--comb-accent);
 }
 
-.cloud-btn-ghost:hover {
-    color: var(--cloud-accent-dark);
-    background: var(--cloud-accent-soft);
+.comb-btn-ghost:hover {
+    color: var(--comb-accent-dark);
+    background: var(--comb-accent-soft);
     text-decoration: none;
 }
 
@@ -306,38 +306,38 @@ h1, h2, h3, h4, h5, .cloud-topbar-title {
 .btn {
     border-radius: 10px;
     font-weight: 600;
-    border-color: var(--cloud-border-strong);
+    border-color: var(--comb-border-strong);
 }
 
 .btn-default {
-    background: var(--cloud-surface);
-    color: var(--cloud-text);
+    background: var(--comb-surface);
+    color: var(--comb-text);
 }
 
 .btn-default:hover,
 .btn-default:focus {
     background: #f1f4f9;
-    color: var(--cloud-text);
+    color: var(--comb-text);
 }
 
 .btn-primary {
-    background: var(--cloud-accent);
-    border-color: var(--cloud-accent);
+    background: var(--comb-accent);
+    border-color: var(--comb-accent);
 }
 
 .btn-primary:hover,
 .btn-primary:focus {
-    background: var(--cloud-accent-dark);
-    border-color: var(--cloud-accent-dark);
+    background: var(--comb-accent-dark);
+    border-color: var(--comb-accent-dark);
 }
 
 /* ---------- Cards (Bootstrap panels) ---------- */
 
 .panel {
-    background: var(--cloud-surface);
-    border: 1px solid var(--cloud-border);
-    border-radius: var(--cloud-radius);
-    box-shadow: var(--cloud-shadow);
+    background: var(--comb-surface);
+    border: 1px solid var(--comb-border);
+    border-radius: var(--comb-radius);
+    box-shadow: var(--comb-shadow);
     overflow: hidden;
     margin-bottom: 20px;
 }
@@ -346,14 +346,14 @@ h1, h2, h3, h4, h5, .cloud-topbar-title {
 .panel-success,
 .panel-warning,
 .panel-danger {
-    border-color: var(--cloud-border);
+    border-color: var(--comb-border);
 }
 
 .panel-heading,
 button.panel-heading {
     background: transparent;
-    border-radius: var(--cloud-radius) var(--cloud-radius) 0 0 !important;
-    border-bottom: 1px solid var(--cloud-border);
+    border-radius: var(--comb-radius) var(--comb-radius) 0 0 !important;
+    border-bottom: 1px solid var(--comb-border);
     padding: 16px 20px;
 }
 
@@ -369,7 +369,7 @@ button.panel-heading {
 
 .panel-footer {
     background: #fafbfd;
-    border-top: 1px solid var(--cloud-border);
+    border-top: 1px solid var(--comb-border);
     padding: 14px 20px;
 }
 
@@ -377,7 +377,7 @@ button.panel-heading {
 
 .panel-group > h3,
 h3[id="folder_list"],
-.cloud-content > .row > div > h3 {
+.comb-content > .row > div > h3 {
     position: relative;
     padding-left: 14px;
     font-size: 18px;
@@ -388,7 +388,7 @@ h3[id="folder_list"],
 
 .panel-group > h3::before,
 h3[id="folder_list"]::before,
-.cloud-content > .row > div > h3::before {
+.comb-content > .row > div > h3::before {
     content: "";
     position: absolute;
     left: 0;
@@ -396,14 +396,14 @@ h3[id="folder_list"]::before,
     bottom: 2px;
     width: 4px;
     border-radius: 3px;
-    background: var(--cloud-accent);
+    background: var(--comb-accent);
 }
 
-.cloud-content h4 {
+.comb-content h4 {
     font-size: 13px;
     text-transform: uppercase;
     letter-spacing: .05em;
-    color: var(--cloud-muted);
+    color: var(--comb-muted);
     font-weight: 700;
 }
 
@@ -411,17 +411,17 @@ h3[id="folder_list"]::before,
 
 .panel-body table th {
     font-weight: 500;
-    color: var(--cloud-muted);
+    color: var(--comb-muted);
 }
 
 .panel-body table td {
     font-weight: 600;
-    color: var(--cloud-text);
+    color: var(--comb-text);
 }
 
 .panel-body table.table-condensed tr > th,
 .panel-body table.table-condensed tr > td {
-    border-top: 1px dashed var(--cloud-border-strong);
+    border-top: 1px dashed var(--comb-border-strong);
     padding-top: 9px;
     padding-bottom: 9px;
 }
@@ -438,16 +438,16 @@ h3[id="folder_list"]::before,
     padding: 4px 10px;
     font-size: 12px;
     font-weight: 700;
-    color: var(--cloud-gray-text);
-    background: var(--cloud-gray-bg);
+    color: var(--comb-gray-text);
+    background: var(--comb-gray-bg);
     display: inline-flex;
     align-items: center;
 }
 
 .label-success,
 .label-primary {
-    background: var(--cloud-green-bg);
-    color: var(--cloud-green-text);
+    background: var(--comb-green-bg);
+    color: var(--comb-green-text);
 }
 
 .label-success::before,
@@ -456,7 +456,7 @@ h3[id="folder_list"]::before,
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: var(--cloud-green);
+    background: var(--comb-green);
     margin-right: 7px;
 }
 
@@ -494,57 +494,57 @@ h3[id="folder_list"]::before,
 .progress {
     height: 8px;
     border-radius: 999px;
-    background-color: var(--cloud-gray-bg);
+    background-color: var(--comb-gray-bg);
     box-shadow: none;
     overflow: hidden;
     margin-bottom: 0;
 }
 
 .progress-bar {
-    background-color: var(--cloud-accent);
+    background-color: var(--comb-accent);
     box-shadow: none;
 }
 
 .progress-bar-success {
-    background-color: var(--cloud-green);
+    background-color: var(--comb-green);
 }
 
 /* ---------- Forms ---------- */
 
 .form-control {
     border-radius: 10px;
-    border-color: var(--cloud-border-strong);
+    border-color: var(--comb-border-strong);
     box-shadow: none;
     height: auto;
     padding: 9px 12px;
 }
 
 .form-control:focus {
-    border-color: var(--cloud-accent);
-    box-shadow: 0 0 0 3px var(--cloud-accent-soft);
+    border-color: var(--comb-accent);
+    box-shadow: 0 0 0 3px var(--comb-accent-soft);
 }
 
 /* ---------- Alerts ---------- */
 
 .alert {
-    border-radius: var(--cloud-radius-sm);
-    border: 1px solid var(--cloud-border);
+    border-radius: var(--comb-radius-sm);
+    border: 1px solid var(--comb-border);
 }
 
 /* ---------- Modals ---------- */
 
 .modal-content {
-    border-radius: var(--cloud-radius);
+    border-radius: var(--comb-radius);
     border: none;
     box-shadow: 0 24px 60px rgba(16, 24, 40, .18);
 }
 
 .modal-header {
-    border-bottom: 1px solid var(--cloud-border);
+    border-bottom: 1px solid var(--comb-border);
 }
 
 .modal-footer {
-    border-top: 1px solid var(--cloud-border);
+    border-top: 1px solid var(--comb-border);
 }
 
 /* ---------- Misc ---------- */
@@ -560,36 +560,36 @@ h3[id="folder_list"]::before,
 /* ---------- Responsive ---------- */
 
 @media (max-width: 991px) {
-    .cloud-app {
+    .comb-app {
         flex-direction: column;
     }
 
-    .cloud-sidebar {
+    .comb-sidebar {
         position: static;
         width: 100%;
         flex-basis: auto;
         height: auto;
         border-right: none;
-        border-bottom: 1px solid var(--cloud-border);
+        border-bottom: 1px solid var(--comb-border);
     }
 
-    .cloud-nav {
+    .comb-nav {
         display: flex;
         flex-wrap: wrap;
         gap: 4px;
     }
 
-    .cloud-nav-section {
+    .comb-nav-section {
         width: 100%;
         padding-top: 8px;
     }
 
-    .cloud-nav-item {
+    .comb-nav-item {
         margin: 0;
     }
 
-    .cloud-content,
-    .cloud-topbar {
+    .comb-content,
+    .comb-topbar {
         padding-left: 16px;
         padding-right: 16px;
     }
@@ -601,16 +601,16 @@ h3[id="folder_list"]::before,
    for explicit selection in the settings). */
 
 body {
-    background-color: var(--cloud-bg);
-    color: var(--cloud-text);
+    background-color: var(--comb-bg);
+    color: var(--comb-text);
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: var(--cloud-text);
+    color: var(--comb-text);
 }
 
 a {
-    color: var(--cloud-accent);
+    color: var(--comb-accent);
 }
 
 .panel,
@@ -619,9 +619,9 @@ a {
 .panel-warning,
 .panel-danger,
 .panel-info {
-    background-color: var(--cloud-surface);
-    border-color: var(--cloud-border);
-    color: var(--cloud-text);
+    background-color: var(--comb-surface);
+    border-color: var(--comb-border);
+    color: var(--comb-text);
 }
 
 .panel-default > .panel-heading,
@@ -630,94 +630,94 @@ a {
 .panel-danger > .panel-heading,
 .panel-info > .panel-heading,
 .panel-heading {
-    background-color: var(--cloud-surface);
-    color: var(--cloud-text);
-    border-color: var(--cloud-border);
+    background-color: var(--comb-surface);
+    color: var(--comb-text);
+    border-color: var(--comb-border);
 }
 
 .panel-body {
-    background-color: var(--cloud-surface);
-    color: var(--cloud-text);
+    background-color: var(--comb-surface);
+    color: var(--comb-text);
 }
 
 .panel-footer {
     background-color: #fafbfd;
-    border-color: var(--cloud-border);
-    color: var(--cloud-muted);
+    border-color: var(--comb-border);
+    color: var(--comb-muted);
 }
 
 .panel-title,
 .panel-heading .panel-title {
-    color: var(--cloud-text);
+    color: var(--comb-text);
 }
 
 .panel-warning > .panel-heading .panel-title,
 .panel-danger > .panel-heading .panel-title {
-    color: var(--cloud-text);
+    color: var(--comb-text);
 }
 
 .well {
-    background-color: var(--cloud-gray-bg);
-    border-color: var(--cloud-border);
-    color: var(--cloud-text);
+    background-color: var(--comb-gray-bg);
+    border-color: var(--comb-border);
+    color: var(--comb-text);
 }
 
 .dropdown-menu {
-    background-color: var(--cloud-surface);
-    border-color: var(--cloud-border);
-    box-shadow: var(--cloud-shadow);
+    background-color: var(--comb-surface);
+    border-color: var(--comb-border);
+    box-shadow: var(--comb-shadow);
 }
 
 .dropdown-menu > li > a {
-    color: var(--cloud-text);
+    color: var(--comb-text);
 }
 
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
     background-color: #f1f4f9;
-    color: var(--cloud-text);
+    color: var(--comb-text);
 }
 
 .dropdown-menu > .active > a {
-    background-color: var(--cloud-accent);
+    background-color: var(--comb-accent);
     color: #fff;
 }
 
 .form-control {
-    background-color: var(--cloud-surface);
-    color: var(--cloud-text);
+    background-color: var(--comb-surface);
+    color: var(--comb-text);
 }
 
 .form-control[readonly="readonly"],
 .form-control[disabled] {
-    background-color: var(--cloud-gray-bg);
+    background-color: var(--comb-gray-bg);
 }
 
 .modal-content {
-    background-color: var(--cloud-surface);
-    color: var(--cloud-text);
+    background-color: var(--comb-surface);
+    color: var(--comb-text);
 }
 
 .modal-header,
 .modal-footer {
-    border-color: var(--cloud-border);
+    border-color: var(--comb-border);
 }
 
 .table {
-    color: var(--cloud-text);
+    color: var(--comb-text);
 }
 
 .text-muted,
 .help-block {
-    color: var(--cloud-muted);
+    color: var(--comb-muted);
 }
 
 /* Semantic alerts become soft pastel cards instead of solid bars. */
 
 .alert-success {
-    background-color: var(--cloud-green-bg);
+    background-color: var(--comb-green-bg);
     border-color: #cdeedd;
-    color: var(--cloud-green-text);
+    color: var(--comb-green-text);
 }
 
 .alert-warning {
@@ -733,9 +733,9 @@ a {
 }
 
 .alert-info {
-    background-color: var(--cloud-accent-soft);
+    background-color: var(--comb-accent-soft);
     border-color: #cfe0ff;
-    color: var(--cloud-accent-dark);
+    color: var(--comb-accent-dark);
 }
 
 /* Card title with an icon reads like the design mockup. */
@@ -750,7 +750,7 @@ a {
 .panel-heading .panel-icon {
     float: none;
     margin: 0;
-    color: var(--cloud-muted);
+    color: var(--comb-muted);
 }
 
 .panel-heading .panel-title {

@@ -612,8 +612,8 @@ func noCacheMiddleware(h http.Handler) http.Handler {
 
 func withDetailsMiddleware(id protocol.DeviceID, h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("X-Cloud-Version", build.Version)
-		w.Header().Set("X-Cloud-ID", id.String())
+		w.Header().Set("X-Comb-Version", build.Version)
+		w.Header().Set("X-Comb-ID", id.String())
 		h.ServeHTTP(w, r)
 	})
 }
@@ -1198,7 +1198,7 @@ func (s *service) getSupportBundle(w http.ResponseWriter, r *http.Request) {
 	if p := pprof.Lookup("goroutine"); p != nil {
 		var goroutineBuf bytes.Buffer
 		_ = p.WriteTo(&goroutineBuf, 0)
-		filename := fmt.Sprintf("cloud-goroutines-%s-%s-%s-%s.pprof", runtime.GOOS, runtime.GOARCH, build.Version, time.Now().Format("150405")) // hhmmss
+		filename := fmt.Sprintf("comb-goroutines-%s-%s-%s-%s.pprof", runtime.GOOS, runtime.GOARCH, build.Version, time.Now().Format("150405")) // hhmmss
 		files = append(files, fileEntry{name: filename, data: goroutineBuf.Bytes()})
 	}
 
@@ -1206,7 +1206,7 @@ func (s *service) getSupportBundle(w http.ResponseWriter, r *http.Request) {
 	var heapBuf bytes.Buffer
 	runtime.GC()
 	if err := pprof.WriteHeapProfile(&heapBuf); err == nil {
-		filename := fmt.Sprintf("cloud-heap-%s-%s-%s-%s.pprof", runtime.GOOS, runtime.GOARCH, build.Version, time.Now().Format("150405")) // hhmmss
+		filename := fmt.Sprintf("comb-heap-%s-%s-%s-%s.pprof", runtime.GOOS, runtime.GOARCH, build.Version, time.Now().Format("150405")) // hhmmss
 		files = append(files, fileEntry{name: filename, data: heapBuf.Bytes()})
 	}
 
@@ -1220,7 +1220,7 @@ func (s *service) getSupportBundle(w http.ResponseWriter, r *http.Request) {
 	if err := pprof.StartCPUProfile(&cpuBuf); err == nil {
 		time.Sleep(profilingDuration)
 		pprof.StopCPUProfile()
-		filename := fmt.Sprintf("cloud-cpu-%s-%s-%s-%s.pprof", runtime.GOOS, runtime.GOARCH, build.Version, time.Now().Format("150405")) // hhmmss
+		filename := fmt.Sprintf("comb-cpu-%s-%s-%s-%s.pprof", runtime.GOOS, runtime.GOARCH, build.Version, time.Now().Format("150405")) // hhmmss
 		files = append(files, fileEntry{name: filename, data: cpuBuf.Bytes()})
 	}
 
@@ -1228,7 +1228,7 @@ func (s *service) getSupportBundle(w http.ResponseWriter, r *http.Request) {
 	if p := pprof.Lookup("block"); p != nil {
 		var blockBuf bytes.Buffer
 		_ = p.WriteTo(&blockBuf, 0)
-		filename := fmt.Sprintf("cloud-block-%s-%s-%s-%s.pprof", runtime.GOOS, runtime.GOARCH, build.Version, time.Now().Format("150405")) // hhmmss
+		filename := fmt.Sprintf("comb-block-%s-%s-%s-%s.pprof", runtime.GOOS, runtime.GOARCH, build.Version, time.Now().Format("150405")) // hhmmss
 		files = append(files, fileEntry{name: filename, data: blockBuf.Bytes()})
 	}
 
@@ -1738,7 +1738,7 @@ func (*service) getCPUProf(w http.ResponseWriter, r *http.Request) {
 		duration = 30 * time.Second
 	}
 
-	filename := fmt.Sprintf("cloud-cpu-%s-%s-%s-%s.pprof", runtime.GOOS, runtime.GOARCH, build.Version, time.Now().Format("150405")) // hhmmss
+	filename := fmt.Sprintf("comb-cpu-%s-%s-%s-%s.pprof", runtime.GOOS, runtime.GOARCH, build.Version, time.Now().Format("150405")) // hhmmss
 
 	w.Header().Set("Content-Type", "application/octet-stream")
 	w.Header().Set("Content-Disposition", "attachment; filename="+filename)
@@ -1750,7 +1750,7 @@ func (*service) getCPUProf(w http.ResponseWriter, r *http.Request) {
 }
 
 func (*service) getHeapProf(w http.ResponseWriter, _ *http.Request) {
-	filename := fmt.Sprintf("cloud-heap-%s-%s-%s-%s.pprof", runtime.GOOS, runtime.GOARCH, build.Version, time.Now().Format("150405")) // hhmmss
+	filename := fmt.Sprintf("comb-heap-%s-%s-%s-%s.pprof", runtime.GOOS, runtime.GOARCH, build.Version, time.Now().Format("150405")) // hhmmss
 
 	w.Header().Set("Content-Type", "application/octet-stream")
 	w.Header().Set("Content-Disposition", "attachment; filename="+filename)

@@ -24,7 +24,7 @@ type folderInfoMetric struct {
 }
 
 var folderInfoMetricDesc = prometheus.NewDesc(
-	"cloud_config_folder_info",
+	"comb_config_folder_info",
 	"Provides additional information labels on folders",
 	[]string{"folder", "label", "type", "path", "paused"},
 	nil,
@@ -45,7 +45,7 @@ type folderDeviceMetric struct {
 }
 
 var folderDeviceMetricDesc = prometheus.NewDesc(
-	"cloud_config_device_info",
+	"comb_config_device_info",
 	"Provides additional information labels on devices",
 	[]string{"device", "name", "introducer", "paused", "untrusted"},
 	nil,

@@ -36,9 +36,9 @@ import (
 	"github.com/thejerf/suture/v4"
 	"github.com/willabides/kongplete"
 
-	"github.com/0reg0n/cloud/cmd/cloud/cli"
-	"github.com/0reg0n/cloud/cmd/cloud/decrypt"
-	"github.com/0reg0n/cloud/cmd/cloud/generate"
+	"github.com/0reg0n/cloud/cmd/comb/cli"
+	"github.com/0reg0n/cloud/cmd/comb/decrypt"
+	"github.com/0reg0n/cloud/cmd/comb/generate"
 	"github.com/0reg0n/cloud/internal/db"
 	"github.com/0reg0n/cloud/internal/db/sqlite"
 	"github.com/0reg0n/cloud/internal/slogutil"
@@ -126,8 +126,8 @@ type CLI struct {
 	HomeDir     string `name:"home" short:"H" placeholder:"PATH" env:"STHOMEDIR" help:"Set configuration and data directory"`
 	VersionFlag bool   `name:"version" help:"Show current version, then exit"`
 
-	Serve serveCmd `cmd:"" help:"Run cloud (default)" default:"withargs"`
-	CLI   cli.CLI  `cmd:"" help:"Command line interface for cloud"`
+	Serve serveCmd `cmd:"" help:"Run comb (default)" default:"withargs"`
+	CLI   cli.CLI  `cmd:"" help:"Command line interface for comb"`
 
 	Browser  browserCmd   `cmd:"" help:"Open GUI in browser, then exit"`
 	Decrypt  decrypt.CLI  `cmd:"" help:"Decrypt or verify an encrypted folder"`
@@ -168,7 +168,7 @@ type serveCmd struct {
 	LogFormatLevelSyslog      bool          `name:"log-format-level-syslog" help:"Whether to include level as syslog prefix in log line" env:"STLOGFORMATLEVELSYSLOG" default:"${levelSyslog}" negatable:""`
 	NoBrowser                 bool          `help:"Do not start browser" env:"STNOBROWSER"`
 	NoPortProbing             bool          `help:"Don't try to find free ports for GUI and listen addresses on first startup" env:"STNOPORTPROBING"`
-	NoRestart                 bool          `help:"Do not restart cloud when exiting due to API/GUI command, upgrade, or crash" env:"STNORESTART"`
+	NoRestart                 bool          `help:"Do not restart comb when exiting due to API/GUI command, upgrade, or crash" env:"STNORESTART"`
 	NoUpgrade                 bool          `help:"Disable automatic upgrades" env:"STNOUPGRADE"`
 	Paused                    bool          `help:"Start with all devices and folders paused" env:"STPAUSED"`
 	Unpaused                  bool          `help:"Start with all devices and folders unpaused" env:"STUNPAUSED"`
@@ -413,7 +413,7 @@ func (c *serveCmd) syncthingMain() {
 		os.Exit(svcutil.ExitError.AsInt())
 
 	case !locked && c.NoBrowser:
-		slog.Error("Failed to acquire lock: is another cloud instance already running?")
+		slog.Error("Failed to acquire lock: is another comb instance already running?")
 		os.Exit(svcutil.ExitError.AsInt())
 
 	case !locked:
@@ -567,7 +567,7 @@ func (c *serveCmd) syncthingMain() {
 
 	app, err := syncthing.New(cfgWrapper, sdb, evLogger, cert, appOpts)
 	if err != nil {
-		slog.Error("Failed to start cloud", slogutil.Error(err))
+		slog.Error("Failed to start comb", slogutil.Error(err))
 		os.Exit(svcutil.ExitError.AsInt())
 	}
 
@@ -604,7 +604,7 @@ func (c *serveCmd) syncthingMain() {
 	status := app.Wait()
 
 	if status == svcutil.ExitError {
-		slog.Error("cloud stopped with error", slogutil.Error(app.Error()))
+		slog.Error("comb stopped with error", slogutil.Error(app.Error()))
 	}
 
 	if c.DebugProfileCPU {

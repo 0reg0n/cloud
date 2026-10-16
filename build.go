@@ -85,14 +85,14 @@ var targets = map[string]target{
 		// Only valid for the "build" and "install" commands as it lacks all
 		// the archive creation stuff. buildPkgs gets filled out in init()
 	},
-	"cloud": {
+	"comb": {
 		// The default target for "build", "install", "tar", "zip", "deb", etc.
-		name:        "cloud",
-		debname:     "cloud",
+		name:        "comb",
+		debname:     "comb",
 		debdeps:     []string{"libc6", "procps"},
-		description: "cloud - continuous file synchronization",
-		buildPkgs:   []string{"github.com/0reg0n/cloud/cmd/cloud"},
-		binaryName:  "cloud", // .exe will be added automatically for Windows builds
+		description: "comb - continuous file synchronization",
+		buildPkgs:   []string{"github.com/0reg0n/cloud/cmd/comb"},
+		binaryName:  "comb", // .exe will be added automatically for Windows builds
 		archiveFiles: []archiveFile{
 			{src: "{{binary}}", dst: "{{binary}}", perm: 0o755},
 			{src: "README.md", dst: "README.txt", perm: 0o644},
@@ -222,19 +222,19 @@ func initTargets() {
 	}
 	targets["all"] = all
 
-	// The "cloud" target includes a few more files found in the "etc"
+	// The "comb" target includes a few more files found in the "etc"
 	// and "extra" dirs.
-	cloudPkg := targets["cloud"]
+	combPkg := targets["comb"]
 	for _, file := range listFiles("etc") {
-		cloudPkg.archiveFiles = append(cloudPkg.archiveFiles, archiveFile{src: file, dst: file, perm: 0o644})
+		combPkg.archiveFiles = append(combPkg.archiveFiles, archiveFile{src: file, dst: file, perm: 0o644})
 	}
 	for _, file := range listFiles("extra") {
-		cloudPkg.archiveFiles = append(cloudPkg.archiveFiles, archiveFile{src: file, dst: file, perm: 0o644})
+		combPkg.archiveFiles = append(combPkg.archiveFiles, archiveFile{src: file, dst: file, perm: 0o644})
 	}
 	for _, file := range listFiles("extra") {
-		cloudPkg.installationFiles = append(cloudPkg.installationFiles, archiveFile{src: file, dst: "deb/usr/share/doc/syncthing/" + filepath.Base(file), perm: 0o644})
+		combPkg.installationFiles = append(combPkg.installationFiles, archiveFile{src: file, dst: "deb/usr/share/doc/syncthing/" + filepath.Base(file), perm: 0o644})
 	}
-	targets["cloud"] = cloudPkg
+	targets["comb"] = combPkg
 }
 
 func main() {
@@ -257,9 +257,9 @@ func main() {
 		runCommand("install", targets["all"])
 	} else {
 		// with any command given but not a target, the target is
-		// "cloud". So "go run build.go install" is "go run build.go install
-		// cloud" etc.
-		targetName := "cloud"
+		// "comb". So "go run build.go install" is "go run build.go install
+		// comb" etc.
+		targetName := "comb"
 		if flag.NArg() > 1 {
 			targetName = flag.Arg(1)
 		}
@@ -703,12 +703,12 @@ func shouldBuildSyso(dir string) (string, error) {
 		},
 		"StringFileInfo": M{
 			"CompanyName":      "The Syncthing Authors",
-			"FileDescription":  "cloud - continuous file synchronization",
+			"FileDescription":  "comb - continuous file synchronization",
 			"FileVersion":      version,
-			"InternalName":     "cloud",
+			"InternalName":     "comb",
 			"LegalCopyright":   "The Syncthing Authors",
-			"OriginalFilename": "cloud",
-			"ProductName":      "cloud",
+			"OriginalFilename": "comb",
+			"ProductName":      "comb",
 			"ProductVersion":   version,
 		},
 		"IconPath": "assets/logo.ico",
@@ -729,7 +729,7 @@ func shouldBuildSyso(dir string) (string, error) {
 		}
 	}()
 
-	sysoPath := filepath.Join(dir, "cmd", "cloud", "resource.syso")
+	sysoPath := filepath.Join(dir, "cmd", "comb", "resource.syso")
 
 	// See https://github.com/josephspurrier/goversioninfo#command-line-flags
 	// For manifest see https://learn.microsoft.com/en-us/windows/console/console-allocation-policy

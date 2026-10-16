@@ -1,12 +1,12 @@
-# cloud
+# Comb
 
-**cloud** is a continuous file synchronization program. It synchronizes files
+**Comb** is a continuous file synchronization program. It synchronizes files
 between two or more computers, peer to peer, without a central server.
 
 This project is based on [Syncthing](https://github.com/syncthing/syncthing) and
 keeps its core functionality: continuous, decentralized, encrypted file
-synchronization. The design and identity are being adapted for `cloud` on top of
-that foundation.
+synchronization. The design and identity are adapted for `Comb` on top of that
+foundation.
 
 ## Goals
 
@@ -30,8 +30,8 @@ Building from source requires Go (see `go.mod` for the required version).
 
     go run build.go
 
-The binaries are created in `./bin`. A guide with more details is available in
-the [upstream build documentation][5].
+The binary is created in the current directory as `comb`. A guide with more
+details is available in the [upstream build documentation][5].
 
 ## Documentation
 
@@ -42,7 +42,7 @@ The protocol and user documentation are inherited from upstream:
 
 ## Attribution and License
 
-`cloud` is a derivative work of Syncthing, which is licensed under the
+`Comb` is a derivative work of Syncthing, which is licensed under the
 [Mozilla Public License 2.0][7]. Files originating from Syncthing retain their
 original copyright notices and are distributed under the same license. See
 [NOTICE](NOTICE) for details.

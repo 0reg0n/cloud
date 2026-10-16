@@ -12,10 +12,10 @@
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="shortcut icon" href="assets/img/cloud-logo.svg" type="image/svg+xml"/>
+  <link rel="shortcut icon" href="assets/img/comb-logo.svg" type="image/svg+xml"/>
   <link rel="mask-icon" href="assets/img/safari-pinned-tab.svg" color="#0882c8"/>
 
-  <title ng-bind="thisDeviceName() + ' | cloud'"></title>
+  <title ng-bind="thisDeviceName() + ' | Comb'"></title>
   <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet"/>
   <link href="vendor/daterangepicker/daterangepicker.css" rel="stylesheet"/>
   <link href="assets/font/raleway.css" rel="stylesheet"/>
@@ -24,7 +24,7 @@
   <link href="assets/css/tree.css" rel="stylesheet"/>
   <link href="assets/css/overrides.css" rel="stylesheet"/>
   <link href="assets/css/theme.css" rel="stylesheet"/>
-  <link href="assets/css/cloud.css" rel="stylesheet"/>
+  <link href="assets/css/comb.css" rel="stylesheet"/>
 </head>
 
 <body>
@@ -32,8 +32,8 @@
     <nav class="navbar navbar-top navbar-default" role="navigation">
       <div class="container">
         <span class="navbar-brand" aria-hidden="true">
-          <img class="logo hidden-xs" src="assets/img/cloud-logo.svg" height="32" width="117" alt=""/>
-          <img class="logo hidden visible-xs" src="assets/img/cloud-logo.svg" height="32" alt=""/>
+          <img class="logo hidden-xs" src="assets/img/comb-logo.svg" height="32" width="117" alt=""/>
+          <img class="logo hidden visible-xs" src="assets/img/comb-logo.svg" height="32" alt=""/>
         </span>
       </div>
     </nav>
@@ -52,7 +52,7 @@
             </div>
             <div class="panel-body">
               <p>
-              The cloud admin interface requires JavaScript. Please enable JavaScript in your web browser and try again.
+              The Comb admin interface requires JavaScript. Please enable JavaScript in your web browser and try again.
               </p>
             </div>
           </div>
@@ -62,55 +62,54 @@
   </noscript>
 
   <div class="ng-cloak">
-    <div class="cloud-app" id="cloud-top">
-      <aside class="cloud-sidebar">
-        <div class="cloud-brand">
-          <img class="cloud-brand-logo" src="assets/img/cloud-logo.svg" alt="cloud"/>
-          <div class="cloud-brand-text">
-            <div class="cloud-brand-name">cloud</div>
-            <div class="cloud-brand-sub">v{{version.version}}</div>
+    <div class="comb-app" id="comb-top">
+      <aside class="comb-sidebar">
+        <div class="comb-brand">
+          <img class="comb-brand-logo" src="assets/img/comb-logo.svg" alt="Comb"/>
+          <div class="comb-brand-text">
+            <div class="comb-brand-name">Comb</div>
           </div>
         </div>
-        <nav class="cloud-nav">
-          <div class="cloud-nav-section"><span translate>Overview</span></div>
-          <a class="cloud-nav-item cloud-nav-active" href="#cloud-top"><i class="fa fa-fw fa-th-large"></i><span translate>Dashboard</span></a>
-          <a class="cloud-nav-item" href="#cloud-folders"><i class="fa fa-fw fa-folder"></i><span translate>Folders</span><span class="cloud-nav-count" ng-if="folderList().length > 0">{{folderList().length}}</span></a>
-          <a class="cloud-nav-item" href="#cloud-devices"><i class="fa fa-fw fa-sitemap"></i><span translate>Devices</span><span class="cloud-nav-count" ng-if="otherDevices().length > 0">{{otherDevices().length}}</span></a>
+        <nav class="comb-nav">
+          <div class="comb-nav-section"><span translate>Overview</span></div>
+          <a class="comb-nav-item comb-nav-active" href="#comb-top"><i class="fa fa-fw fa-th-large"></i><span translate>Dashboard</span></a>
+          <a class="comb-nav-item" href="#comb-folders"><i class="fa fa-fw fa-folder"></i><span translate>Folders</span><span class="comb-nav-count" ng-if="folderList().length > 0">{{folderList().length}}</span></a>
+          <a class="comb-nav-item" href="#comb-devices"><i class="fa fa-fw fa-sitemap"></i><span translate>Devices</span><span class="comb-nav-count" ng-if="otherDevices().length > 0">{{otherDevices().length}}</span></a>
 
-          <div class="cloud-nav-section"><span translate>System</span></div>
-          <a class="cloud-nav-item" href="" ng-click="showSettings()"><i class="fa fa-fw fa-cog"></i><span translate>Settings</span></a>
-          <a class="cloud-nav-item" href="" ng-click="advanced()"><i class="fa fa-fw fa-cogs"></i><span translate>Advanced</span></a>
-          <a class="cloud-nav-item" href="" ng-click="logging.show()"><i class="fa fa-fw fa-wrench"></i><span translate>Logs</span></a>
-          <a class="cloud-nav-item" href="/rest/debug/support" target="_blank"><i class="fa fa-fw fa-user-md"></i><span translate>Support Bundle</span></a>
-          <a class="cloud-nav-item" href="" ng-click="about.show()"><i class="fa fa-fw fa-heart"></i><span translate>About</span></a>
-          <a class="cloud-nav-item" ng-if="isAuthEnabled()" href="" ng-click="logout()"><i class="far fa-fw fa-sign-out"></i><span translate>Log Out</span></a>
+          <div class="comb-nav-section"><span translate>System</span></div>
+          <a class="comb-nav-item" href="" ng-click="showSettings()"><i class="fa fa-fw fa-cog"></i><span translate>Settings</span></a>
+          <a class="comb-nav-item" href="" ng-click="advanced()"><i class="fa fa-fw fa-cogs"></i><span translate>Advanced</span></a>
+          <a class="comb-nav-item" href="" ng-click="logging.show()"><i class="fa fa-fw fa-wrench"></i><span translate>Logs</span></a>
+          <a class="comb-nav-item" href="/rest/debug/support" target="_blank"><i class="fa fa-fw fa-user-md"></i><span translate>Support Bundle</span></a>
+          <a class="comb-nav-item" href="" ng-click="about.show()"><i class="fa fa-fw fa-heart"></i><span translate>About</span></a>
+          <a class="comb-nav-item" ng-if="isAuthEnabled()" href="" ng-click="logout()"><i class="far fa-fw fa-sign-out"></i><span translate>Log Out</span></a>
         </nav>
-        <div class="cloud-sidebar-footer">
-          <div class="cloud-device-name">{{thisDeviceName()}}</div>
-          <div class="cloud-device-meta">cloud {{version.version}}</div>
-          <div class="cloud-device-status">
-            <span class="cloud-dot cloud-dot-on"></span><span translate>Running</span>
-            <span class="cloud-dot" ng-class="{'cloud-dot-on': cloudConnectedCount() > 0}"></span><span translate>Connected</span>
+        <div class="comb-sidebar-footer">
+          <div class="comb-device-name">{{thisDeviceName()}}</div>
+          <div class="comb-device-meta">Comb</div>
+          <div class="comb-device-status">
+            <span class="comb-dot comb-dot-on"></span><span translate>Running</span>
+            <span class="comb-dot" ng-class="{'comb-dot-on': combConnectedCount() > 0}"></span><span translate>Connected</span>
           </div>
         </div>
       </aside>
 
-      <main class="cloud-main">
-        <header class="cloud-topbar">
-          <div class="cloud-topbar-titles">
-            <h1 class="cloud-topbar-title" translate>Dashboard</h1>
-            <p class="cloud-topbar-subtitle" translate>Status of all components</p>
+      <main class="comb-main">
+        <header class="comb-topbar">
+          <div class="comb-topbar-titles">
+            <h1 class="comb-topbar-title" translate>Dashboard</h1>
+            <p class="comb-topbar-subtitle" translate>Status of all components</p>
           </div>
-          <ul class="nav cloud-topbar-actions">
+          <ul class="nav comb-topbar-actions">
             <li ng-if="upgradeInfo && upgradeInfo.newer">
-              <button type="button" class="cloud-btn cloud-btn-primary" data-toggle="modal" data-target="#upgrade">
+              <button type="button" class="comb-btn comb-btn-primary" data-toggle="modal" data-target="#upgrade">
                 <span class="fas fa-arrow-circle-up"></span>
                 <span translate translate-value-version="{{upgradeInfo.latest}}">Upgrade To {%version%}</span>
               </button>
             </li>
             <li class="dropdown" language-select></li>
             <li class="dropdown" ng-if="authenticated">
-              <a href="#" class="cloud-btn cloud-btn-ghost dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <a href="#" class="comb-btn comb-btn-ghost dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                 <span class="fa fa-question-circle"></span>
                 <span class="hidden-xs" translate>Help</span>
                 <span class="caret"></span>
@@ -123,7 +122,7 @@
               </ul>
             </li>
             <li ng-if="authenticated" class="dropdown">
-              <a href="#" class="cloud-btn cloud-btn-ghost dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <a href="#" class="comb-btn comb-btn-ghost dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                 <span class="fa fa-cog"></span>
                 <span class="hidden-xs" translate>Actions</span>
                 <span class="caret"></span>
@@ -149,8 +148,8 @@
     <nav class="navbar navbar-top navbar-default" role="navigation">
       <div class="container">
         <span class="navbar-brand" aria-hidden="true">
-          <img class="logo hidden-xs" src="assets/img/cloud-logo.svg" height="32" width="117" alt=""/>
-          <img class="logo hidden visible-xs" src="assets/img/cloud-logo.svg" height="32" alt=""/>
+          <img class="logo hidden-xs" src="assets/img/comb-logo.svg" height="32" width="117" alt=""/>
+          <img class="logo hidden visible-xs" src="assets/img/comb-logo.svg" height="32" alt=""/>
         </span>
         <p ng-if="authenticated" class="navbar-text hidden-xs" ng-class="{'hidden-sm':upgradeInfo && upgradeInfo.newer}">{{thisDeviceName()}}</p>
         <ul class="nav navbar-nav navbar-right">
@@ -212,7 +211,7 @@
       </div>
     </nav>
 
-    <div class="cloud-content">
+    <div class="comb-content">
 
       <!-- Panel: Open, no auth -->
 
@@ -229,7 +228,7 @@
             </div>
             <div class="panel-body">
               <p>
-              <span translate>The cloud admin interface is configured to allow remote access without a password.</span>
+              <span translate>The Comb admin interface is configured to allow remote access without a password.</span>
               <b><span translate>This can easily give hackers access to read and change any files on your computer.</span></b>
               <span translate>Please set a GUI Authentication User and Password in the Settings dialog.</span>
               </p>
@@ -258,7 +257,7 @@
               </h3>
             </div>
             <div class="panel-body">
-              <p translate>The configuration has been saved but not activated. cloud must restart to activate the new configuration.</p>
+              <p translate>The configuration has been saved but not activated. Comb must restart to activate the new configuration.</p>
             </div>
             <div class="panel-footer">
               <button type="button" class="btn btn-sm btn-default pull-right" ng-click="restart()">
@@ -445,7 +444,7 @@
                 Incorrect user name or password.
               </p>
               <p ng-if="login.errors.failed" class="text-danger" translate>
-                Login failed, see cloud logs for details.
+                Login failed, see Comb logs for details.
               </p>
             </div>
             <div class="col-md-3 text-right">
@@ -460,7 +459,7 @@
 
         <!-- Folder list (top left) -->
 
-        <div class="col-md-6" id="cloud-folders" aria-labelledby="folder_list" role="region" >
+        <div class="col-md-6" id="comb-folders" aria-labelledby="folder_list" role="region" >
           <h3 id="folder_list"><span translate>Folders</span><span ng-if="folderList().length > 1"> ({{folderList().length}})</span></h3>
           <div ng-repeat="(folderGroupName, groupedFolders) in foldersGrouped">
             <h4 ng-if="folderGroupName !== ''">{{ folderGroupName }}
@@ -758,7 +757,7 @@
 
         <!-- This device -->
 
-        <div class="col-md-6" id="cloud-devices" aria-label="{{'Devices' | translate}}" role="region">
+        <div class="col-md-6" id="comb-devices" aria-label="{{'Devices' | translate}}" role="region">
           <h3 translate>This Device</h3>
           <div class="panel panel-default" ng-repeat="deviceCfg in [thisDevice()]">
             <button class="btn panel-heading" data-toggle="collapse" data-target="#device-this" aria-expanded="true">
@@ -1097,9 +1096,9 @@
         </div>
       </div> <!-- /row -->
 
-    </div> <!-- /cloud-content -->
+    </div> <!-- /comb-content -->
       </main>
-    </div> <!-- /cloud-app -->
+    </div> <!-- /comb-app -->
   </div> <!-- /ng-cloak -->
 
   <ng-include src="'syncthing/core/networkErrorDialogView.html'"></ng-include>

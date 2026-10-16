@@ -18,7 +18,7 @@
 .gradle/
 app/build/
 app/src/main/jniLibs
-build/
+syncthing/build/
 
 # gradle-play-publisher
 .android/
